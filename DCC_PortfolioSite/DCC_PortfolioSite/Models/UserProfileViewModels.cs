@@ -9,7 +9,7 @@ namespace DCC_PortfolioSite.Models
 {
     public class UserProfileViewModels
     {
-        public int UserID { get; set; }
+        public int ProfileID { get; set; }
         public string UserFirstName { get; set; }
         public string UserLastName { get; set; }
 

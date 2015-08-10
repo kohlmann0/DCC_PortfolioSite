@@ -10,7 +10,7 @@ namespace DCC_PortfolioSite.Models
     public class ProjectSpotLightViewModels
     {
         public int ProjectID { get; set; }
-        public int UserID { get; set; }
+        public int ProfileID { get; set; }
         public string ProjectDescription { get; set; }
         public List<string> Technologies { get; set; }
         public List<string> TeamMembers { get; set; }
