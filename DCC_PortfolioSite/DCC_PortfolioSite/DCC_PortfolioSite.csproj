@@ -262,6 +262,10 @@
     <Content Include="Views\UserProfile\Index.cshtml" />
     <Content Include="Views\UserProfile\_Layout.cshtml" />
     <Content Include="Views\UserProfile\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_StickyFooter.cshtml" />
+    <Content Include="Views\UserProfile\_ProfilePartialView.cshtml" />
+    <Content Include="Views\UserProfile\_ProjectPartialView.cshtml" />
+    <Content Include="Views\UserProfile\_ResumePartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

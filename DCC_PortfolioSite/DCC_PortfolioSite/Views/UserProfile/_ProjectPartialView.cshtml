@@ -1,0 +1,44 @@
+﻿@model DCC_PortfolioSite.Models.ProjectSpotLightViewModels
+
+<div>
+    <h4>ProjectSpotLightViewModels</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfileID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProfileID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DevelopementTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DevelopementTime)
+        </dd>
+
+    </dl>
+</div>
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@
