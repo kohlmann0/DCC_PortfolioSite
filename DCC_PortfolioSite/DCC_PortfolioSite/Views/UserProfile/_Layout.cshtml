@@ -9,6 +9,9 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/sticky-footer.css" rel="stylesheet">
+    <link href="~/slick/slick.css" rel="stylesheet" type="text/css" />
+    <link href="~/slick/slick-theme.css" rel="stylesheet" type="text/css" />
+
 
     <script type="text/javascript">
         var appInsights=window.appInsights||function(config){
@@ -55,5 +58,8 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script type="text/javascript" src="~/slick/slick.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/ProfileCarouselControl.js"></script>
+
 </body>
 </html>

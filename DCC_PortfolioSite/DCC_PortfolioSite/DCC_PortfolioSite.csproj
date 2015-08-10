@@ -199,6 +199,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\devLogo-white-long100H1.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -220,10 +221,17 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\ProfileCarouselControl.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Content\sticky-footer.css" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="slick\ajax-loader.gif" />
+    <Content Include="slick\fonts\slick.svg" />
+    <Content Include="slick\slick-theme.css" />
+    <Content Include="slick\slick.css" />
+    <Content Include="slick\slick.js" />
+    <Content Include="slick\slick.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -266,6 +274,12 @@
     <Content Include="Views\UserProfile\_ProfilePartialView.cshtml" />
     <Content Include="Views\UserProfile\_ProjectPartialView.cshtml" />
     <Content Include="Views\UserProfile\_ResumePartialView.cshtml" />
+    <Content Include="slick\config.rb" />
+    <Content Include="slick\fonts\slick.eot" />
+    <Content Include="slick\fonts\slick.ttf" />
+    <Content Include="slick\fonts\slick.woff" />
+    <Content Include="slick\slick-theme.scss" />
+    <Content Include="slick\slick.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
