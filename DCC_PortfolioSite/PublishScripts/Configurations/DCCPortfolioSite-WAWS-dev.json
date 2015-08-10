@@ -1,0 +1,21 @@
+{
+    "environmentSettings": {
+        "webSite": {
+            "name": "DCCPortfolioSite",
+            "location": "Central US"
+        },
+        "databases": [
+            {
+                "connectionStringName": "DefaultConnection",
+                "databaseName": "DCCPortfolioSite_db",
+                "serverName": "wx9a1lruht",
+                "user": "devcodecamp",
+                "password": "",
+                "edition": "",
+                "size": "",
+                "collation": "",
+                "location": "Central US"
+            }
+        ]
+    }
+}
