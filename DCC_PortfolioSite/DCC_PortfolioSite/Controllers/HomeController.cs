@@ -15,14 +15,14 @@ namespace DCC_PortfolioSite.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Welcome to the devCodeCamp Alumni Network.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Contact devCodeCamp at:";
 
             return View();
         }
