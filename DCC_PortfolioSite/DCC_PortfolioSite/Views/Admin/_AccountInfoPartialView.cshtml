@@ -4,15 +4,13 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.UserID)
-        </dt>
-
-        <dt>
             @Html.DisplayNameFor(model => model.UserName)
+            @Html.TextBoxFor(model => model.UserName)
         </dt>
 
         <dt>
             @Html.DisplayNameFor(model => model.UserPassword)
+            @Html.TextBoxFor(model => model.UserPassword)
         </dt>
     </dl>
 </div>
