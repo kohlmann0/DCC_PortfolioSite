@@ -24,8 +24,8 @@
         appInsights.trackPageView();
     </script>
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+<body class="dark_background">
+    <div class="navbar navbar-inverse navbar-fixed-top ">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -37,9 +37,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Profile", "Profile", "UserProfile")</li>
-                    <li>@Html.ActionLink("Resume", "Resume", "UserProfile")</li>
-                    <li>@Html.ActionLink("Portfolio", "Portfolio", "UserProfile")</li>
+                    <li class="page_text_color">@Html.ActionLink("Profile", "Profile", "UserProfile")</li>
+                    <li class="page_text_color">@Html.ActionLink("Resume", "Resume", "UserProfile")</li>
+                    <li class="page_text_color">@Html.ActionLink("Portfolio", "Portfolio", "UserProfile")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

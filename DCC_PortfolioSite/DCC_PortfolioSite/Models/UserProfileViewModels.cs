@@ -52,5 +52,9 @@ namespace DCC_PortfolioSite.Models
         public bool ShowAvailableForWorkMessage { get; set; }
         public bool ShowHireByMessage { get; set; }
         public bool ShowCurrentlyWorkingOnMessage { get; set; }
+
+
+        public ResumeViewModels ResumeViewModelObject { get; set; }
+        public List<ProjectSpotLightViewModels> ProjectSpotLightList { get; set; }
     }
 }

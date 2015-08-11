@@ -22,3 +22,19 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.dark_background{
+    background-color: #444444
+}
+
+.carousel_background{
+    background-color: #000000
+}
+
+.corner_radius{
+    border-radius: 3%
+}
+
+.page_text_color{
+    color:#ffffff
+}

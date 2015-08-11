@@ -1,9 +1,9 @@
 ﻿$(document).ready(function(){
     console.log("TEST");
     $('.ProfileCarousel').slick({
-        accessibility: true,
-        arrows: true,
-        dots: true,
+        //accessibility: true,
+        //arrows: true,
+        //dots: true,
         infinite: true,
         speed:300,
         slidesToShow:1,
