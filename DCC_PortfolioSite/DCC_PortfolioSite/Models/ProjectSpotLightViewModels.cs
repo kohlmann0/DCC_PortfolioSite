@@ -33,6 +33,6 @@ namespace DCC_PortfolioSite.Models
 
         [DisplayName("Git Hub Repository")]
         [Url]
-        public UrlAttribute GitHubProfile { get; set; }
+        public string GitHubProfile { get; set; }
     }
 }

@@ -216,6 +216,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\devLogo-white-long100H1.png" />
+    <Content Include="Content\ProfilePic.jpg" />
+    <Content Include="Content\search-icon.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -242,6 +244,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Content\sticky-footer.css" />
+    <Content Include="Scripts\SearchResultsCarouselControl.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="slick\ajax-loader.gif" />
     <Content Include="slick\fonts\slick.svg" />
@@ -322,6 +325,7 @@
     <Content Include="Views\Admin\_ProfileInfoPartialView.cshtml" />
     <Content Include="Views\Admin\_ResumeInfoPartialView.cshtml" />
     <Content Include="Views\Admin\_ProjectInfoPartialView.cshtml" />
+    <Content Include="Views\Home\SearchResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
