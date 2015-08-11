@@ -3,18 +3,25 @@
 <div>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.UserName)
-            @Html.TextBoxFor(model => model.UserName)
         </dt>
-
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.UserPassword)
-            @Html.TextBoxFor(model => model.UserPassword)
         </dt>
     </dl>
 </div>
-@*<p>
+
+<div>
+    <p>
+        @Html.TextBoxFor(model => model.UserName)
+    </p>
+    <p>
+        @Html.TextBoxFor(model => model.UserPassword)
+    </p>
+</div>
+
+<p>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
-</p>*@
+</p>
