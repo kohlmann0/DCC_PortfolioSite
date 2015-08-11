@@ -1,31 +1,31 @@
-﻿@model DCC_PortfolioSite.Models.ResumeViewModels
+﻿@model DCC_PortfolioSite.Models.UserProfileViewModels
 
 <div>
     <h4>ResumeViewModels</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ResumeID)
+            @Html.DisplayNameFor(model => model.ResumeViewModelObject.ResumeID)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ResumeID)
+            @Html.DisplayFor(model => model.ResumeViewModelObject.ResumeID)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ProfileID)
+            @Html.DisplayNameFor(model => model.ResumeViewModelObject.ProfileID)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ProfileID)
+            @Html.DisplayFor(model => model.ResumeViewModelObject.ProfileID)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.RevisionNumber)
+            @Html.DisplayNameFor(model => model.ResumeViewModelObject.RevisionNumber)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.RevisionNumber)
+            @Html.DisplayFor(model => model.ResumeViewModelObject.RevisionNumber)
         </dd>
 
     </dl>
