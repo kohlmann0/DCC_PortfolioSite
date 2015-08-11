@@ -13,8 +13,8 @@
         <h2>Search Profiles and Projects</h2>        
         @using (Html.BeginForm("Search", "Home"))
         {
-            @Html.Editor("tb_SearchBox")
-        <input type="submit" value="search" class="search_icon_button" />
+            @Html.Editor("tb_SearchBox");
+            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
         }
 
         <br />
@@ -30,7 +30,8 @@
                     <div>
                         @{
                             string FullName = item.FirstName + " " + item.LastName;
-                            @Html.ActionLink(@FullName, "Index", "UserProfile", null, item.UserId);
+                            <img class="media-object thumbnail" src="~/Content/ProfilePic.jpg" hieght="150px" width="150px"/>
+                            <span class="banner">@Html.ActionLink(@FullName, "Index", "UserProfile", null, item.UserId)</span>
                         }
                     </div>
                     @*@Html.DisplayFor(modelItem => item.FirstName)

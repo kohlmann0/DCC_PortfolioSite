@@ -39,10 +39,15 @@ textarea {
     color:#eeeeee
 }
 
-
 .search_icon_button{
      background: url("search-icon.png") no-repeat top left;
      width: 42px;
      height: 30px;
      text-indent: -9999px; /* hides the link text */
+}
+
+.media img+span.badge {
+    position: relative;
+    top: -20px;
+    left: -2px;
 }
