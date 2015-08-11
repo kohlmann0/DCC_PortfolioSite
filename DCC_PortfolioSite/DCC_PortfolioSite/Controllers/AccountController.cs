@@ -24,6 +24,7 @@ namespace DCC_PortfolioSite.Controllers
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
+            //comment
             UserManager = userManager;
             SignInManager = signInManager;
         }
