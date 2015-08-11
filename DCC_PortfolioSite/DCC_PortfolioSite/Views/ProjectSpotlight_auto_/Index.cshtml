@@ -1,0 +1,75 @@
+﻿@model IEnumerable<DCC_PortfolioSite.Models.ProjectSpotlight>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactProfile.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Technologies)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DevelopmentTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RepoLink)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image_2)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactProfile.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjectName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Technologies)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DevelopmentTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjectDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RepoLink)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Image_1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Image_2)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProjectSpotlightID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProjectSpotlightID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProjectSpotlightID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,82 @@
+﻿@model DCC_PortfolioSite.Models.ProjectSpotlight
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProjectSpotlight</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactProfile.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactProfile.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Technologies)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Technologies)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DevelopmentTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DevelopmentTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RepoLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RepoLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image_2)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProjectSpotlightID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

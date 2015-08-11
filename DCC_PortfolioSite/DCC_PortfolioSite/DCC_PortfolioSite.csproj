@@ -184,9 +184,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ContactProfile_auto_Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProjectSpotlight_auto_Controller.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
+    <Compile Include="Controllers\UserProfile_auto_Controller.cs" />
+    <Compile Include="Controllers\UserResume_auto_Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -294,6 +298,30 @@
     <Content Include="slick\slick-theme.scss" />
     <Content Include="slick\slick.scss" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\UserProfile_auto_\Create.cshtml" />
+    <Content Include="Views\UserProfile_auto_\Delete.cshtml" />
+    <Content Include="Views\UserProfile_auto_\Details.cshtml" />
+    <Content Include="Views\UserProfile_auto_\Edit.cshtml" />
+    <Content Include="Views\UserProfile_auto_\Index.cshtml" />
+    <Content Include="Views\ContactProfile_auto_\Create.cshtml" />
+    <Content Include="Views\ContactProfile_auto_\Delete.cshtml" />
+    <Content Include="Views\ContactProfile_auto_\Details.cshtml" />
+    <Content Include="Views\ContactProfile_auto_\Edit.cshtml" />
+    <Content Include="Views\ContactProfile_auto_\Index.cshtml" />
+    <Content Include="Views\UserResume_auto_\Create.cshtml" />
+    <Content Include="Views\UserResume_auto_\Delete.cshtml" />
+    <Content Include="Views\UserResume_auto_\Details.cshtml" />
+    <Content Include="Views\UserResume_auto_\Edit.cshtml" />
+    <Content Include="Views\UserResume_auto_\Index.cshtml" />
+    <Content Include="Views\ProjectSpotlight_auto_\Create.cshtml" />
+    <Content Include="Views\ProjectSpotlight_auto_\Delete.cshtml" />
+    <Content Include="Views\ProjectSpotlight_auto_\Details.cshtml" />
+    <Content Include="Views\ProjectSpotlight_auto_\Edit.cshtml" />
+    <Content Include="Views\ProjectSpotlight_auto_\Index.cshtml" />
+    <Content Include="Views\Admin\_AccountInfoPartialView.cshtml" />
+    <Content Include="Views\Admin\_ProfileInfoPartialView.cshtml" />
+    <Content Include="Views\Admin\_ResumeInfoPartialView.cshtml" />
+    <Content Include="Views\Admin\_ProjectInfoPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
