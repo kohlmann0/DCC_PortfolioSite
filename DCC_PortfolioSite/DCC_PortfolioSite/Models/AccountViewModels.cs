@@ -84,6 +84,8 @@ namespace DCC_PortfolioSite.Models
         public string FirstName { get; set; }
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+
+        public string Name { get; set; }
     }
 
     public class ResetPasswordViewModel
