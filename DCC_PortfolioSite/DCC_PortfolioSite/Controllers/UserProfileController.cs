@@ -12,6 +12,9 @@ namespace DCC_PortfolioSite.Controllers
 {
     public class UserProfileController : Controller
     {
+        
+        AlumniDBModel db = new AlumniDBModel();
+        
         // GET: UserProfile
         public ActionResult Index(int? id)
         {
@@ -81,6 +84,10 @@ namespace DCC_PortfolioSite.Controllers
 
             return View(model);
         }
+
+        
+
+       
 
 
 

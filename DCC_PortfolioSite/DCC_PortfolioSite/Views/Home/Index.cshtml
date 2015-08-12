@@ -30,7 +30,8 @@
                     <div>
                         @{
                             string FullName = item.FirstName + " " + item.LastName;
-                            <img class="media-object thumbnail" src="~/Content/ProfilePic.jpg" hieght="150px" width="150px"/>
+                            /*<img class="media-object thumbnail" src="~/Content/ProfilePic.jpg" height="150px" width="150px"/>*/
+                            <img class="media-object thumbnail" src=@item.Photo height="150px" width="150px"/>
                             <span class="banner">@Html.ActionLink(@FullName, "Index", "UserProfile", null, item.UserId)</span>
                         }
                     </div>
