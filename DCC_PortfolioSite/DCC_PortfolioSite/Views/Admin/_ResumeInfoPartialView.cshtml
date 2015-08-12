@@ -1,11 +1,11 @@
-﻿@model DCC_PortfolioSite.Models.UserResume
+﻿@model DCC_PortfolioSite.Models.AdminViewModel
 
 <div>
     <hr />
     <table>
         <tr>
-            <td>@Html.DisplayNameFor(model => model.HtmlUpload)</td>
-            <td>@Html.TextBoxFor(model => model.HtmlUpload, new { @readonly = "readonly" })</td>
+            <td>@Html.DisplayNameFor(model => model.UserResume.HtmlUpload)</td>
+            <td>@Html.TextBoxFor(model => model.UserResume.HtmlUpload, new { @readonly = "readonly" })</td>
         </tr>
     </table>
 </div>
