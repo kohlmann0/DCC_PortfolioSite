@@ -1,4 +1,27 @@
-﻿/*.adminInputLabel {
-    padding: 3px;    
-    border: 4px;
-}*/
+﻿.inputLabel {
+    background: #ddd;
+    text-align: right;
+    padding: 3%;
+}
+
+.inputData { 
+    font-size: 1.15em;
+    font-weight: bold;
+    padding: 3%;
+}
+
+.adminLink {
+    font-size: 1.15em;
+}
+
+.sectionHead {
+    margin-top: 8%;
+    margin-bottom: -3%;
+}
+
+.filePath {
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
