@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DCC_PortfolioSite.Models;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace DCC_PortfolioSite.Controllers
 {
@@ -152,7 +154,8 @@ namespace DCC_PortfolioSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
+                var user2 = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -163,6 +166,27 @@ namespace DCC_PortfolioSite.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    string connectionStringDB = "Server=tcp:wx9a1lruht.database.windows.net,1433;Database=DCCPortfolioSite_db;User ID=devcodecamp;Password=heliumdev1!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
+                    using (SqlConnection connection = new SqlConnection(connectionStringDB))
+                    {
+                        connection.Open();
+
+                      
+
+                        SqlCommand cmd = new SqlCommand("INSERT INTO ContactProfile(FirstName,LastName,PrimaryEmail) Values (@fName,@lName,@primaryEmail)");
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Connection = connection;
+                        cmd.Parameters.AddWithValue("@fName", user2.FirstName );
+                        cmd.Parameters.AddWithValue("@lName", user2.LastName );
+                        cmd.Parameters.AddWithValue("@primaryEmail", user.Email );
+                        
+
+
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+
 
                     return RedirectToAction("Index", "Home");
                 }
