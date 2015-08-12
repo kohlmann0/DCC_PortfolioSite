@@ -18,7 +18,13 @@ namespace DCC_PortfolioSite.Controllers
             return View();
         }
 
-        // Get: Resume
+        // REDIRECT: to Edit page
+        public ActionResult Edit()
+        {
+            return View("Index_Edit");
+        }
+
+        // GET: Resume
         public ActionResult Resume()
         {
             UserResume results = db.UserResumes.FirstOrDefault(r => r.ProfileID == 2);
