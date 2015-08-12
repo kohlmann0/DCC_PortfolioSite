@@ -3,104 +3,130 @@
 <div>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.FirstName)
-            @Html.TextBoxFor(model => model.FirstName)
         </dt>
-
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.LastName)
-            @Html.TextBoxFor(model => model.LastName)
         </dt>
-
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.BirthDate)
-            @Html.TextBoxFor(model => model.BirthDate)
         </dt>
-
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.PrimaryPhone)
-            @Html.TextBoxFor(model => model.PrimaryPhone)
         </dt>
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.AlternatePhone)
-            @Html.TextBoxFor(model => model.AlternatePhone)
         </dt>
-
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.PrimaryEmail)
-            @Html.TextBoxFor(model => model.PrimaryEmail)
         </dt>
-
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.AlternateEmail)
-            @Html.TextBoxFor(model => model.AlternateEmail)
         </dt>
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.StreetAddress)
-            @Html.TextBoxFor(model => model.StreetAddress)
         </dt>
-
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.City)
-            @Html.TextBoxFor(model => model.City)
         </dt>
-
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.USAState)
-            @Html.TextBoxFor(model => model.USAState)
         </dt>
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.Country)
-            @Html.TextBoxFor(model => model.Country)
         </dt>
-
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.PostalCode)
-            @Html.TextBoxFor(model => model.PostalCode)
         </dt>
-
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.About)
-            @Html.TextBoxFor(model => model.About)
         </dt>
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.Photo)
-            @Html.TextBoxFor(model => model.Photo)
         </dt>
-
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.LinkedIn)
-            @Html.TextBoxFor(model => model.LinkedIn)
         </dt>
-
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.GitHub)
-            @Html.TextBoxFor(model => model.GitHub)
         </dt>
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.PersonalWebsite)
-            @Html.TextBoxFor(model => model.PersonalWebsite)
         </dt>
-
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.AvailableForWork)
-            @Html.TextBoxFor(model => model.AvailableForWork)
         </dt>
-
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.HiredBy)
-            @Html.TextBoxFor(model => model.HiredBy)
         </dt>
-        <dt>
+        <dt class="adminInputLabel">
             @Html.DisplayNameFor(model => model.CurrentWork)
-            @Html.TextBoxFor(model => model.CurrentWork)
         </dt>
     </dl>
 </div>
-@*<p>
-        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>*@
 
+<div>
+    <p>
+        @Html.TextBoxFor(model => model.FirstName)
+    </p>
+    <p>
+        @Html.TextBoxFor(model => model.LastName)
+    </p>
+    <p>
+        @Html.TextBoxFor(model => model.BirthDate)
+    </p>
+    <p>
+        @Html.TextBoxFor(model => model.PrimaryPhone)
+    </p>
+    <p>
+        @Html.TextBoxFor(model => model.AlternatePhone)
+    </p>
+    <p>
+        @Html.TextBoxFor(model => model.PrimaryEmail)
+    </p>
+    <p>
+        @Html.TextBoxFor(model => model.AlternateEmail)
+    </p>
+    <p>
+        @Html.TextBoxFor(model => model.StreetAddress)
+    </p>
+    <p>
+        @Html.TextBoxFor(model => model.City)
+    </p>
+    <p>
+        @Html.TextBoxFor(model => model.USAState)
+    </p>
+    <p>
+        @Html.TextBoxFor(model => model.Country)
+    </p>
+    <p>
+        @Html.TextBoxFor(model => model.PostalCode)
+    </p>
+    <p>
+        @Html.TextBoxFor(model => model.Photo)
+    </p>
+    <p>
+        @Html.TextBoxFor(model => model.LinkedIn)
+    </p>
+    <p>
+        @Html.TextBoxFor(model => model.GitHub)
+    </p>
+    <p>
+        @Html.TextBoxFor(model => model.PersonalWebsite)
+    </p>
+    <p>
+        @Html.TextBoxFor(model => model.AvailableForWork)
+    </p>
+    <p>
+        @Html.TextBoxFor(model => model.HiredBy)
+    </p>
+    <p>
+        @Html.TextBoxFor(model => model.CurrentWork)
+    </p>
+</div>
 
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

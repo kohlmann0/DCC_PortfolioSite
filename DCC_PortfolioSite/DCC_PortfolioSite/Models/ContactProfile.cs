@@ -65,7 +65,7 @@ namespace DCC_PortfolioSite.Models
         [StringLength(2000)]
         public string About { get; set; }
 
-        public byte[] Photo { get; set; }
+        public string Photo { get; set; }
 
         [StringLength(255)]
         public string LinkedIn { get; set; }

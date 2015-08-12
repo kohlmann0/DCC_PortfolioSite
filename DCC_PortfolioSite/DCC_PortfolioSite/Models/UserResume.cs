@@ -14,7 +14,7 @@ namespace DCC_PortfolioSite.Models
         public int ProfileID { get; set; }
 
         [Required]
-        public byte[] HtmlUpload { get; set; }
+        public string HtmlUpload { get; set; }
 
         public virtual ContactProfile ContactProfile { get; set; }
     }

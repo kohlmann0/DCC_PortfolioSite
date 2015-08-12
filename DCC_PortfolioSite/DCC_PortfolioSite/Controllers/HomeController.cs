@@ -4,6 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.SqlClient;
+using System.Data;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.Azure;
+using System.Configuration;
+using System.IO;
 
 namespace DCC_PortfolioSite.Controllers
 {
@@ -26,8 +34,167 @@ namespace DCC_PortfolioSite.Controllers
         {
             ViewBag.Message = "Welcome to the devCodeCamp Alumni Network.";
 
+
+
+            var connectionString = @"DefaultEndpointsProtocol=https;AccountName=dccportfolio;AccountKey=/MxXUfGzY8W+e0GTYUTQtA4EnlfgaROeUhPipxRFew7ckKk5sXiHDmDZmIOd4AkZ6luZS994UXYaPeRKboHOaA==";
+            var account = CloudStorageAccount.Parse(connectionString);
+            
+            //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
+            CloudBlobClient blobClient = account.CreateCloudBlobClient();
+
+            // Retrieve a reference to a container.
+            CloudBlobContainer container = blobClient.GetContainerReference("pictures");
+
+            // Create the container if it doesn't already exist.
+            container.CreateIfNotExists();
+            container.SetPermissions(new BlobContainerPermissions
+            {
+                PublicAccess = BlobContainerPublicAccessType.Blob
+            });
+
+            CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
+
+            //blockBlob.UploadFromFile(imageUploader.PostedFile.FileName, FileMode.Open);
+
             return View();
         }
+
+        [HttpPost]
+        public ActionResult ImageUpload()
+        {
+            string path = @"D:\Temp\";
+
+            var image = Request.Files["image"];
+            if (image == null)
+            {
+                ViewBag.UploadMessage = "Failed to upload image";
+            }
+            else
+            {
+                ViewBag.UploadMessage = String.Format("Got image {0} of type {1} and size {2}",
+                    image.FileName, image.ContentType, image.ContentLength);
+                // TODO: actually save the image to Azure blob storage
+
+                var connectionString = @"DefaultEndpointsProtocol=https;AccountName=dccportfolio;AccountKey=/MxXUfGzY8W+e0GTYUTQtA4EnlfgaROeUhPipxRFew7ckKk5sXiHDmDZmIOd4AkZ6luZS994UXYaPeRKboHOaA==";
+                var account = CloudStorageAccount.Parse(connectionString);
+
+                //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
+                CloudBlobClient blobClient = account.CreateCloudBlobClient();
+
+                // Retrieve a reference to a container.
+                CloudBlobContainer container = blobClient.GetContainerReference("pictures");
+
+                // Create the container if it doesn't already exist.
+                container.CreateIfNotExists();
+                container.SetPermissions(new BlobContainerPermissions
+                {
+                    PublicAccess = BlobContainerPublicAccessType.Blob
+                });
+
+                string uniqueBlobName = string.Format("productimages/image_{0}{1}",
+                Guid.NewGuid().ToString(), Path.GetExtension(image.FileName));
+                CloudBlockBlob blob = container.GetBlockBlobReference(uniqueBlobName);
+                blob.Properties.ContentType = image.ContentType;
+                blob.UploadFromStream(image.InputStream);
+                blob.Uri.ToString();
+
+
+                //blobStorage = storageAccount.CreateCloudBlobClient();
+                //var imagesContainer = blobStorage.GetContainerReference("productimages");
+                //var blobs = imagesContainer.ListBlobs();
+
+
+                //CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
+
+                //blockBlob.UploadFromFile(imageUploader.PostedFile.FileName, FileMode.Open);
+
+                string connectionStringDB = "Server=tcp:wx9a1lruht.database.windows.net,1433;Database=DCCPortfolioSite_db;User ID=devcodecamp;Password=heliumdev1!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
+                using (SqlConnection connection = new SqlConnection(connectionStringDB))
+                {
+                      connection.Open();
+                    
+                      SqlCommand cmd = new SqlCommand("UPDATE ContactProfile SET Photo = @Photo WHERE FirstName = 'Bob'");
+                      cmd.CommandType = CommandType.Text;
+                      cmd.Connection = connection;
+                      cmd.Parameters.AddWithValue("@Photo", blob.Uri.ToString());
+                      
+
+                      cmd.ExecuteNonQuery();
+                }
+
+
+            }
+            return View("Index");
+        }
+
+        [HttpPost]
+        public ActionResult ResumeUpload()
+        {
+            string path = @"D:\Temp\";
+
+            var image = Request.Files["image"];
+            if (image == null)
+            {
+                ViewBag.UploadMessage = "Failed to upload image";
+            }
+            else
+            {
+               
+
+                var connectionString = @"DefaultEndpointsProtocol=https;AccountName=dccportfolio;AccountKey=/MxXUfGzY8W+e0GTYUTQtA4EnlfgaROeUhPipxRFew7ckKk5sXiHDmDZmIOd4AkZ6luZS994UXYaPeRKboHOaA==";
+                var account = CloudStorageAccount.Parse(connectionString);
+
+                //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
+                CloudBlobClient blobClient = account.CreateCloudBlobClient();
+
+                 //Retrieve a reference to a container.
+                CloudBlobContainer container = blobClient.GetContainerReference("pictures");
+
+                 //Create the container if it doesn't already exist.
+                container.CreateIfNotExists();
+                container.SetPermissions(new BlobContainerPermissions
+                {
+                    PublicAccess = BlobContainerPublicAccessType.Blob
+                });
+
+                string uniqueBlobName = string.Format("productimages/image_{0}{1}",
+                Guid.NewGuid().ToString(), Path.GetExtension(image.FileName));
+                CloudBlockBlob blob = container.GetBlockBlobReference(uniqueBlobName);
+                blob.Properties.ContentType = image.ContentType;
+                blob.UploadFromStream(image.InputStream);
+                blob.Uri.ToString();
+
+
+                //blobStorage = storageAccount.CreateCloudBlobClient();
+                //var imagesContainer = blobStorage.GetContainerReference("productimages");
+                //var blobs = imagesContainer.ListBlobs();
+
+
+                //CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
+
+                //blockBlob.UploadFromFile(imageUploader.PostedFile.FileName, FileMode.Open);
+
+                string connectionStringDB = "Server=tcp:wx9a1lruht.database.windows.net,1433;Database=DCCPortfolioSite_db;User ID=devcodecamp;Password=heliumdev1!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
+                using (SqlConnection connection = new SqlConnection(connectionStringDB))
+                {
+                    connection.Open();
+
+                    SqlCommand cmd = new SqlCommand("UPDATE UserResume SET HtmlUpload = @Resume WHERE ProfileId = 2");
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = connection;
+                    cmd.Parameters.AddWithValue("@Resume", blob.Uri.ToString());
+
+
+                    cmd.ExecuteNonQuery();
+                }
+
+
+            }
+            return View("Index");
+        }
+
+
+
 
         public ActionResult Contact()
         {

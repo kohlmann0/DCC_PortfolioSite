@@ -1,0 +1,11 @@
+﻿@model DCC_PortfolioSite.Models.UserResume
+
+@{
+    ViewBag.Title = "Resume";
+}
+
+<h2>Resume</h2>
+<img class="media-object thumbnail" src=@Model.HtmlUpload/>
+@Model.HtmlUpload
+
+<iframe src=@Model.HtmlUpload width="750" height="600"></iframe>
