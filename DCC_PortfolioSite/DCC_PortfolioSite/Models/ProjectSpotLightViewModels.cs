@@ -13,6 +13,9 @@ namespace DCC_PortfolioSite.Models
         public int ProjectID { get; set; }
         public int ProfileID { get; set; }
 
+        [DisplayName("Title")]
+        public string ProjectName { get; set; }
+
         [DisplayName("Description")]
         public string ProjectDescription { get; set; }
 

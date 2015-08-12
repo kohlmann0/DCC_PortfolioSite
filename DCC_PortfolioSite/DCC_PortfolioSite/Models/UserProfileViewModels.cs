@@ -91,6 +91,6 @@ namespace DCC_PortfolioSite.Models
 
         // Sub page information
         public UserResume ResumeHtmlUpload { get; set; }
-        public List<ProjectSpotLightViewModels> ProjectSpotLightObjectList { get; set; }
+        public List<ProjectSpotlight> ProjectSpotLightObjectList { get; set; }
     }
 }

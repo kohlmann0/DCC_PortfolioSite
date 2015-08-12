@@ -32,11 +32,11 @@ namespace DCC_PortfolioSite.Models
 
         public string RepoLink { get; set; }
 
-        [Column(TypeName = "image")]
-        public byte[] Image_1 { get; set; }
+        
+        public string Image_1 { get; set; }
 
-        [Column(TypeName = "image")]
-        public byte[] Image_2 { get; set; }
+        
+        public string Image_2 { get; set; }
 
         public virtual ContactProfile ContactProfile { get; set; }
 
