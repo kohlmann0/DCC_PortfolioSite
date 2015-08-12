@@ -1,6 +1,9 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url('class-shot-1-2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -43,26 +46,16 @@ textarea {
     color:#eeeeee
 }
 
-.search_icon_button{
-     background: url("search-icon.png") no-repeat top left;
-     width: 42px;
-     height: 30px;
-     text-indent: -9999px; /* hides the link text */
-}
 
-.media img+span.badge {
-    position: relative;
-    top: -20px;
-    left: -2px;
-}
 
+/* To expand the iFrame holding the resume*/
 .responsiveIframe {
 position: relative;
 padding-bottom: 65.25%;
 padding-top: 30px;
 height: 0;
 overflow: auto; 
--webkit-overflow-scrolling:touch; //<<--- THIS IS THE KEY 
+-webkit-overflow-scrolling:touch; /*<<--- THIS IS THE KEY */
 border: solid black 1px;
 } 
 .responsiveIframe iframe {
@@ -71,4 +64,26 @@ top: 0;
 left: 0;
 width: 100%;
 height: 100%;
+}
+
+/* To center Thumbails in Carousel*/
+.thumbnails {
+    text-align:center;
+}
+.thumbnails > li {
+    display: inline-block;
+    *display:inline; /* ie7 fix */
+    float: none; /* this is the part that makes it work */
+}
+
+/* To Align images on project summary page */
+.img_upper_left {
+    left :0px;
+    vertical-align: top;
+    margin: 10px;
+}
+.img_lower_right {
+    right: 0px;
+    vertical-align: bottom;
+    margin: 10px;
 }

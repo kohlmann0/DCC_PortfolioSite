@@ -243,6 +243,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectSpotlight_auto_Controller.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Controllers\UserProfile_auto_Controller.cs" />
     <Compile Include="Controllers\UserResume_auto_Controller.cs" />
@@ -272,6 +273,7 @@
     <Content Include="Content\Admin.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\class-shot-1-2.jpg" />
     <Content Include="Content\devLogo-white-long100H1.png" />
     <Content Include="Content\ProfilePic.jpg" />
     <Content Include="Content\search-icon.png" />
@@ -389,6 +391,9 @@
     <Content Include="Views\Admin\_ProjectInfoPartialView_Edit.cshtml" />
     <Content Include="Views\Admin\_ResumeInfoPartialView_Edit.cshtml" />
     <Content Include="Views\Admin\Index_Edit.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

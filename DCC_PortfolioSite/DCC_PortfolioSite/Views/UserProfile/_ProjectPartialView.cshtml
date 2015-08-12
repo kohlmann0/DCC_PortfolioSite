@@ -1,44 +1,79 @@
 ﻿@model DCC_PortfolioSite.Models.UserProfileViewModels
 
 <div>
-    <h4>ProjectSpotLightViewModels</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProjectSpotLightObjectList[0].ProjectID)
-        </dt>
+    <div class="row flip page_text_color">
+        @*foreach ()*@
+        @{
+            <div class="card">
+                <!--Title Row-->
+                <div class="row">
+                    <div class="col-xs-10 col-sm-10 col-sm-offset-1">
+                        <h4 align="center">@Html.DisplayFor(model => model.ProjectSpotLightObjectList[0].ProjectName)</h4>
+                        <hr />
+                        <table style="width:100%" cellpadding="2">
+                            <tr>
+                                <td align="right">@Html.DisplayNameFor(model => model.ProjectSpotLightObjectList[0].Technologies): </td>
+                                <td>
+                                    @{
+                                        string[] technologyList = Model.ProjectSpotLightObjectList[0].Technologies.Split();
+                                        foreach (string technology in technologyList)
+                                        {
+                                            <span class="badge">@technology.Trim(',')</span>
+                                        }
+                                    }
+                                </td>                        
+                            </tr>
+                            <tr>
+                                <td align ="right">@Html.DisplayNameFor(model => model.ProjectSpotLightObjectList[0].TeamMembers): </td>
+                                <td>
+                                    @if (Model.ProjectSpotLightObjectList[0].TeamMembers != null)
+                                    {
+                                        foreach (var teamMember in Model.ProjectSpotLightObjectList[0].TeamMembers)
+                                        {
+                                            <span>@teamMember.ProfileID</span>
+                                            <br />
+                                        }
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">@Html.DisplayNameFor(model => model.ProjectSpotLightObjectList[0].DevelopmentTime): </td>
+                                <td>@Html.DisplayFor(model => model.ProjectSpotLightObjectList[0].DevelopmentTime) hours</td>
+                            </tr>
+                        </table>
+                        <hr />
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProjectSpotLightObjectList[0].ProjectID)
-        </dd>
+                <!--Description Row-->
+                <div class="row">
+                    <div class="col-xs-10 col-sm-10 col-sm-offset-1">
+                        @if (String.IsNullOrEmpty(@Model.ProjectSpotLightObjectList[0].Image_1))
+                        {
+                            <img class="media-object thumbnail img_upper_left" src=@Model.ProjectSpotLightObjectList[0].Image_1 height="200" width="200" align="left" />
+                        }
+                        
+                        @if (String.IsNullOrEmpty(@Model.ProjectSpotLightObjectList[0].ProjectDescription))
+                        {
+                            @Html.DisplayFor(model => model.ProjectSpotLightObjectList[0].ProjectDescription)
+                        }
+                        
+                        @if (String.IsNullOrEmpty(@Model.ProjectSpotLightObjectList[0].Image_2))
+                        {
+                            <img class="media-object thumbnail img_lower_right" src=@Model.ProjectSpotLightObjectList[0].Image_2 height="200" width="200" align="right" />
+                        }
+                    </div>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProjectSpotLightObjectList[0].ProfileID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProjectSpotLightObjectList[0].ProfileID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProjectSpotLightObjectList[0].ProjectDescription)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProjectSpotLightObjectList[0].ProjectDescription)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProjectSpotLightObjectList[0].DevelopementTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProjectSpotLightObjectList[0].DevelopementTime)
-        </dd>
-
-    </dl>
+                <!--GitHub Link Row-->
+                <div class="row">
+                    <div class="col-xs-10 col-sm-10 col-sm-offset-1">
+                        <h4>@Html.DisplayFor(model => model.ProjectSpotLightObjectList[0].RepoLink)</h4>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
-@*<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>*@
+
+
