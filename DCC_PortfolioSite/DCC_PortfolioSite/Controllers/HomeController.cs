@@ -62,8 +62,6 @@ namespace DCC_PortfolioSite.Controllers
         [HttpPost]
         public ActionResult ImageUpload()
         {
-            string path = @"D:\Temp\";
-
             var image = Request.Files["image"];
             if (image == null)
             {
@@ -98,31 +96,16 @@ namespace DCC_PortfolioSite.Controllers
                 blob.UploadFromStream(image.InputStream);
                 blob.Uri.ToString();
 
-
-                //blobStorage = storageAccount.CreateCloudBlobClient();
-                //var imagesContainer = blobStorage.GetContainerReference("productimages");
-                //var blobs = imagesContainer.ListBlobs();
-
-
-                //CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
-
-                //blockBlob.UploadFromFile(imageUploader.PostedFile.FileName, FileMode.Open);
-
                 string connectionStringDB = "Server=tcp:wx9a1lruht.database.windows.net,1433;Database=DCCPortfolioSite_db;User ID=devcodecamp;Password=heliumdev1!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
                 using (SqlConnection connection = new SqlConnection(connectionStringDB))
                 {
                       connection.Open();
-                    
-                      SqlCommand cmd = new SqlCommand("UPDATE ContactProfile SET Photo = @Photo WHERE FirstName = 'Bob'");
+                      SqlCommand cmd = new SqlCommand("UPDATE ProjectSpotlight SET Image_1 = @Photo WHERE ProjectSpotlightID = 5");
                       cmd.CommandType = CommandType.Text;
                       cmd.Connection = connection;
                       cmd.Parameters.AddWithValue("@Photo", blob.Uri.ToString());
-                      
-
                       cmd.ExecuteNonQuery();
                 }
-
-
             }
             return View("Index");
         }
@@ -130,8 +113,6 @@ namespace DCC_PortfolioSite.Controllers
         [HttpPost]
         public ActionResult ResumeUpload()
         {
-            string path = @"D:\Temp\";
-
             var image = Request.Files["image"];
             if (image == null)
             {
@@ -163,16 +144,6 @@ namespace DCC_PortfolioSite.Controllers
                 blob.Properties.ContentType = image.ContentType;
                 blob.UploadFromStream(image.InputStream);
                 blob.Uri.ToString();
-
-
-                //blobStorage = storageAccount.CreateCloudBlobClient();
-                //var imagesContainer = blobStorage.GetContainerReference("productimages");
-                //var blobs = imagesContainer.ListBlobs();
-
-
-                //CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
-
-                //blockBlob.UploadFromFile(imageUploader.PostedFile.FileName, FileMode.Open);
 
                 string connectionStringDB = "Server=tcp:wx9a1lruht.database.windows.net,1433;Database=DCCPortfolioSite_db;User ID=devcodecamp;Password=heliumdev1!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
                 using (SqlConnection connection = new SqlConnection(connectionStringDB))

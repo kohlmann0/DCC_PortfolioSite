@@ -29,11 +29,12 @@
                 {
                     <div>
                         @{
-                    string FullName = item.FirstName + " " + item.LastName;
-                    <a href="~/UserProfile/Index/@item.ProfileId">
-                        <img class="media-object thumbnail" src=@item.Photo height="150" width="150" />
-                        <span class="badge">@Html.ActionLink(@FullName, "Index", "UserProfile", new { id = @item.ProfileId }, null)</span>
-                    </a>
+                            string FullName = item.FirstName + " " + item.LastName;
+                            <a href="~/UserProfile/Index/@item.ProfileId">
+                                <span class="label label-default label-as-badge text-center">@FullName</span>
+                                <img class="thumbnail text-center" src=@item.Photo height="150" width="150" />
+                                @*<span class="badge" >@FullName</span>*@
+                            </a>
                         }
                     </div>
                 }

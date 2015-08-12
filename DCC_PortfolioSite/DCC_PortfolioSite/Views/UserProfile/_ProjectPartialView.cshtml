@@ -48,17 +48,17 @@
                 <!--Description Row-->
                 <div class="row">
                     <div class="col-xs-10 col-sm-10 col-sm-offset-1">
-                        @if (String.IsNullOrEmpty(@Model.ProjectSpotLightObjectList[0].Image_1))
+                        @if (!String.IsNullOrEmpty(@Model.ProjectSpotLightObjectList[0].Image_1))
                         {
                             <img class="media-object thumbnail img_upper_left" src=@Model.ProjectSpotLightObjectList[0].Image_1 height="200" width="200" align="left" />
                         }
                         
-                        @if (String.IsNullOrEmpty(@Model.ProjectSpotLightObjectList[0].ProjectDescription))
+                        @if (!String.IsNullOrEmpty(@Model.ProjectSpotLightObjectList[0].ProjectDescription))
                         {
                             @Html.DisplayFor(model => model.ProjectSpotLightObjectList[0].ProjectDescription)
                         }
                         
-                        @if (String.IsNullOrEmpty(@Model.ProjectSpotLightObjectList[0].Image_2))
+                        @if (!String.IsNullOrEmpty(@Model.ProjectSpotLightObjectList[0].Image_2))
                         {
                             <img class="media-object thumbnail img_lower_right" src=@Model.ProjectSpotLightObjectList[0].Image_2 height="200" width="200" align="right" />
                         }

@@ -68,11 +68,8 @@ height: 100%;
 
 /* To center Thumbails in Carousel*/
 .thumbnails {
-    text-align:center;
-}
-.thumbnails > li {
+    align-self:center;
     display: inline-block;
-    *display:inline; /* ie7 fix */
     float: none; /* this is the part that makes it work */
 }
 
@@ -86,4 +83,11 @@ height: 100%;
     right: 0px;
     vertical-align: bottom;
     margin: 10px;
+}
+
+
+.name_badge{
+    position:absolute;
+    align-content: center;
+    bottom:0
 }
