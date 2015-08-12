@@ -16,11 +16,18 @@ namespace DCC_PortfolioSite.Controllers
         public ActionResult Index()
         {
             AdminViewModel adminViewModel = new AdminViewModel();
+
+            string UserID = User.Identity.Name;
+
             
-            adminViewModel.UserProfile = db.UserProfiles.FirstOrDefault(p => p.UserID == 2);
-            adminViewModel.ContactProfile = db.ContactProfiles.FirstOrDefault(p => p.ProfileId == 2);
-            adminViewModel.UserResume = db.UserResumes.FirstOrDefault(p => p.UserResumeID == 2);
-            adminViewModel.ProjectSpotlight = db.ProjectSpotlights.FirstOrDefault(p => p.ProjectSpotlightID == 3);
+            adminViewModel.ContactProfile = db.ContactProfiles.FirstOrDefault(p => p.PrimaryEmail == UserID);
+            adminViewModel.UserResume = db.UserResumes.FirstOrDefault(p => p.ContactProfile.PrimaryEmail == UserID);
+            adminViewModel.ProjectSpotlight = db.ProjectSpotlights.FirstOrDefault(p => p.ContactProfile.PrimaryEmail == UserID);
+            
+            //adminViewModel.UserProfile = db.UserProfiles.FirstOrDefault(p => p.UserID == 2);
+            //adminViewModel.ContactProfile = db.ContactProfiles.FirstOrDefault(p => p.ProfileId == 2);
+            //adminViewModel.UserResume = db.UserResumes.FirstOrDefault(p => p.UserResumeID == 2);
+            //adminViewModel.ProjectSpotlight = db.ProjectSpotlights.FirstOrDefault(p => p.ProjectSpotlightID == 3);
 
             return View(adminViewModel);
         }
@@ -28,7 +35,16 @@ namespace DCC_PortfolioSite.Controllers
         // REDIRECT: to Edit page
         public ActionResult Edit()
         {
-            return View("Index_Edit");
+            AdminViewModel adminViewModel = new AdminViewModel();
+
+            string UserID = User.Identity.Name;
+
+
+            adminViewModel.ContactProfile = db.ContactProfiles.FirstOrDefault(p => p.PrimaryEmail == UserID);
+            adminViewModel.UserResume = db.UserResumes.FirstOrDefault(p => p.ContactProfile.PrimaryEmail == UserID);
+            adminViewModel.ProjectSpotlight = db.ProjectSpotlights.FirstOrDefault(p => p.ContactProfile.PrimaryEmail == UserID);
+            
+            return View("Index_Edit", adminViewModel);
         }
 
         // GET: Resume

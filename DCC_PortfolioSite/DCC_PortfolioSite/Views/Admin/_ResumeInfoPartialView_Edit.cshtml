@@ -1,16 +1,16 @@
-﻿@model DCC_PortfolioSite.Models.UserResume
+﻿@model DCC_PortfolioSite.Models.AdminViewModel
 
 <div>
     <hr />
     <table>
         <tr>
-            <td>@Html.DisplayNameFor(model => model.HtmlUpload)</td>
-            <td>@Html.TextBoxFor(model => model.HtmlUpload)</td>
+            <td>@Html.DisplayNameFor(model => model.UserResume.HtmlUpload)</td>
+            <td>@Html.TextBoxFor(model => model.UserResume.HtmlUpload, new { @readonly = "readonly" })</td>
         </tr>
     </table>
 </div>
 
 @*<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>*@
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

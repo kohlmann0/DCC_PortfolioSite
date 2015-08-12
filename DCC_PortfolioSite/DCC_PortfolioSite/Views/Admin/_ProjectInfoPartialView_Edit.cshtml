@@ -1,40 +1,40 @@
-﻿@model DCC_PortfolioSite.Models.ProjectSpotlight
+﻿@model DCC_PortfolioSite.Models.AdminViewModel
 
 <div>
     <hr />
     <table>
         <tr>
-            <td>@Html.DisplayNameFor(model => model.ProjectName)</td>
-            <td>@Html.TextBoxFor(model => model.ProjectName)</td>
+            <td>@Html.DisplayNameFor(model => model.ProjectSpotlight.ProjectName)</td>
+            <td>@Html.TextBoxFor(model => model.ProjectSpotlight.ProjectName, new { @readonly = "readonly" })</td>
         </tr>
         <tr>
-            <td>@Html.DisplayNameFor(model => model.Technologies)</td>
-            <td>@Html.TextBoxFor(model => model.Technologies)</td>
+            <td>@Html.DisplayNameFor(model => model.ProjectSpotlight.Technologies)</td>
+            <td>@Html.TextBoxFor(model => model.ProjectSpotlight.Technologies, new { @readonly = "readonly" })</td>
         </tr>
         <tr>
-            <td>@Html.DisplayNameFor(model => model.DevelopmentTime)</td>
-            <td>@Html.TextBoxFor(model => model.DevelopmentTime)</td>
+            <td>@Html.DisplayNameFor(model => model.ProjectSpotlight.DevelopmentTime)</td>
+            <td>@Html.TextBoxFor(model => model.ProjectSpotlight.DevelopmentTime, new { @readonly = "readonly" })</td>
         </tr>
         <tr>
-            <td>@Html.DisplayNameFor(model => model.ProjectDescription)</td>
-            <td>@Html.TextBoxFor(model => model.ProjectDescription)</td>
+            <td>@Html.DisplayNameFor(model => model.ProjectSpotlight.ProjectDescription)</td>
+            <td>@Html.TextBoxFor(model => model.ProjectSpotlight.ProjectDescription, new { @readonly = "readonly" })</td>
         </tr>
         <tr>
-            <td>@Html.DisplayNameFor(model => model.RepoLink)</td>
-            <td>@Html.TextBoxFor(model => model.RepoLink)</td>
+            <td>@Html.DisplayNameFor(model => model.ProjectSpotlight.RepoLink)</td>
+            <td>@Html.TextBoxFor(model => model.ProjectSpotlight.RepoLink, new { @readonly = "readonly" })</td>
         </tr>
         <tr>
-            <td>@Html.DisplayNameFor(model => model.Image_1)</td>
-            <td>@Html.TextBoxFor(model => model.Image_1)</td>
+            <td>@Html.DisplayNameFor(model => model.ProjectSpotlight.Image_1)</td>
+            <td>@Html.TextBoxFor(model => model.ProjectSpotlight.Image_1, new { @readonly = "readonly" })</td>
         </tr>
         <tr>
-            <td>@Html.DisplayNameFor(model => model.Image_2)</td>
-            <td>@Html.TextBoxFor(model => model.Image_2)</td>
+            <td>@Html.DisplayNameFor(model => model.ProjectSpotlight.Image_2)</td>
+            <td>@Html.TextBoxFor(model => model.ProjectSpotlight.Image_2, new { @readonly = "readonly" })</td>
         </tr>
     </table>
 </div>
 
 @*<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>*@
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

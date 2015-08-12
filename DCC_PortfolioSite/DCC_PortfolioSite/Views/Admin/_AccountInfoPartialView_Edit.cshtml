@@ -1,15 +1,16 @@
-﻿@model DCC_PortfolioSite.Models.UserProfile
+﻿@model DCC_PortfolioSite.Models.AdminViewModel
 
 <div>
     <hr />
     <table>
         <tr>
-            <td>@Html.DisplayNameFor(model => model.UserName)</td>
-            <td>@Html.TextBoxFor(model => model.UserName)</td>
+            <td>@Html.DisplayNameFor(model => model.UserProfile.UserName)</td>
+            <td>@Html.DisplayFor(model => model.UserProfile.UserName)</td>
+            
         </tr>
         <tr>
-            <td>@Html.DisplayNameFor(model => model.UserPassword)</td>
-            <td>@Html.TextBoxFor(model => model.UserPassword)</td>
+            <td>@Html.DisplayNameFor(model => model.UserProfile.UserPassword)</td>
+            <td>@Html.TextBoxFor(model => model.UserProfile.UserPassword, new { @readonly = "readonly" })</td>
         </tr>
     </table>
 </div>
