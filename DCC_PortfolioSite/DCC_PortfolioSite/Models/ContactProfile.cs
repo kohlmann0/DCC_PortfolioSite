@@ -84,6 +84,32 @@ namespace DCC_PortfolioSite.Models
         [StringLength(255)]
         public string CurrentWork { get; set; }
 
+        public bool? AvailableForWorkMessage { get; set; }
+
+        public bool? ShowAddress { get; set; }
+
+        public bool? ShowAlternateEmail { get; set; }
+
+        public bool? ShowAlternatePhone { get; set; }
+
+        public bool? ShowAvailableForWork { get; set; }
+
+        public bool? ShowCurrentlyWorking { get; set; }
+
+        public bool? ShowGitHubLink { get; set; }
+
+        public bool? ShowHireByMessage { get; set; }
+
+        public bool? ShowLinkedInLink { get; set; }
+
+        public bool? ShowPersonalWebsite { get; set; }
+
+        public bool? ShowPrimaryEmail { get; set; }
+
+        public bool? ShowPrimaryPhone { get; set; }
+
+        public bool? ShowProfilePhoto { get; set; }
+
         public virtual ICollection<CollaborateMember> CollaborateMembers { get; set; }
 
         public virtual ICollection<CollaboratePost> CollaboratePosts { get; set; }
