@@ -63,29 +63,30 @@ namespace DCC_PortfolioSite.Models
         [Url]
         public string PersonalWebsite { get; set; }
 
-        [DisplayName("Available for Work Message")]
+        [DisplayName("Available for Work")]
         public string AvailableForWorkMessage { get; set; }
 
-        [DisplayName("Hire By Message")]
+        [DisplayName("Hired By")]
         public string HireByMessage { get; set; }
 
-        [DisplayName("Currently Working on Message")]
+        [DisplayName("Currently Working On")]
         public string CurrentlyWorkingOnMessage { get; set; }
 
 
         // Boolean Hide/Display values
-        public bool ShowAddress { get; set; }
-        public bool ShowPrimaryPhone { get; set; }
-        public bool ShowAlternatePhone { get; set; }
-        public bool ShowPrimaryEmail { get; set; }
-        public bool ShowAlternateEmail { get; set; }
-        public bool ShowProfilePhoto { get; set; }
-        public bool ShowLinkInProfile { get; set; }
-        public bool ShowGitHubProfile { get; set; }
-        public bool ShowPersonalWebsite { get; set; }
-        public bool ShowAvailableForWorkMessage { get; set; }
-        public bool ShowHireByMessage { get; set; }
-        public bool ShowCurrentlyWorkingOnMessage { get; set; }
+        public bool? ShowAddress { get; set; }
+        public bool? ShowPrimaryPhone { get; set; }
+        public bool? ShowAlternatePhone { get; set; }
+        public bool? ShowPrimaryEmail { get; set; }
+        public bool? ShowAlternateEmail { get; set; }
+        public bool? ShowProfilePhoto { get; set; }
+        public bool? ShowLinkInProfile { get; set; }
+        public bool? ShowGitHubProfile { get; set; }
+        public bool? ShowPersonalWebsite { get; set; }
+        public bool? ShowAvailableForWorkMessage { get; set; }
+        public bool? ShowHireByMessage { get; set; }
+        public bool? ShowCurrentlyWorkingOnMessage { get; set; }
+        public bool? ShowResume { get; set; }
 
 
         // Sub page information

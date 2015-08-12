@@ -33,33 +33,28 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("devCodeCamp", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="page_text_color">@Html.ActionLink("Profile", "Profile", "UserProfile")</li>
-                    <li class="page_text_color">@Html.ActionLink("Resume", "Resume", "UserProfile")</li>
-                    <li class="page_text_color">@Html.ActionLink("Portfolio", "Portfolio", "UserProfile")</li>
+                    <li class="page_text_color" id="ProfileButton"><a>Profile</a></li>
+                    <li class="page_text_color" id="ProjectButton"><a>Projects</a></li>
+                    <li class="page_text_color" id="ResumeButton"><a>Resume</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container-fluid body-content">
 
         @RenderBody()
         <hr />
-
     </div>
-
-
     @Html.Partial("_StickyFooter")
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script type="text/javascript" src="~/slick/slick.min.js"></script>
     <script type="text/javascript" src="~/Scripts/ProfileCarouselControl.js"></script>
-
 </body>
 </html>

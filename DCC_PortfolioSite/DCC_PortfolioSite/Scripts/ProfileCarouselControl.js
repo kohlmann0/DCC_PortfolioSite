@@ -16,5 +16,21 @@
 });
 
 
+$(document).ready(
+    $('#ProfileButton').click(function () {
+        console.log(1)
+        $('.ProfileCarousel').slick('slickGoTo', 0);
+    }));
 
+$(document).ready(
+    $('#ProjectButton').click(function () {
+    console.log(2)
+    $('.ProfileCarousel').slick('slickGoTo', 1);
+    }));
+
+$(document).ready(
+    $('#ResumeButton').click(function () {
+    console.log(3)
+    $('.ProfileCarousel').slick('slickGoTo', 2);
+    }));
 
