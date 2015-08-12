@@ -1,36 +1,8 @@
 ﻿@model DCC_PortfolioSite.Models.UserProfileViewModels
 
 <div>
-    <h4>ResumeViewModels</h4>
+    <h4>Resume of @Model.FullName</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ResumeViewModelObject.ResumeID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ResumeViewModelObject.ResumeID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ResumeViewModelObject.ProfileID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ResumeViewModelObject.ProfileID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ResumeViewModelObject.RevisionNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ResumeViewModelObject.RevisionNumber)
-        </dd>
-
-    </dl>
+    @*<iframe src=@Model.ResumeHtmlUpload></iframe>*@
+    <iframe src=@Model.ResumeHtmlUpload width="750" height="600"></iframe>
 </div>
-@*<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>*@

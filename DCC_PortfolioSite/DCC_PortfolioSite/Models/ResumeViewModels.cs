@@ -11,5 +11,7 @@ namespace DCC_PortfolioSite.Models
         public int ProfileID { get; set; }
         public string ResumeFile { get; set; }
         public int RevisionNumber { get; set; }
+        public string HtmlUpload { get; set; }
+
     }
 }

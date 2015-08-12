@@ -22,6 +22,7 @@ namespace DCC_PortfolioSite.Models
         { 
             get { return(this.UserFirstName + " " + this.UserLastName);}
         }
+        public string About { get; set; }
 
         [DisplayName("Street Address")]
         public string Address { get; set; }
@@ -29,7 +30,7 @@ namespace DCC_PortfolioSite.Models
         public string State { get; set; }
         public string Country { get; set; }
         [DisplayName("Zip Code")]
-        public string Zip { get; set; }
+        public int? Zip { get; set; }
 
         [DisplayName("Primary Phone Number")]
         [DataType(DataType.PhoneNumber)]
@@ -48,7 +49,7 @@ namespace DCC_PortfolioSite.Models
         public string AlternateEmail { get; set; }
 
         [DisplayName("Profile Photo")]
-        public byte[] ProfilePhoto { get; set; }
+        public string ProfilePhoto { get; set; }
 
         [DisplayName("Link to LinkedIn profile")]
         [Url]
@@ -87,7 +88,8 @@ namespace DCC_PortfolioSite.Models
         public bool ShowCurrentlyWorkingOnMessage { get; set; }
 
 
-        public ResumeViewModels ResumeViewModelObject { get; set; }
+        // Sub page information
+        public UserResume ResumeHtmlUpload { get; set; }
         public List<ProjectSpotLightViewModels> ProjectSpotLightObjectList { get; set; }
     }
 }
