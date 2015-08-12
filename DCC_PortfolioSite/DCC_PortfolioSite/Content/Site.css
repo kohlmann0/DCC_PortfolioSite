@@ -31,6 +31,10 @@ textarea {
     background-color: #000000
 }
 
+.light_background{
+    background-color: #EEEEEE
+}
+
 .corner_radius{
     border-radius: 3%
 }
