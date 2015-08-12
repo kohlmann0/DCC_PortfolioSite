@@ -1,6 +1,6 @@
 ﻿@model DCC_PortfolioSite.Models.UserProfileViewModels
 
-<div>
+<div class="page_text_color text-center">
     @if (@Model.ResumeHtmlUpload != null & @Model.ShowResume == true)
     {
     <h4>Resume of @Model.FullName</h4>
@@ -12,6 +12,7 @@
     }
     else
     {
-        <p> I'm sorry, @Model.FullName has chosen not to display a resume yet. Please check back later.</p>
+        <br />
+        <p>I'm sorry, @Model.FullName has chosen not to display a resume at this time. Please check back later.</p>
     }
 </div>

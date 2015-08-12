@@ -7,10 +7,10 @@
 
 
 <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 col-xs-12 text-center">
+    <div class="corner_radius col-xs-12 col-sm-10 col-sm-offset-1 text-center">
         <h1>Welcome to the devCodeCamp Alumni Network</h1>
         <br /><br />
-        <h2>Search Profiles and Projects</h2>        
+        <h2>Search Profiles and Projects</h2>
         @using (Html.BeginForm("Search", "Home"))
         {
             @Html.Editor("tb_SearchBox");
@@ -23,19 +23,22 @@
 @if (Model != null)
 {
     <div class="row">
-        <div id="SearchResults" class="col-xs-12">
+        <div id="SearchResults" class="corner_radius col-xs-12 col-sm-10 col-sm-offset-1">
             <div class="SearchResultsCarousel">
                 @foreach (var item in Model)
                 {
                     <div>
                         @{
-                            string FullName = item.FirstName + " " + item.LastName;
-                            <img class="media-object thumbnail" src=@item.Photo height="150" width="150"/>
-                            <span class="banner">@Html.ActionLink(@FullName, "Index", "UserProfile", new { id = @item.ProfileId }, null)</span>
+                    string FullName = item.FirstName + " " + item.LastName;
+                    <a href="~/UserProfile/Index/@item.ProfileId">
+                        <img class="media-object thumbnail" src=@item.Photo height="150" width="150" />
+                        <span class="badge">@Html.ActionLink(@FullName, "Index", "UserProfile", new { id = @item.ProfileId }, null)</span>
+                    </a>
                         }
                     </div>
                 }
-            </div>        
+            </div>
         </div>
+
     </div>
 }

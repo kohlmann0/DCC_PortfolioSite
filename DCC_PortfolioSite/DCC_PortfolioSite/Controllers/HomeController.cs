@@ -205,16 +205,21 @@ namespace DCC_PortfolioSite.Controllers
 
         public ActionResult Search(string tb_SearchBox)
         {
+            if (string.IsNullOrEmpty(tb_SearchBox))
+            {
+                tb_SearchBox = " ";
+            }
             var results = (from contact in db.ContactProfiles
-                           where
-                               contact.FirstName.Contains(tb_SearchBox)
-                               || contact.LastName.Contains(tb_SearchBox)
-                               || contact.AlternateEmail.Contains(tb_SearchBox)
-                               || contact.PrimaryEmail.Contains(tb_SearchBox)
-                               || contact.About.Contains(tb_SearchBox)
-                               || contact.Country.Contains(tb_SearchBox)
-                               || contact.USAState.Contains(tb_SearchBox)
-                           select contact).ToList();
+                            where
+                                contact.FirstName.Contains(tb_SearchBox)
+                                || contact.LastName.Contains(tb_SearchBox)
+                                || contact.AlternateEmail.Contains(tb_SearchBox)
+                                || contact.PrimaryEmail.Contains(tb_SearchBox)
+                                || contact.About.Contains(tb_SearchBox)
+                                || contact.Country.Contains(tb_SearchBox)
+                                || contact.USAState.Contains(tb_SearchBox)
+                            select contact).ToList();
+            
             return View("Index", results);
         }
     }
