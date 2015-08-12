@@ -102,7 +102,7 @@ namespace DCC_PortfolioSite.Models
 
         public bool? ShowLinkedInLink { get; set; }
 
-        public bool? ShowPersonalWebsite { get; set; }
+        public bool? ShowPersonalWebsiteLink { get; set; }
 
         public bool? ShowPrimaryEmail { get; set; }
 
