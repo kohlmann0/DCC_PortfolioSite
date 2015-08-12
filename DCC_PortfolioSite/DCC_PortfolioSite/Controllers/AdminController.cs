@@ -1,6 +1,8 @@
 ﻿using DCC_PortfolioSite.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,6 +13,26 @@ namespace DCC_PortfolioSite.Controllers
     {
 
         AlumniDBModel db = new AlumniDBModel();
+
+        // SAVE
+        public ActionResult Save()
+        {
+            string connectionStringDB = "Server=tcp:wx9a1lruht.database.windows.net,1433;Database=DCCPortfolioSite_db;User ID=devcodecamp;Password=heliumdev1!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
+            using (SqlConnection connection = new SqlConnection(connectionStringDB))
+            {
+                connection.Open();
+
+                SqlCommand cmd = new SqlCommand("UPDATE ContactProfile SET Photo = @Photo WHERE FirstName = 'Bob'");
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = connection;
+                //cmd.Parameters.AddWithValue("@Photo", blob.Uri.ToString());
+
+
+                cmd.ExecuteNonQuery();
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
 
         // GET: Admin
         public ActionResult Index()
