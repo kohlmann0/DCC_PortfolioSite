@@ -186,12 +186,37 @@ namespace DCC_PortfolioSite.Controllers
                         cmd.Parameters.AddWithValue("@fName", user.FirstName );
                         cmd.Parameters.AddWithValue("@lName", user.LastName );
                         cmd.Parameters.AddWithValue("@primaryEmail", user.Email );
-                        
-
-
-
                         cmd.ExecuteNonQuery();
+
                     }
+
+                    AlumniDBModel db = new AlumniDBModel();
+                    ContactProfile profileId = (from contact in db.ContactProfiles
+                                     where contact.PrimaryEmail == user.Email
+                                     select contact).FirstOrDefault();
+
+                    string connectionStringDBResume = "Server=tcp:wx9a1lruht.database.windows.net,1433;Database=DCCPortfolioSite_db;User ID=devcodecamp;Password=heliumdev1!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
+                    using (SqlConnection connection = new SqlConnection(connectionStringDBResume))
+                    {
+                        connection.Open();
+
+                      
+
+                        SqlCommand cmd = new SqlCommand("INSERT INTO UserResume(ProfileID,HtmlUpload) Values (@fName,@html)");
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Connection = connection;
+                        cmd.Parameters.AddWithValue("@fName", profileId.ProfileId );
+                        cmd.Parameters.AddWithValue("@html", ' ');
+                        
+                        cmd.ExecuteNonQuery();
+
+                    }
+
+
+                       
+
+
+                    
 
 
                     ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");

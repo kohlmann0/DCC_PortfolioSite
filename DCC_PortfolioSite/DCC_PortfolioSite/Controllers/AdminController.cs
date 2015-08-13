@@ -221,24 +221,26 @@ namespace DCC_PortfolioSite.Controllers
                 blob.Properties.ContentType = image.ContentType;
                 blob.UploadFromStream(image.InputStream);
                 blob.Uri.ToString();
-
+                
                 string connectionStringDB = "Server=tcp:wx9a1lruht.database.windows.net,1433;Database=DCCPortfolioSite_db;User ID=devcodecamp;Password=heliumdev1!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
                 using (SqlConnection connection = new SqlConnection(connectionStringDB))
                 {
                     connection.Open();
-                    
-                    SqlCommand cmd = new SqlCommand("UPDATE UserResume SET HtmlUpload = @Resume WHERE ProfileId = 2");
+                    ContactProfile profileId = (from contact in db.ContactProfiles
+                                     where contact.PrimaryEmail == User.Identity.Name
+                                     select contact).FirstOrDefault();
+                    SqlCommand cmd = new SqlCommand("UPDATE UserResume SET HtmlUpload = @Resume WHERE ProfileID = @ResumeName");
                     cmd.CommandType = CommandType.Text;
                     cmd.Connection = connection;
                     cmd.Parameters.AddWithValue("@Resume", blob.Uri.ToString());
-                    cmd.Parameters.AddWithValue("@ResumeName", User.Identity.Name);
+                    cmd.Parameters.AddWithValue("@ResumeName", profileId.ProfileId);
 
                     cmd.ExecuteNonQuery();
                 }
 
 
             }
-            return View("Edit","Admin");
+            return RedirectToAction("Edit", "Admin");
         }
 
 
