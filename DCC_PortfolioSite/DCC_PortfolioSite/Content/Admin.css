@@ -38,3 +38,7 @@
     overflow: auto;
     box-shadow: #222 0 0 20px;
 }
+
+.headerDiv {
+    height: 10%;
+}
