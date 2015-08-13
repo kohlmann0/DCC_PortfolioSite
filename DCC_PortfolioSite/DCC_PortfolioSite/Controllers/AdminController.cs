@@ -15,23 +15,24 @@ namespace DCC_PortfolioSite.Controllers
         AlumniDBModel db = new AlumniDBModel();
 
         // SAVE
-        public ActionResult Save()
+        [HttpPost]
+        public ActionResult Save(AdminViewModel model)
         {
             string connectionStringDB = "Server=tcp:wx9a1lruht.database.windows.net,1433;Database=DCCPortfolioSite_db;User ID=devcodecamp;Password=heliumdev1!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
             using (SqlConnection connection = new SqlConnection(connectionStringDB))
             {
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand("UPDATE ContactProfile SET Photo = @Photo WHERE FirstName = 'Bob'");
+                SqlCommand cmd = new SqlCommand("UPDATE ContactProfile SET FirstName = @fName WHERE PrimaryEmail = @fNameUser");
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = connection;
-                //cmd.Parameters.AddWithValue("@Photo", blob.Uri.ToString());
-
+                cmd.Parameters.AddWithValue("@fName", model.ContactProfile.FirstName);
+                cmd.Parameters.AddWithValue("@fNameUser", User.Identity.Name);
 
                 cmd.ExecuteNonQuery();
             }
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Admin");
         }
 
         // GET: Admin

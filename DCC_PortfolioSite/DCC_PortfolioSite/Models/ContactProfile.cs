@@ -22,7 +22,7 @@ namespace DCC_PortfolioSite.Models
         [Key]
         public int ProfileId { get; set; }
 
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
 
         [Required]
         [StringLength(255)]
