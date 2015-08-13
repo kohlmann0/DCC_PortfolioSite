@@ -57,7 +57,7 @@
         </tr>
         <tr>
             <td class="inputLabel">@Html.DisplayNameFor(model => model.ContactProfile.Photo)</td>
-            <td class="inputData">@Html.DisplayFor(model => model.ContactProfile.Photo, new { @readonly = "readonly" })</td>
+            <td class="inputData">@Html.TextBoxFor(model => model.ContactProfile.Photo, new { @readonly = "readonly" })</td>
         </tr>
         <tr>
             <td class="inputLabel">@Html.DisplayNameFor(model => model.ContactProfile.LinkedIn)</td>

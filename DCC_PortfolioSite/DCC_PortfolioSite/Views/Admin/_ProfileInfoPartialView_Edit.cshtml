@@ -1,8 +1,9 @@
 ﻿@model DCC_PortfolioSite.Models.AdminViewModel
 
-@using (Html.BeginForm("Save", "Admin"))
+@using (Html.BeginForm("SaveProfile", "Admin"))
 {
     <div>
+        <hr />
         <table>
             <tr>
                 <td class ="inputLabel">@Html.DisplayNameFor(model => model.ContactProfile.FirstName)</td>
@@ -88,7 +89,7 @@
     </div>
     
     <div>
-        <input type="submit" class="btn btn-default" value="Save" />
+        <input type="submit" class="btn btn-default" value="SaveProfile" />
     </div>
 }
 @*<p>
