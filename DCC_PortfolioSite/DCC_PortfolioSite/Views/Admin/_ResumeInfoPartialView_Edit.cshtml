@@ -10,7 +10,10 @@
     </table>
 </div>
 
-@*<p>
-        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>*@
+@using (Html.BeginForm("ResumeUpload", "Admin",
+      FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <label for="resume">Select HTML or PDF file</label>
+    <input name="resume" type="file">
+    <input type="submit" value="Upload Resume" />
+}
