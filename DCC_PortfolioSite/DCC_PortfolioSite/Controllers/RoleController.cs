@@ -27,9 +27,10 @@ namespace DCC_PortfolioSite.Controllers
             return View(Roles);
         }
 
-        public ActionResult Create()
+        public ActionResult Create(string name)
         {
             var Role = new IdentityRole();
+            Role.Name = name;
             return View(Role);
         }
 
@@ -43,10 +44,15 @@ namespace DCC_PortfolioSite.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Delete()
+        public ActionResult Delete(string name)
         {
-            var Role = new IdentityRole();
-            return View(Role);
+            var Roles = context.Roles;
+            var newRole = (from r in context.Roles
+                          where
+                          r.Id == name
+                          select r).FirstOrDefault();
+            
+            return View(newRole);
         }
 
 
@@ -54,7 +60,24 @@ namespace DCC_PortfolioSite.Controllers
         [HttpPost]
         public ActionResult Delete(IdentityRole Role)
         {
-            context.Roles.Remove(Role);
+            var Roles = context.Roles;
+
+            var newRole = (from r in context.Roles
+                           where
+                           r.Id == Role.Name
+                           select r).FirstOrDefault();
+            context.Roles.Remove(newRole);
+            context.SaveChanges();
+
+
+            //foreach (IdentityRole item in Roles)
+            //{
+            //    if (item.Id == Role.Id)
+            //    {
+            //        context.Roles.Remove(item);
+            //    }
+            //}
+            
             context.SaveChanges();
             return RedirectToAction("Index");
         }

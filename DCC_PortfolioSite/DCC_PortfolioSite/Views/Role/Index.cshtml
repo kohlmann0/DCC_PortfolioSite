@@ -5,20 +5,34 @@
 
 <h2>Available Roles For Application</h2>
 
-@Html.ActionLink("Create Role", "Create", "Role")
-@Html.ActionLink("Delete Role", "Delete", "Role")
+
+
 
 <table id="tbrole">
     <tr>
-        <td class="c">
+        <td>
             Role Name
+        </td>
+        <td>
+            @Html.ActionLink("Create Role", "Create", "Role")
+        </td>
+        <td>
+            
         </td>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
             <td class="c">
-                @item.Name
+                @Html.DisplayFor(model => item.Name)
+                @*@item.Name*@
+            </td>
+            <td>
+              
+                @Html.ActionLink("Delete", "Delete", new { name = item.Id })
+            </td>
+            <td>
+                
             </td>
         </tr>
     }
