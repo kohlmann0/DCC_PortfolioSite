@@ -100,10 +100,11 @@ namespace DCC_PortfolioSite.Controllers
                 using (SqlConnection connection = new SqlConnection(connectionStringDB))
                 {
                       connection.Open();
-                      SqlCommand cmd = new SqlCommand("UPDATE ProjectSpotlight SET Image_1 = @Photo WHERE ProjectSpotlightID = 5");
+                      SqlCommand cmd = new SqlCommand("UPDATE ContactProfile SET Photo= @Photo WHERE PrimaryEmail = @fNameUser");
                       cmd.CommandType = CommandType.Text;
                       cmd.Connection = connection;
                       cmd.Parameters.AddWithValue("@Photo", blob.Uri.ToString());
+                      cmd.Parameters.AddWithValue("@fNameUser", User.Identity.Name);
                       cmd.ExecuteNonQuery();
                 }
             }
