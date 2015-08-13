@@ -303,6 +303,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ProfileCarouselControl.js" />
+    <Content Include="Scripts\ProjectPreviewPartialControl.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Content\sticky-footer.css" />
@@ -400,6 +401,7 @@
     <Content Include="Views\Role\Delete.cshtml" />
     <Content Include="Views\Admin\CreateProject.cshtml" />
     <Content Include="Views\Admin\EditProject.cshtml" />
+    <Content Include="Views\Admin\_ProjectPreviewPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

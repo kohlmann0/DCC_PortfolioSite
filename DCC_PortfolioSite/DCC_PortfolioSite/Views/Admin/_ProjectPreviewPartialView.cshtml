@@ -1,0 +1,47 @@
+﻿@model DCC_PortfolioSite.Models.ProjectSpotlight
+
+<!-- Below here is the dynamic preview section-->
+<div class="corner_radius page_text_color carousel_background">
+    <center>
+        <!--Title Row-->
+        <div class="row">
+            <div class="col-xs-10 col-sm-8 col-sm-offset-2">
+                <h4 align="center"><span id="previewProjectName"></span></h4>
+                <hr />
+                <table style="width:100%" cellpadding="2">
+                    <tr>
+                        <td align="right">Technologies</td>
+                        <td>
+                            <span id="previewTechnologies"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">TeamMembers: </td>
+                        <td>
+                            <span id="previewTeamMembers"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">DevelopmentTime: </td>
+                        <td><span id="previewDevelopmentTime"></span> hours</td>
+                    </tr>
+                </table>
+                <hr />
+            </div>
+        </div>
+
+        <!--Description Row-->
+        <div class="row">
+            <div class="col-xs-10 col-sm-8 col-sm-offset-2">
+                <span id="previewProjectDescription"></span>
+            </div>
+        </div>
+
+        <!--GitHub Link Row-->
+        <div class="row">
+            <div class="col-xs-10 col-sm-10 col-sm-offset-1">
+                <h4><span id="previewRepoLink"></span></h4>
+            </div>
+        </div>
+    </center>
+</div>
