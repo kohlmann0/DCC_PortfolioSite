@@ -132,5 +132,20 @@ namespace DCC_PortfolioSite.Controllers
         }
 
 
+        // GET: CREATE PROJECT
+        public ActionResult CreateProject(int? ContactID)
+        {
+            return View("CreateProject");
+        }
+
+        public ActionResult EditProject(int? ProjectID)
+        {
+            ProjectID = 3;
+            ProjectSpotlight results = db.ProjectSpotlights.FirstOrDefault(r => r.ProjectSpotlightID == ProjectID);            
+            return View("EditProject", results);
+        }
+
+
+
     }
 }
