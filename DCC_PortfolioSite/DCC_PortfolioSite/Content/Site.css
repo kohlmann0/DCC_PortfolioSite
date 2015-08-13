@@ -66,12 +66,6 @@ width: 100%;
 height: 100%;
 }
 
-/* To center Thumbails in Carousel*/
-.thumbnails {
-    align-self:center;
-    display: inline-block;
-    float: none; /* this is the part that makes it work */
-}
 
 /* To Align images on project summary page */
 .img_upper_left {
@@ -86,8 +80,23 @@ height: 100%;
 }
 
 
-.name_badge{
-    position:absolute;
-    align-content: center;
-    bottom:0
+/* To center images and badges in the bottom center of div */
+.searchCarouselTile{   
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    border:ridge;
+    border-color: #999999;
+    height: 165px; /* Let it be as height as the empty tile below */
+    width:150px;
+    display: inline-block;
+    vertical-align: baseline;
 }
+.emptyTileAlignToBottom{
+  content: "";
+  display: inline-block;
+  height: 150px;            /* Let it be as height as the parent */
+  vertical-align: baseline;
+  color:#222222;
+}
+

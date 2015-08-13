@@ -23,23 +23,22 @@
 @if (Model != null)
 {
     <div class="row">
-        <div id="SearchResults" class="corner_radius col-xs-12 col-sm-10 col-sm-offset-1">
+        <div id="SearchResults" class="corner_radius  col-sm-10 col-sm-offset-1">
             <div class="SearchResultsCarousel">
                 @foreach (var item in Model)
                 {
-                    <div>
-                        @{
-                            string FullName = item.FirstName + " " + item.LastName;
-                            <a href="~/UserProfile/Index/@item.ProfileId">
-                                <span class="label label-default label-as-badge text-center">@FullName</span>
-                                <img class="thumbnail text-center" src=@item.Photo height="150" width="150" />
-                                @*<span class="badge" >@FullName</span>*@
-                            </a>
-                        }
-                    </div>
+                    <a href="~/UserProfile/Index/@item.ProfileId">
+                        <center>
+                            <div class="searchCarouselTile" style="background-image: url('@item.Photo')">
+                                @{
+                                string FullName = item.FirstName + " " + item.LastName;
+                                <span class="emptyTileAlignToBottom"></span>
+                                <span class="label label-default" style="font-size:small" >@FullName</span>
+                                }
+                        </center>
+                    </a>
                 }
             </div>
         </div>
-
     </div>
 }
