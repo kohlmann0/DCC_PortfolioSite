@@ -13,7 +13,7 @@
 @using (Html.BeginForm("ResumeUpload", "Admin",
       FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <label for="resume">Select HTML or PDF file</label>
+    <label for="resume">Select PDF file</label>
     <input name="resume" type="file">
     <input type="submit" value="Upload Resume" />
 }
