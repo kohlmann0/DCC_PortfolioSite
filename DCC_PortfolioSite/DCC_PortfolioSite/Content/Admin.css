@@ -29,3 +29,12 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.adminContainer {
+    max-width: 60%;
+    margin: auto;
+    margin-top: 1%;
+    padding: 5%;
+    overflow: auto;
+    box-shadow: #222 0 0 20px;
+}
