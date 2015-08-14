@@ -10,10 +10,9 @@
         <hr />
         <table>
             <tr>
-                <td class="inputLabel">@Html.DisplayNameFor(model => project.ProjectName) &nbsp; &nbsp;</td>
+                <td class="inputLabel">@Html.DisplayNameFor(model => project.ProjectName)</td>
                 <td class="inputData">@Html.DisplayFor(model => project.ProjectName)</td>
-                <td class="inputLabel">@Html.ActionLink("Edit", "EditProject", new { ProjectId=project.ProjectSpotlightID})</td>
-
+                <td class="inputLabel"><a href="@Url.Action("EditProject", new { ProjectId=project.ProjectSpotlightID })" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=600,toolbar=1,resizable=0'); return false;">Edit Project</a></td>
             </tr>
             <tr>
                 <td class="inputLabel">@Html.DisplayNameFor(model => project.Technologies)</td>
@@ -34,13 +33,18 @@
             </tr>
             <tr>
                 <td class="inputLabel">@Html.DisplayNameFor(model => project.Image_1)</td>
-                <td class="inputData"><img src="@Url.Content(project.Image_1)" alt="Image" height='50' width='50' /></td>
-                <td class="inputData">@Html.DisplayFor(model => project.Image_1)</td>
+                <td class="inputData">
+                    @if (!String.IsNullOrEmpty(project.Image_1) & (project.Image_1 != " "))
+                    { <img src="@Url.Content(project.Image_1)" alt="Image" height='50' width='50' />}
+                </td>
             </tr>
             <tr>
                 <td class="inputLabel">@Html.DisplayNameFor(model => project.Image_2)</td>
-                <td class="inputData">@Html.DisplayFor(model => project.Image_2)</td>
-            </tr>
+                <td class="inputData">
+                    @if (!String.IsNullOrEmpty(project.Image_1) & (project.Image_1 != " "))
+                    { <img src="@Url.Content(project.Image_1)" alt="Image" height='50' width='50' />}
+                </td>
+             </tr>
         </table>
     </div>
 }
