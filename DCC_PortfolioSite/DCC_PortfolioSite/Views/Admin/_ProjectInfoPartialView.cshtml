@@ -31,12 +31,13 @@
         </tr>
         <tr>
             <td class="inputLabel">@Html.DisplayNameFor(model => project.Image_1)</td>
-            <td class="inputData"><img src="@Url.Content(project.Image_1)" alt="Image" height='50' width='50' /></td>
-            <td class="inputData">@Html.DisplayFor(model => project.Image_1, new { @readonly = "readonly" })</td>
+            <td class="inputData">@if (!String.IsNullOrEmpty(project.Image_1) & (project.Image_1 != " "))
+                                  { <img src="@Url.Content(project.Image_1)" alt="Image" height='50' width='50' />}</td>
         </tr>
         <tr>
             <td class="inputLabel">@Html.DisplayNameFor(model => project.Image_2)</td>
-            <td class="inputData">@Html.DisplayFor(model => project.Image_2, new { @readonly = "readonly" })</td>
+            <td class="inputData">@if (!String.IsNullOrEmpty(project.Image_1) & (project.Image_1 != " "))
+                                  { <img src="@Url.Content(project.Image_1)" alt="Image" height='50' width='50' />}</td>
         </tr>
     </table>
 </div>
