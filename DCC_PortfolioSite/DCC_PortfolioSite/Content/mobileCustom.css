@@ -11,4 +11,7 @@
         max-width: 90%;
     }
 
+    #splashContainer {
+        padding-top: 10%;
+    }
 }
