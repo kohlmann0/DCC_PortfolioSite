@@ -1,12 +1,15 @@
 ﻿$(document).ready(function(){
     $('.ProfileCarousel').slick({
-        //accessibility: true,
-        //arrows: true,
+        accessibility: true,
+        arrows: true,
         dots: true,
         infinite: true,
+        mobileFirst: true,
         speed:300,
         slidesToShow:1,
-        slidesToScroll:1
+        slidesToScroll: 1,
+        swipeToSlide: true
+
     });
 });
 

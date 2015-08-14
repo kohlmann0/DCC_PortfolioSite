@@ -15,7 +15,6 @@ namespace DCC_PortfolioSite.Controllers
 {
     public class AdminController : Controller
     {
-
         AlumniDBModel db = new AlumniDBModel();
 
         // SAVE PROFILE
@@ -79,7 +78,6 @@ namespace DCC_PortfolioSite.Controllers
 
             string UserID = User.Identity.Name;
 
-
             adminViewModel.ContactProfile = db.ContactProfiles.FirstOrDefault(p => p.PrimaryEmail == UserID);
             adminViewModel.UserResume = db.UserResumes.FirstOrDefault(p => p.ContactProfile.PrimaryEmail == UserID);
             adminViewModel.ProjectSpotlight = db.ProjectSpotlights.FirstOrDefault(p => p.ContactProfile.PrimaryEmail == UserID);
@@ -96,8 +94,6 @@ namespace DCC_PortfolioSite.Controllers
         public ActionResult Resume()
         {
             UserResume results = db.UserResumes.FirstOrDefault(r => r.ProfileID == 2);
-                            
-
             return View("Resume", results);
         }
 
@@ -166,8 +162,6 @@ namespace DCC_PortfolioSite.Controllers
             }
             else
             {
-
-
                 var connectionString = @"DefaultEndpointsProtocol=https;AccountName=dccportfolio;AccountKey=/MxXUfGzY8W+e0GTYUTQtA4EnlfgaROeUhPipxRFew7ckKk5sXiHDmDZmIOd4AkZ6luZS994UXYaPeRKboHOaA==";
                 var account = CloudStorageAccount.Parse(connectionString);
 
@@ -206,8 +200,6 @@ namespace DCC_PortfolioSite.Controllers
 
                     cmd.ExecuteNonQuery();
                 }
-
-
             }
             return RedirectToAction("Edit", "Admin");
         }
@@ -260,6 +252,8 @@ namespace DCC_PortfolioSite.Controllers
             return RedirectToAction("EditProject", new { ProjectID = results.ProjectSpotlightID });
         }
 
+
+
         // GET: EDIT PROJECT
         [Authorize]
         public ActionResult EditProject(int ProjectID)
@@ -271,7 +265,21 @@ namespace DCC_PortfolioSite.Controllers
         [HttpPost]
         [Authorize]
         public ActionResult EditProject(ProjectSpotlight model)
-        {           
+        {
+
+            // ORM Style Update not working properly (DQL below is temporary fix. Remove ASAP!)
+            //if (ModelState.IsValid)
+            //{
+            //    db.Entry(model).State = EntityState.Modified;
+            //    db.SaveChanges();
+            //    return View(model);
+            //}
+            //else
+            //{
+            //    return View(model);
+            //}
+
+
             string connectionStringDB = "Server=tcp:wx9a1lruht.database.windows.net,1433;Database=DCCPortfolioSite_db;User ID=devcodecamp;Password=heliumdev1!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
             using (SqlConnection connection = new SqlConnection(connectionStringDB))
             {
@@ -287,7 +295,6 @@ namespace DCC_PortfolioSite.Controllers
                 cmd.Parameters.AddWithValue("@dTime", (String.IsNullOrEmpty(model.DevelopmentTime)) ? " " : model.DevelopmentTime);
                 cmd.Parameters.AddWithValue("@pDescrip", (String.IsNullOrEmpty(model.ProjectDescription)) ? " " : model.ProjectDescription);
                 cmd.Parameters.AddWithValue("@rLink", (String.IsNullOrEmpty(model.RepoLink)) ? " " : model.RepoLink);
-               
 
                 cmd.Parameters.AddWithValue("@ProjectID", (int.Equals(model.ProjectSpotlightID, null)) ? 0 : model.ProjectSpotlightID);
 
@@ -297,6 +304,7 @@ namespace DCC_PortfolioSite.Controllers
             ProjectSpotlight refreshModel = db.ProjectSpotlights.FirstOrDefault(r => r.ProjectSpotlightID == model.ProjectSpotlightID);
             return View("EditProject", refreshModel);
         }
+
         // POST: Delete Project Data
         [HttpPost]
         [Authorize]

@@ -2,6 +2,7 @@
 
 @using (Html.BeginForm("SaveProfile", "Admin"))
 {
+    @Html.HiddenFor(model => model.ContactProfile.ProfileId);
     <div>
         <hr />
         <table>
