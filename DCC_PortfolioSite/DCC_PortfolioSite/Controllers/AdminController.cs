@@ -206,7 +206,7 @@ namespace DCC_PortfolioSite.Controllers
         public ActionResult ResumeUpload()
         {
             AlumniDBModel db = new AlumniDBModel();
-            var image = Request.Files["image"];
+            var image = Request.Files["resume"];
             if (image == null)
             {
                 ViewBag.UploadMessage = "Failed to upload image";

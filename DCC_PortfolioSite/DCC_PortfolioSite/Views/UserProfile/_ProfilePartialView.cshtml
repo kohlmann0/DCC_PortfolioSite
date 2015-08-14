@@ -48,61 +48,69 @@
             }
 
         </div>
-        
     </div>
-    <hr />
-    @if (Model.ShowLinkInProfile == true | Model.ShowGitHubProfile == true | Model.ShowPersonalWebsite == true)
-    {
-        <p>
-            @if (Model.ShowLinkInProfile == true)
-            {
-                <muted-text>@Html.DisplayNameFor(model => model.LinkInProfile):</muted-text> @Html.DisplayFor(model => model.LinkInProfile)<br />
-            }
-            @if (Model.ShowGitHubProfile == true)
-            {
-                <muted-text>@Html.DisplayNameFor(model => model.GitHubProfile):</muted-text> @Html.DisplayFor(model => model.GitHubProfile)<br />
-            }
-            @if (Model.ShowPersonalWebsite == true)
-            {
-                <muted-text>@Html.DisplayNameFor(model => model.PersonalWebsite):</muted-text> @Html.DisplayFor(model => model.PersonalWebsite)<br />
-            }
-
-        </p>
-    }
-
-
-
-
-    @if (Model.ShowAvailableForWorkMessage == true)
-    {
-        <div class="row page_text_color">
-            <div class="col-xs-12">
-                <strong>@Html.DisplayNameFor(model => model.AvailableForWorkMessage)</strong><br />
-                @Html.DisplayFor(model => model.AvailableForWorkMessage)<br />
-                <br />
-            </div>
+    <div class="row page_text_color">
+        <div class="col-xs-12">
+            <hr />
+            @Html.DisplayFor(model => model.About)<br />
+            <br />
         </div>
+    </div>
+
+            <hr />
+            @if (Model.ShowLinkInProfile == true | Model.ShowGitHubProfile == true | Model.ShowPersonalWebsite == true)
+    {
+                <p>
+                    @if (Model.ShowLinkInProfile == true)
+            {
+                        <muted-text>@Html.DisplayNameFor(model => model.LinkInProfile):</muted-text> @Html.DisplayFor(model => model.LinkInProfile)<br />
+            }
+                    @if (Model.ShowGitHubProfile == true)
+            {
+                        <muted-text>@Html.DisplayNameFor(model => model.GitHubProfile):</muted-text> @Html.DisplayFor(model => model.GitHubProfile)<br />
+            }
+                    @if (Model.ShowPersonalWebsite == true)
+            {
+                        <muted-text>@Html.DisplayNameFor(model => model.PersonalWebsite):</muted-text> @Html.DisplayFor(model => model.PersonalWebsite)<br />
+            }
+
+                </p>
+    }
+    
+
+
+
+
+            @if (Model.ShowAvailableForWorkMessage == true)
+    {
+                <div class="row page_text_color">
+                    <div class="col-xs-12">
+                        <strong>@Html.DisplayNameFor(model => model.AvailableForWorkMessage)</strong><br />
+                        @Html.DisplayFor(model => model.AvailableForWorkMessage)<br />
+                        <br />
+                    </div>
+                </div>
     }
 
-    @if (Model.ShowHireByMessage == true)
+            @if (Model.ShowHireByMessage == true)
     {
-        <div class="row page_text_color">
-            <div class="col-xs-12">
-                <strong>@Html.DisplayNameFor(model => model.HireByMessage)</strong><br />
-                @Html.DisplayFor(model => model.HireByMessage)<br />
-                <br />
-            </div>
-        </div>
+                <div class="row page_text_color">
+                    <div class="col-xs-12">
+                        <strong>@Html.DisplayNameFor(model => model.HireByMessage)</strong><br />
+                        @Html.DisplayFor(model => model.HireByMessage)<br />
+                        <br />
+                    </div>
+                </div>
     }
 
-    @if (Model.ShowCurrentlyWorkingOnMessage == true)
+            @if (Model.ShowCurrentlyWorkingOnMessage == true)
     {
-        <div class="row page_text_color">
-            <div class="col-xs-12">
-                <strong>@Html.DisplayNameFor(model => model.CurrentlyWorkingOnMessage)</strong><br />
-                @Html.DisplayFor(model => model.CurrentlyWorkingOnMessage)<br />
-                <br />
-            </div>
-        </div>
+                <div class="row page_text_color">
+                    <div class="col-xs-12">
+                        <strong>@Html.DisplayNameFor(model => model.CurrentlyWorkingOnMessage)</strong><br />
+                        @Html.DisplayFor(model => model.CurrentlyWorkingOnMessage)<br />
+                        <br />
+                    </div>
+                </div>
     }
-</div>
+        </div>
