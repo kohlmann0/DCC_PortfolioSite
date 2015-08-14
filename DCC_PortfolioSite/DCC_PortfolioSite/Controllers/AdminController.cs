@@ -19,6 +19,7 @@ namespace DCC_PortfolioSite.Controllers
 
         // SAVE PROFILE
         [HttpPost]
+        [Authorize]
         public ActionResult SaveProfile(AdminViewModel model)
         {
             string connectionStringDB = "Server=tcp:wx9a1lruht.database.windows.net,1433;Database=DCCPortfolioSite_db;User ID=devcodecamp;Password=heliumdev1!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
@@ -60,8 +61,10 @@ namespace DCC_PortfolioSite.Controllers
             return RedirectToAction("Index", "Admin");
         }
 
+
         // SAVE PROJECT
         [HttpPost]
+        [Authorize]
         public ActionResult SaveProject(AdminViewModel model)
         {
             string connectionStringDB = "Server=tcp:wx9a1lruht.database.windows.net,1433;Database=DCCPortfolioSite_db;User ID=devcodecamp;Password=heliumdev1!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
@@ -91,6 +94,7 @@ namespace DCC_PortfolioSite.Controllers
         }
 
         // GET: Admin
+        [Authorize]
         public ActionResult Index()
         {
             AdminViewModel adminViewModel = new AdminViewModel();
@@ -115,6 +119,7 @@ namespace DCC_PortfolioSite.Controllers
         }
 
         // REDIRECT: to Edit page
+        [Authorize]
         public ActionResult Edit()
         {
             AdminViewModel adminViewModel = new AdminViewModel();
@@ -134,6 +139,7 @@ namespace DCC_PortfolioSite.Controllers
         }
 
         // GET: Resume
+        [Authorize]
         public ActionResult Resume()
         {
             UserResume results = db.UserResumes.FirstOrDefault(r => r.ProfileID == 2);
@@ -143,6 +149,7 @@ namespace DCC_PortfolioSite.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult ImageUploadPhoto()
         {
             var image = Request.Files["image"];
@@ -195,6 +202,7 @@ namespace DCC_PortfolioSite.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult ResumeUpload()
         {
             AlumniDBModel db = new AlumniDBModel();
@@ -256,6 +264,7 @@ namespace DCC_PortfolioSite.Controllers
 
 
         // GET: CREATE PROJECT
+        [Authorize]
         public ActionResult CreateProject(int ContactID)
         {
             ProjectSpotlight model = new ProjectSpotlight();
@@ -264,6 +273,7 @@ namespace DCC_PortfolioSite.Controllers
         }
         // POST: Save Data
         [HttpPost]
+        [Authorize]
         public ActionResult CreateProject(ProjectSpotlight model)
         {
             int insertID = -1;
@@ -298,13 +308,15 @@ namespace DCC_PortfolioSite.Controllers
         }
 
         // GET: EDIT PROJECT
+        [Authorize]
         public ActionResult EditProject(int ProjectID)
         {
             ProjectSpotlight model = db.ProjectSpotlights.FirstOrDefault(r => r.ProjectSpotlightID == ProjectID);         
             return View("EditProject", model);
         }
-        // POST: Update Data
+        // POST: Update Project Data
         [HttpPost]
+        [Authorize]
         public ActionResult EditProject(ProjectSpotlight model)
         {           
             string connectionStringDB = "Server=tcp:wx9a1lruht.database.windows.net,1433;Database=DCCPortfolioSite_db;User ID=devcodecamp;Password=heliumdev1!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
@@ -333,8 +345,18 @@ namespace DCC_PortfolioSite.Controllers
             ProjectSpotlight refreshModel = db.ProjectSpotlights.FirstOrDefault(r => r.ProjectSpotlightID == model.ProjectSpotlightID);
             return View("EditProject", refreshModel);
         }
+        // POST: Delete Project Data
+        [HttpPost]
+        [Authorize]
+        public ActionResult DeleteProject(int ProjectSpotlightID)
+        {
+            ProjectSpotlight project = db.ProjectSpotlights.Single(p => p.ProjectSpotlightID == ProjectSpotlightID);
+            if (project == null)
+                return View("NotFound");
 
-
-
+            db.ProjectSpotlights.Remove(project);
+            db.SaveChanges();
+            return RedirectToAction("Edit", "Admin");
+        }
     }
 }

@@ -1,8 +1,5 @@
 ﻿@model DCC_PortfolioSite.Models.AdminViewModel
 
-@*@using (Html.BeginForm("SaveProject", "Admin"))
-{*@
-
 @foreach (var project in Model.ProjectSpotlightList)
 {
 
@@ -10,14 +7,25 @@
         <hr />
         <table>
             <tr>
+                <td class ="inputLabel">
+                    @using (Html.BeginForm("DeleteProject", "Admin"))
+                    {
+                        <input type="hidden" value=@project.ProjectSpotlightID name="ProjectSpotlightID" />
+                        <input type="submit" value="Delete" />
+                    }
+                </td>
+                <td class="inputData">
+                    <input type="hidden" value=@project.ProjectSpotlightID name="ProjectSpotlightID" />
+                    <a type="button" href="@Url.Action("EditProject", new { ProjectId=project.ProjectSpotlightID })" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=1000,toolbar=1,resizable=0'); return false;"><input type="button" value="Edit"></a>
+                </td>
+            </tr>
+            <tr>
                 <td class="inputLabel">@Html.DisplayNameFor(model => project.ProjectName)</td>
                 <td class="inputData">@Html.DisplayFor(model => project.ProjectName)</td>
-                <td class="inputLabel"><a href="@Url.Action("EditProject", new { ProjectId=project.ProjectSpotlightID })" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=600,toolbar=1,resizable=0'); return false;">Edit Project</a></td>
             </tr>
             <tr>
                 <td class="inputLabel">@Html.DisplayNameFor(model => project.Technologies)</td>
                 <td class="inputData">@Html.DisplayFor(model => project.Technologies)</td>
-                <td class="inputLabel">@Html.ActionLink("Delete", "DeleteProject", new {ProjectId=project.ProjectSpotlightID})</td>
             </tr>
             <tr>
                 <td class="inputLabel">@Html.DisplayNameFor(model => project.DevelopmentTime)</td>
