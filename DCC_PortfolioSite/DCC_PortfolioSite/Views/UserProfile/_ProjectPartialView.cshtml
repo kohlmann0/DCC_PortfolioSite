@@ -5,6 +5,8 @@
         @*foreach ()*@
         @{
             <div class="card">
+                @if (Model.ProjectSpotLightObjectList.Count() > 0)
+                { 
                 <!--Title Row-->
                 <div class="row">
                     <div class="col-xs-10 col-sm-10 col-sm-offset-1">
@@ -71,7 +73,12 @@
                         <h4>@Html.DisplayFor(model => model.ProjectSpotLightObjectList[0].RepoLink)</h4>
                     </div>
                 </div>
-            </div>
+                }
+                else
+                {
+                    <br /><br /><center><strong><picture>I'm sorry, @Model.FullName has not added any projects to his profile yet.</picture></strong></center>
+                }
+            </div>            
         }
     </div>
 </div>

@@ -75,24 +75,6 @@ namespace DCC_PortfolioSite.Controllers
                 model.ShowResume = true;
 
 
-                // Pull resume from database
-                model.ResumeHtmlUpload = db.UserResumes.FirstOrDefault(i => i.ProfileID == id);
-
-
-                // Debug -- Generate a Project spotlight for testing
-                ProjectSpotlight project = new ProjectSpotlight();
-                project.DevelopmentTime = "200";
-                project.RepoLink = "http://www.GitHub.Com/SomeUser/SomeProject";
-                project.ProfileID = 1;
-                project.ProjectDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt massa ac augue facilisis, sit amet pharetra lorem molestie. Sed pharetra libero pharetra blandit tincidunt. In nec consequat magna. Etiam id mi lacus. Proin molestie vel nulla eget vulputate. In urna arcu, imperdiet at felis a, lacinia ornare purus. Mauris et vulputate risus. Aenean condimentum non lacus et varius. Phasellus cursus non purus quis scelerisque. Maecenas scelerisque porta nunc, porttitor luctus leo sodales commodo. Ut ultrices mattis dignissim. Aliquam luctus aliquet turpis vitae venenatis.\n\nUt rutrum elit sit amet varius molestie. In at purus eget metus feugiat feugiat vel vel ex. Donec ex nibh, tristique sed nulla at, egestas vulputate nisl. Ut eros urna, placerat id felis sit amet, accumsan ullamcorper nibh. Pellentesque dignissim dolor a rutrum pulvinar. Nulla ut ex metus. Vivamus odio nunc, cursus in euismod ut, congue eget metus. Nulla ante erat, ornare ut porttitor sit amet, imperdiet a eros. Phasellus nec tellus dignissim neque consequat aliquam nec non purus. Curabitur pellentesque pellentesque tortor, fermentum elementum lectus pellentesque in. Curabitur eu laoreet tortor, eu commodo mi. Sed tincidunt iaculis nisi, sed sodales magna facilisis a. Cras vel pellentesque lorem, quis venenatis nisi. Cras varius lacus sed pellentesque efficitur.";
-                project.ProjectSpotlightID = -5;
-                project.Image_1 = null;
-                project.Image_2 = null;
-                project.ProjectName = "Asteroids";
-                project.TeamMembers = null;
-                project.Technologies = "Python, PyGame, Git-Hub";
-
-
                 // Generate Project List
                 List<ProjectSpotlight> dbProjectList = db.ProjectSpotlights.Where(p => p.ProfileID == id).ToList();
                 model.ProjectSpotLightObjectList = new List<ProjectSpotlight>();
@@ -100,9 +82,10 @@ namespace DCC_PortfolioSite.Controllers
                 {
                     model.ProjectSpotLightObjectList.Add(projectItem);
                 }
-                model.ProjectSpotLightObjectList.Add(project);
 
 
+                // Pull resume from database
+                model.ResumeHtmlUpload = db.UserResumes.FirstOrDefault(i => i.ProfileID == id);
 
                 return View(model);
             }
