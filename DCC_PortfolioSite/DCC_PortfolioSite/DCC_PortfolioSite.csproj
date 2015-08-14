@@ -277,6 +277,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\class-shot-1-2.jpg" />
+    <Content Include="Content\devColor.png" />
     <Content Include="Content\devLogo-white-long100H1.png" />
     <Content Include="Content\ProfilePic.jpg" />
     <Content Include="Content\search-icon.png" />

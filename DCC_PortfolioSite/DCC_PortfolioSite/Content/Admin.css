@@ -2,6 +2,7 @@
     background: #ddd;
     text-align: right;
     padding: 3%;
+    width: 150px;
 }
 
 .inputData { 
@@ -31,7 +32,7 @@
 }
 
 .adminContainer {
-    max-width: 55%;
+    max-width: 70%;
     margin: auto;
     margin-top: 1%;
     padding: 5%;
@@ -41,4 +42,34 @@
 
 .headerDiv {
     height: 10%;
+}
+
+/*.row {
+    background: orange;
+}
+
+.mysterySplash {
+    background: pink;
+}*/
+
+#splashSubContainer {
+    /*background: green;*/
+    padding-left: 15%;
+    margin: auto;
+}
+
+#searchBox {
+    text-align: left;
+    padding-left: 5%;
+}
+
+.splashSub {
+    font-family: 'Inconsolata', sans-serif;
+    text-align: left;
+    /*padding-left: 10px;*/
+}
+
+#splashTitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 5em;
 }

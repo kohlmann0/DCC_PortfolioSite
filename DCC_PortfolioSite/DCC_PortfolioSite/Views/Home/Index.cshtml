@@ -7,16 +7,22 @@
 
 
 <div class="row">
-    <div class="corner_radius col-xs-12 col-sm-10 col-sm-offset-1 text-center">
-        <h1>Welcome to the devCodeCamp Alumni Network</h1>
+    <div class="corner_radius col-xs-12 col-sm-10 col-sm-offset-1 text-center mysterySplash">
+        <img src="~/Content/devColor.png" class="img-rounded" height="100" alt="devCodeCamp" />
+        <h1 id="splashTitle">devCodeCamp</h1>
+        <div id="splashSubContainer">
+            <h2 class="splashSub">public Developer alumniNetwork()</h2>
+            <h2 class="splashSub">{</h2>
+            <div id="searchBox">
+                @using (Html.BeginForm("Search", "Home"))
+                {
+                    @Html.TextBox("tb_SearchBox", null, new { placeholder = "Search All" });
+                    <button type="submit" class="btn btn-default splashSub"><span class="glyphicon glyphicon-search"></span> searchProfiles</button>
+                }
+            </div>
+            <h2 class="splashSub">}</h2>
+        </div>
         <br /><br />
-        <h2>Search Profiles and Projects</h2>
-        @using (Html.BeginForm("Search", "Home"))
-        {
-            @Html.Editor("tb_SearchBox");
-            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
-        }
-
         <br />
     </div>
 </div>
@@ -31,9 +37,9 @@
                         <center>
                             <div class="searchCarouselTile" style="background-image: url('@item.Photo')">
                                 @{
-                                string FullName = item.FirstName + " " + item.LastName;
-                                <span class="emptyTileAlignToBottom"></span>
-                                <span class="label label-default" style="font-size:small" >@FullName</span>
+                    string FullName = item.FirstName + " " + item.LastName;
+                    <span class="emptyTileAlignToBottom"></span>
+                                    <span class="label label-default" style="font-size:small">@FullName</span>
                                 }
                         </center>
                     </a>
