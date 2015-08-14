@@ -18,11 +18,9 @@ namespace DCC_PortfolioSite.Controllers
         }
 
         // GET: UserRole
-
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
-        {
-            
-            
+        {   
             var allRoles = context.Roles.ToList();
             var allUsers = context.Users.ToList();
             UserRoleViewModel newRoleModel = new UserRoleViewModel();
