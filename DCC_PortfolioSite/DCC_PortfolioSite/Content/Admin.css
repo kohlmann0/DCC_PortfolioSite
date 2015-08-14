@@ -68,3 +68,18 @@
     font-family: 'Orbitron', sans-serif;
     font-size: 5em;
 }
+
+#aboutTitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3em;
+}
+
+.aboutSectionBreak {
+    text-align: center;
+    margin-top: 5%;
+}
+
+#aboutTeamInfo {
+    text-align: left;
+    font-size: .75em;
+}
