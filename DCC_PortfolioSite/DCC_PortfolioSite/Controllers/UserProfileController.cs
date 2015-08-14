@@ -28,7 +28,7 @@ namespace DCC_PortfolioSite.Controllers
                 model.Address = dbContactProfileModel.StreetAddress;
                 model.AlternateEmail = dbContactProfileModel.AlternateEmail;
                 model.AlternatePhone = dbContactProfileModel.AlternatePhone;
-                model.AvailableForWorkMessage = "I am looking for work doing Machine Learning."; // dbContactProfileModel.AvailableForWorkMessage;
+                model.AvailableForWorkMessage = ""; // dbContactProfileModel.AvailableForWorkMessage;
                 model.City = dbContactProfileModel.City;
                 model.Country = dbContactProfileModel.Country;
                 model.CurrentlyWorkingOnMessage = dbContactProfileModel.CurrentWork;

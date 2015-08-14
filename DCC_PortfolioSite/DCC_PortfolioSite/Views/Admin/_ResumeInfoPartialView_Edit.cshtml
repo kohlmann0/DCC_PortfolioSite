@@ -4,7 +4,7 @@
     <hr />
     <table>
         <tr>
-            <td class="inputLabel">@Html.DisplayNameFor(model => model.UserResume.HtmlUpload)</td>
+            <td class="inputLabel">Existing @Html.DisplayNameFor(model => model.UserResume.HtmlUpload)</td>
             <td class="editData">@Html.TextBoxFor(model => model.UserResume.HtmlUpload)</td>
         </tr>
     </table>
@@ -13,7 +13,16 @@
 @using (Html.BeginForm("ResumeUpload", "Admin",
       FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <label for="resume">Select PDF file</label>
-    <input name="resume" type="file">
-    <input type="submit" value="Upload Resume" />
+    <br />
+    <div>
+        <table>
+            <tr>
+                <td class="inputLabel">Select PDF file</td>
+                <td class="editData">
+                    <input name="resume" class="btn btn-default" type="file">
+                    <input type="submit" class="btn btn-default" value="Upload Resume" />
+                </td>
+            </tr>
+        </table>
+    </div>
 }
