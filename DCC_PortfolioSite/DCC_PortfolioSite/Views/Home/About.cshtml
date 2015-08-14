@@ -23,19 +23,3 @@
         <p>If you have any questions regarding it, we would be happy to discuss it.</p>
     </div>
 </div>
-
-@using (Html.BeginForm("ImageUpload", "Home",
-      FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <div>Please select an image to upload</div>
-    <input name="image" type="file">
-    <input type="submit" value="Upload Image" />
-}
-
-@using (Html.BeginForm("ResumeUpload", "Home",
-      FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <div>Please select an image to upload</div>
-    <input name="image" type="file">
-    <input type="submit" value="Upload Resume" />
-}
