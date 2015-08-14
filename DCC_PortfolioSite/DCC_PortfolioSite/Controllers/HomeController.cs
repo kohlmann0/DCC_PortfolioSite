@@ -179,7 +179,7 @@ namespace DCC_PortfolioSite.Controllers
         {
             if (string.IsNullOrEmpty(tb_SearchBox))
             {
-                tb_SearchBox = " ";
+                tb_SearchBox = "";
             }
             var results = (from contact in db.ContactProfiles
                             where
