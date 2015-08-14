@@ -4,34 +4,30 @@
 
 
 @{
-    ViewBag.Title = "UserRole";
+    ViewBag.Title = "User List";
 }
 
-<h2>UserRole</h2>
+<h2>User List</h2>
 
 <table id="tbrole">
     <tr>
-        <td>
+        <th>
             User Name
-        </td>
-        <td>
-            @Html.ActionLink("Create Role", "Create", "Role")
-        </td>
+        </th>
         <td></td>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
-            <td class="c">
+            <td>
                 @Html.DisplayFor(model => item.UserName)
                 @*@item.Name*@
             </td>
-            <td>
-
-                @Html.ActionLink("Delete", "Delete", new { name = item.Id })
-            </td>
-            <td></td>
         </tr>
     }
 </table>
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Manage")
+</div>
 

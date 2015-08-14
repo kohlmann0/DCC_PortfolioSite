@@ -3,21 +3,24 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Available Roles For Application</h2>
+<h2>User Roles</h2>
 
 
 
 
 <table id="tbrole">
     <tr>
-        <td>
+        <th>
             Role Name
+        </th>
+        <td>
+
         </td>
         <td>
-            @Html.ActionLink("Create Role", "Create", "Role")
+            &nbsp;&nbsp;@Html.ActionLink("Create Role", "Create", "Role")
         </td>
         <td>
-            
+           
         </td>
     </tr>
     @foreach (var item in Model)
@@ -28,8 +31,11 @@
                 @*@item.Name*@
             </td>
             <td>
+
+            </td>
+            <td>
               
-                @Html.ActionLink("Delete", "Delete", new { name = item.Id })
+                &nbsp;&nbsp;@Html.ActionLink("Delete", "Delete", new { name = item.Id })
             </td>
             <td>
                 
