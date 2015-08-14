@@ -101,6 +101,10 @@ namespace DCC_PortfolioSite.Controllers
             adminViewModel.ContactProfile = db.ContactProfiles.FirstOrDefault(p => p.PrimaryEmail == UserID);
             adminViewModel.UserResume = db.UserResumes.FirstOrDefault(p => p.ContactProfile.PrimaryEmail == UserID);
             adminViewModel.ProjectSpotlight = db.ProjectSpotlights.FirstOrDefault(p => p.ContactProfile.PrimaryEmail == UserID);
+            var projects = (from p in db.ProjectSpotlights
+                           where p.ContactProfile.PrimaryEmail == UserID
+                           select p).ToList();
+            adminViewModel.ProjectSpotlightList = projects;
             
             //adminViewModel.UserProfile = db.UserProfiles.FirstOrDefault(p => p.UserID == 2);
             //adminViewModel.ContactProfile = db.ContactProfiles.FirstOrDefault(p => p.ProfileId == 2);
@@ -121,6 +125,10 @@ namespace DCC_PortfolioSite.Controllers
             adminViewModel.ContactProfile = db.ContactProfiles.FirstOrDefault(p => p.PrimaryEmail == UserID);
             adminViewModel.UserResume = db.UserResumes.FirstOrDefault(p => p.ContactProfile.PrimaryEmail == UserID);
             adminViewModel.ProjectSpotlight = db.ProjectSpotlights.FirstOrDefault(p => p.ContactProfile.PrimaryEmail == UserID);
+            var projects = (from p in db.ProjectSpotlights
+                            where p.ContactProfile.PrimaryEmail == UserID
+                            select p).ToList();
+            adminViewModel.ProjectSpotlightList = projects;
             
             return View("Index_Edit", adminViewModel);
         }

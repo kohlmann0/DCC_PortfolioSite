@@ -11,6 +11,7 @@ namespace DCC_PortfolioSite.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        //public string Name { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

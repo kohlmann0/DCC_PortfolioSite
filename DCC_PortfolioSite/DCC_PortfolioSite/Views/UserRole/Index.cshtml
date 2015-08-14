@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityUser>
+
+
+
+
+@{
+    ViewBag.Title = "UserRole";
+}
+
+<h2>UserRole</h2>
+
+<table id="tbrole">
+    <tr>
+        <td>
+            User Name
+        </td>
+        <td>
+            @Html.ActionLink("Create Role", "Create", "Role")
+        </td>
+        <td></td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="c">
+                @Html.DisplayFor(model => item.UserName)
+                @*@item.Name*@
+            </td>
+            <td>
+
+                @Html.ActionLink("Delete", "Delete", new { name = item.Id })
+            </td>
+            <td></td>
+        </tr>
+    }
+</table>
+

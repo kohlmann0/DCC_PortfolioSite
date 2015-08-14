@@ -21,15 +21,20 @@ namespace DCC_PortfolioSite.Controllers
 
         public ActionResult Index()
         {
-            var allusers = context.Users.ToList();
-            //var users = allusers.Where(x => x.Roles.Select(role => role.RoleId).Contains("User")).ToList();
+            
+            
+            var allRoles = context.Roles.ToList();
+            var allUsers = context.Users.ToList();
+            UserRoleViewModel newRoleModel = new UserRoleViewModel();
+            
+            var users = allUsers.Where(x => x.Roles.Select(role => role.RoleId).Contains("Alumni")).ToList();
             //var userVM = users.Select(user => new UserRoleViewModel { Username = user.UserName, Roles = string.Join(",", user.Roles.Select(role => role.RoleId)) }).ToList();
 
             //var admins = allusers.Where(x => x.Roles.Select(role => role.RoleId).Contains("Admin")).ToList();
             //var adminsVM = admins.Select(user => new UserRoleViewModel { Username = user.UserName, Roles = string.Join(",", user.Roles.Select(role => role.RoleId)) }).ToList();
             //var model = new DCC_PortfolioSite.Models.UserRoleViewModel.GroupedUserRoleViewModel { Users = userVM, Admins = adminsVM };
 
-            return View(allusers);
+            return View(allUsers);
         }
     }
 }

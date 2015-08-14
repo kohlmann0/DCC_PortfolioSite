@@ -1,40 +1,43 @@
 ﻿@model DCC_PortfolioSite.Models.AdminViewModel
 
+@foreach (var project in Model.ProjectSpotlightList)
+{
+
 <div>
     <hr />
     <table>
         <tr>
-            <td class="inputLabel">@Html.DisplayNameFor(model => model.ProjectSpotlight.ProjectName)</td>
-            <td class="inputData">@Html.DisplayFor(model => model.ProjectSpotlight.ProjectName, new { @readonly = "readonly" })</td>
+            <td class="inputLabel">@Html.DisplayNameFor(model => project.ProjectName)  &nbsp; &nbsp; &nbsp; </td>
+            <td class="inputData">@Html.DisplayFor(model => project.ProjectName, new { @readonly = "readonly" })</td>
+            
+            
         </tr>
         <tr>
-            <td class="inputLabel">@Html.DisplayNameFor(model => model.ProjectSpotlight.Technologies)</td>
-            <td class="inputData">@Html.DisplayFor(model => model.ProjectSpotlight.Technologies, new { @readonly = "readonly" })</td>
+            <td class="inputLabel">@Html.DisplayNameFor(model => project.Technologies)</td>
+            <td class="inputData">@Html.DisplayFor(model => project.Technologies, new { @readonly = "readonly" })</td>
+            
         </tr>
         <tr>
-            <td class="inputLabel">@Html.DisplayNameFor(model => model.ProjectSpotlight.DevelopmentTime)</td>
-            <td class="inputData">@Html.DisplayFor(model => model.ProjectSpotlight.DevelopmentTime, new { @readonly = "readonly" })</td>
+            <td class="inputLabel">@Html.DisplayNameFor(model => project.DevelopmentTime)</td>
+            <td class="inputData">@Html.DisplayFor(model => project.DevelopmentTime, new { @readonly = "readonly" })</td>
         </tr>
         <tr>
-            <td class="inputLabel">@Html.DisplayNameFor(model => model.ProjectSpotlight.ProjectDescription)</td>
-            <td class="inputData">@Html.DisplayFor(model => model.ProjectSpotlight.ProjectDescription, new { @readonly = "readonly" })</td>
+            <td class="inputLabel">@Html.DisplayNameFor(model => project.ProjectDescription)</td>
+            <td class="inputData">@Html.DisplayFor(model => project.ProjectDescription, new { @readonly = "readonly" })</td>
         </tr>
         <tr>
-            <td class="inputLabel">@Html.DisplayNameFor(model => model.ProjectSpotlight.RepoLink)</td>
-            <td class="inputData">@Html.DisplayFor(model => model.ProjectSpotlight.RepoLink, new { @readonly = "readonly" })</td>
+            <td class="inputLabel">@Html.DisplayNameFor(model => project.RepoLink)</td>
+            <td class="inputData">@Html.DisplayFor(model => project.RepoLink, new { @readonly = "readonly" })</td>
         </tr>
         <tr>
-            <td class="inputLabel">@Html.DisplayNameFor(model => model.ProjectSpotlight.Image_1)</td>
-            <td class="inputData">@Html.DisplayFor(model => model.ProjectSpotlight.Image_1, new { @readonly = "readonly" })</td>
+            <td class="inputLabel">@Html.DisplayNameFor(model => project.Image_1)</td>
+            <td class="inputData"><img src="@Url.Content(project.Image_1)" alt="Image" height='50' width='50' /></td>
+            <td class="inputData">@Html.DisplayFor(model => project.Image_1, new { @readonly = "readonly" })</td>
         </tr>
         <tr>
-            <td class="inputLabel">@Html.DisplayNameFor(model => model.ProjectSpotlight.Image_2)</td>
-            <td class="inputData">@Html.DisplayFor(model => model.ProjectSpotlight.Image_2, new { @readonly = "readonly" })</td>
+            <td class="inputLabel">@Html.DisplayNameFor(model => project.Image_2)</td>
+            <td class="inputData">@Html.DisplayFor(model => project.Image_2, new { @readonly = "readonly" })</td>
         </tr>
     </table>
 </div>
-
-@*<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>*@
+}

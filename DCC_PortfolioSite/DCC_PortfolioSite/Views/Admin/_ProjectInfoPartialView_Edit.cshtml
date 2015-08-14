@@ -1,43 +1,50 @@
 ﻿@model DCC_PortfolioSite.Models.AdminViewModel
 
-@using (Html.BeginForm("SaveProject", "Admin"))
+@*@using (Html.BeginForm("SaveProject", "Admin"))
+{*@
+
+@foreach (var project in Model.ProjectSpotlightList)
 {
+
     <div>
         <hr />
         <table>
             <tr>
-                <td class="inputLabel">@Html.DisplayNameFor(model => model.ProjectSpotlight.ProjectName)</td>
-                <td class="editData">@Html.TextBoxFor(model => model.ProjectSpotlight.ProjectName)</td>
+                <td class="inputLabel">@Html.DisplayNameFor(model => project.ProjectName) &nbsp; &nbsp;</td>
+                <td class="inputData">@Html.DisplayFor(model => project.ProjectName)</td>
+                <td class="inputLabel">@Html.ActionLink("Edit", "EditProject", new { ProjectId=project.ProjectSpotlightID})</td>
+
             </tr>
             <tr>
-                <td class="inputLabel">@Html.DisplayNameFor(model => model.ProjectSpotlight.Technologies)</td>
-                <td class="editData">@Html.TextBoxFor(model => model.ProjectSpotlight.Technologies)</td>
+                <td class="inputLabel">@Html.DisplayNameFor(model => project.Technologies)</td>
+                <td class="inputData">@Html.DisplayFor(model => project.Technologies)</td>
+                <td class="inputLabel">@Html.ActionLink("Delete", "DeleteProject", new {ProjectId=project.ProjectSpotlightID})</td>
             </tr>
             <tr>
-                <td class="inputLabel">@Html.DisplayNameFor(model => model.ProjectSpotlight.DevelopmentTime)</td>
-                <td class="editData">@Html.TextBoxFor(model => model.ProjectSpotlight.DevelopmentTime)</td>
+                <td class="inputLabel">@Html.DisplayNameFor(model => project.DevelopmentTime)</td>
+                <td class="inputData">@Html.DisplayFor(model => project.DevelopmentTime)</td>
             </tr>
             <tr>
-                <td class="inputLabel">@Html.DisplayNameFor(model => model.ProjectSpotlight.ProjectDescription)</td>
-                <td class="editData">@Html.TextBoxFor(model => model.ProjectSpotlight.ProjectDescription)</td>
+                <td class="inputLabel">@Html.DisplayNameFor(model => project.ProjectDescription)</td>
+                <td class="inputData">@Html.DisplayFor(model => project.ProjectDescription)</td>
             </tr>
             <tr>
-                <td class="inputLabel">@Html.DisplayNameFor(model => model.ProjectSpotlight.RepoLink)</td>
-                <td class="editData">@Html.TextBoxFor(model => model.ProjectSpotlight.RepoLink)</td>
+                <td class="inputLabel">@Html.DisplayNameFor(model => project.RepoLink)</td>
+                <td class="inputData">@Html.DisplayFor(model => project.RepoLink)</td>
             </tr>
             <tr>
-                <td class="inputLabel">@Html.DisplayNameFor(model => model.ProjectSpotlight.Image_1)</td>
-                <td class="editData">@Html.TextBoxFor(model => model.ProjectSpotlight.Image_1)</td>
+                <td class="inputLabel">@Html.DisplayNameFor(model => project.Image_1)</td>
+                <td class="inputData"><img src="@Url.Content(project.Image_1)" alt="Image" height='50' width='50' /></td>
+                <td class="inputData">@Html.DisplayFor(model => project.Image_1)</td>
             </tr>
             <tr>
-                <td class="inputLabel">@Html.DisplayNameFor(model => model.ProjectSpotlight.Image_2)</td>
-                <td class="editData">@Html.TextBoxFor(model => model.ProjectSpotlight.Image_2)</td>
+                <td class="inputLabel">@Html.DisplayNameFor(model => project.Image_2)</td>
+                <td class="inputData">@Html.DisplayFor(model => project.Image_2)</td>
             </tr>
         </table>
     </div>
+}
 
     <div>
         <a href="@Url.Action("CreateProject", new { ContactId=@Model.ContactProfile.ProfileId })" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=600,toolbar=1,resizable=0'); return false;">Create New Project</a>
     </div>
-
-}
