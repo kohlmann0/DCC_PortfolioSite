@@ -17,10 +17,12 @@
 
 .adminLink {
     font-size: 1.15em;
+    margin-top: 5%;
 }
 
 .sectionHead {
     margin-top: 8%;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .filePath {
@@ -69,7 +71,7 @@
     font-size: 5em;
 }
 
-#aboutTitle {
+.pageTitle {
     font-family: 'Orbitron', sans-serif;
     font-size: 3em;
 }
