@@ -50,19 +50,6 @@
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Image_1, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            <input name="Image1" type="file">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Image_2, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            <input name="Image2" type="file">
-                        </div>
-                    </div>
-                    <div class="form-group">
                         @Html.LabelFor(model => model.RepoLink, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.RepoLink, new { htmlAttributes = new { @class = "form-control" } })
@@ -83,6 +70,30 @@
                             <input type="submit" value="Update and Preview" class="btn btn-default" />
                             <button type="button" onclick="window.open('', '_self', ''); window.close();">Close</button>
                         </div>
+                    </div>
+                    <br />
+                    <div>
+                    @using (Html.BeginForm("ImageUploadPhotoEdit1", "Admin",
+      FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @*<div>Select Photo to Upload</div>*@
+                        <label for="image1">Select File for Image 1</label>
+                        
+                        <input name="image1" type="file">
+                        @Html.HiddenFor(model => model.ProjectSpotlightID, new { htmlAttributes = new { @class = "form-control" } })
+                        <input type="submit" value="Upload Image 1" />
+                    }
+                    </div>
+                    <br />
+                    <div>
+                        @using (Html.BeginForm("ImageUploadPhotoEdit2", "Admin",
+      FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @*<div>Select Photo to Upload</div>*@
+                            <label for="image2">Select File for Image 2</label><input name="image2" type="file">
+                            @Html.HiddenFor(model => model.ProjectSpotlightID, new { htmlAttributes = new { @class = "form-control" } })
+                            <input type="submit" value="Upload Image 2" />
+                        }
                     </div>
                 </div>
             }
