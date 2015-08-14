@@ -2,6 +2,7 @@ namespace DCC_PortfolioSite.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -14,6 +15,7 @@ namespace DCC_PortfolioSite.Models
         public int ProfileID { get; set; }
 
         [Required]
+        [DisplayName("Resume")]
         public string HtmlUpload { get; set; }
 
         public virtual ContactProfile ContactProfile { get; set; }
