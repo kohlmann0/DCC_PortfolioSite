@@ -15,9 +15,10 @@
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
-                @Html.HiddenFor(model => model.ProfileID, new { htmlAttributes = new { @class = "form-control" } })
                 <div class="form-horizontal">
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(model => model.ProjectSpotlightID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.TextBoxFor(model => model.ProfileID, new { htmlAttributes = new { @class = "form-control" } })
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.ProjectName, htmlAttributes: new { @class = "control-label col-md-2" })

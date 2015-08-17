@@ -57,16 +57,16 @@ namespace DCC_PortfolioSite.Controllers
         public ActionResult Index()
         {
             AdminViewModel adminViewModel = new AdminViewModel();
-            string UserID = User.Identity.Name;            
+            string UserID = User.Identity.Name;
 
             adminViewModel.ContactProfile = db.ContactProfiles.FirstOrDefault(p => p.PrimaryEmail == UserID);
             adminViewModel.UserResume = db.UserResumes.FirstOrDefault(p => p.ContactProfile.PrimaryEmail == UserID);
             adminViewModel.ProjectSpotlight = db.ProjectSpotlights.FirstOrDefault(p => p.ContactProfile.PrimaryEmail == UserID);
             var projects = (from p in db.ProjectSpotlights
-                           where p.ContactProfile.PrimaryEmail == UserID
-                           select p).ToList();
+                            where p.ContactProfile.PrimaryEmail == UserID
+                            select p).ToList();
             adminViewModel.ProjectSpotlightList = projects;
-            
+
             return View(adminViewModel);
         }
 
@@ -85,7 +85,7 @@ namespace DCC_PortfolioSite.Controllers
                             where p.ContactProfile.PrimaryEmail == UserID
                             select p).ToList();
             adminViewModel.ProjectSpotlightList = projects;
-            
+
             return View("Index_Edit", adminViewModel);
         }
 
@@ -184,14 +184,14 @@ namespace DCC_PortfolioSite.Controllers
                 blob.Properties.ContentType = image.ContentType;
                 blob.UploadFromStream(image.InputStream);
                 blob.Uri.ToString();
-                
+
                 string connectionStringDB = "Server=tcp:wx9a1lruht.database.windows.net,1433;Database=DCCPortfolioSite_db;User ID=devcodecamp;Password=heliumdev1!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
                 using (SqlConnection connection = new SqlConnection(connectionStringDB))
                 {
                     connection.Open();
                     ContactProfile profileId = (from contact in db.ContactProfiles
-                                     where contact.PrimaryEmail == User.Identity.Name
-                                     select contact).FirstOrDefault();
+                                                where contact.PrimaryEmail == User.Identity.Name
+                                                select contact).FirstOrDefault();
                     SqlCommand cmd = new SqlCommand("UPDATE UserResume SET HtmlUpload = @Resume WHERE ProfileID = @ResumeName");
                     cmd.CommandType = CommandType.Text;
                     cmd.Connection = connection;
@@ -221,35 +221,17 @@ namespace DCC_PortfolioSite.Controllers
         [Authorize]
         public ActionResult CreateProject(ProjectSpotlight model)
         {
-            int insertID = -1;
-            string connectionStringDB = "Server=tcp:wx9a1lruht.database.windows.net,1433;Database=DCCPortfolioSite_db;User ID=devcodecamp;Password=heliumdev1!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
-            using (SqlConnection connection = new SqlConnection(connectionStringDB))
+            if (ModelState.IsValid)
             {
-                connection.Open();
-
-                SqlCommand cmd = new SqlCommand("INSERT INTO ProjectSpotlight (ProfileID, ProjectName, Technologies, DevelopmentTime, ProjectDescription, RepoLink, Image_1, Image_2) " +
-                    "output INSERTED.ProjectSpotlightID " +
-                    "VALUES(@pID, @pName, @tech, @dTime, @pDescrip, @rLink, @i1, @i2)");
-                //ProjectName = @pName, Technologies = @tech, DevelopmentTime = @dTime, ProjectDescription = @pDescrip, RepoLink = @rLink, Image_1 = @i1, Image_2 = @i2 WHERE PrimaryEmail = @fNameUser");
-                cmd.CommandType = CommandType.Text;
-                cmd.Connection = connection;
-
-                cmd.Parameters.AddWithValue("@pID", (int.Equals(model.ProfileID, null)) ? 0 : model.ProfileID);
-                cmd.Parameters.AddWithValue("@pName", (String.IsNullOrEmpty(model.ProjectName)) ? " " : model.ProjectName);
-                cmd.Parameters.AddWithValue("@tech", (String.IsNullOrEmpty(model.Technologies)) ? " " : model.Technologies);
-                cmd.Parameters.AddWithValue("@dTime", (String.IsNullOrEmpty(model.DevelopmentTime)) ? " " : model.DevelopmentTime);
-                cmd.Parameters.AddWithValue("@pDescrip", (String.IsNullOrEmpty(model.ProjectDescription)) ? " " : model.ProjectDescription);
-                cmd.Parameters.AddWithValue("@rLink", (String.IsNullOrEmpty(model.RepoLink)) ? " " : model.RepoLink);
-                cmd.Parameters.AddWithValue("@i1", (String.IsNullOrEmpty(model.Image_1)) ? " " : model.Image_1);
-                cmd.Parameters.AddWithValue("@i2", (String.IsNullOrEmpty(model.Image_2)) ? " " : model.Image_2);
-
-                cmd.Parameters.AddWithValue("@fNameUser", User.Identity.Name);
-
-                insertID = (int)cmd.ExecuteScalar();
+                db.ProjectSpotlights.Add(model);
+                db.SaveChanges();
             }
-
-            ProjectSpotlight results = db.ProjectSpotlights.FirstOrDefault(r => r.ProjectSpotlightID == insertID);
-            return RedirectToAction("EditProject", new { ProjectID = results.ProjectSpotlightID });
+            else
+            {
+                return RedirectToAction("Index");
+            }
+            
+            return RedirectToAction("EditProject", new { ProjectID = model.ProjectSpotlightID });
         }
 
 
@@ -258,7 +240,7 @@ namespace DCC_PortfolioSite.Controllers
         [Authorize]
         public ActionResult EditProject(int ProjectID)
         {
-            ProjectSpotlight model = db.ProjectSpotlights.FirstOrDefault(r => r.ProjectSpotlightID == ProjectID);         
+            ProjectSpotlight model = db.ProjectSpotlights.FirstOrDefault(r => r.ProjectSpotlightID == ProjectID);
             return View("EditProject", model);
         }
         // POST: Update Project Data
@@ -266,39 +248,15 @@ namespace DCC_PortfolioSite.Controllers
         [Authorize]
         public ActionResult EditProject(ProjectSpotlight model)
         {
-
-            // ORM Style Update not working properly (DQL below is temporary fix. Remove ASAP!)
-            //if (ModelState.IsValid)
-            //{
-            //    db.Entry(model).State = EntityState.Modified;
-            //    db.SaveChanges();
-            //    return View(model);
-            //}
-            //else
-            //{
-            //    return View(model);
-            //}
-
-
-            string connectionStringDB = "Server=tcp:wx9a1lruht.database.windows.net,1433;Database=DCCPortfolioSite_db;User ID=devcodecamp;Password=heliumdev1!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
-            using (SqlConnection connection = new SqlConnection(connectionStringDB))
+            if (ModelState.IsValid)
             {
-                connection.Open();
-
-                SqlCommand cmd = new SqlCommand("UPDATE ProjectSpotlight SET ProjectName = @pName, Technologies = @tech, DevelopmentTime = @dTime, ProjectDescription = @pDescrip, RepoLink = @rLink WHERE ProjectSpotlightID = @ProjectID");
-                //ProjectName = @pName, Technologies = @tech, DevelopmentTime = @dTime, ProjectDescription = @pDescrip, RepoLink = @rLink WHERE PrimaryEmail = @fNameUser");
-                cmd.CommandType = CommandType.Text;
-                cmd.Connection = connection;
-
-                cmd.Parameters.AddWithValue("@pName", (String.IsNullOrEmpty(model.ProjectName)) ? " " : model.ProjectName);
-                cmd.Parameters.AddWithValue("@tech", (String.IsNullOrEmpty(model.Technologies)) ? " " : model.Technologies);
-                cmd.Parameters.AddWithValue("@dTime", (String.IsNullOrEmpty(model.DevelopmentTime)) ? " " : model.DevelopmentTime);
-                cmd.Parameters.AddWithValue("@pDescrip", (String.IsNullOrEmpty(model.ProjectDescription)) ? " " : model.ProjectDescription);
-                cmd.Parameters.AddWithValue("@rLink", (String.IsNullOrEmpty(model.RepoLink)) ? " " : model.RepoLink);
-
-                cmd.Parameters.AddWithValue("@ProjectID", (int.Equals(model.ProjectSpotlightID, null)) ? 0 : model.ProjectSpotlightID);
-
-                cmd.ExecuteNonQuery();
+                db.Entry(model).State = EntityState.Modified;
+                db.SaveChanges();
+                return View(model);
+            }
+            else
+            {
+                return View(model);
             }
 
             ProjectSpotlight refreshModel = db.ProjectSpotlights.FirstOrDefault(r => r.ProjectSpotlightID == model.ProjectSpotlightID);
