@@ -8,9 +8,13 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href='http://fonts.googleapis.com/css?family=Orbitron:500,700,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
     <link href="~/Content/sticky-footer.css" rel="stylesheet">
     <link href="~/slick/slick.css" rel="stylesheet" type="text/css" />
     <link href="~/slick/slick-theme.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Admin.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/mobileCustom.css" />
 
 
     <script type="text/javascript">
@@ -33,7 +37,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("devCodeCamp", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("alumniNetwork : devCodeCamp", "Index", "Home", new { area = "" }, new { @class = "navbar-brand navbarTitle" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

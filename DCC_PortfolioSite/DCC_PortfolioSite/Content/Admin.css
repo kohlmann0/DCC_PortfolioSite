@@ -72,6 +72,10 @@
     font-size: 5em;
 }
 
+.splashImage {
+    margin-bottom: 5%;
+}
+
 .pageTitle {
     font-family: 'Orbitron', sans-serif;
     font-size: 3em;
