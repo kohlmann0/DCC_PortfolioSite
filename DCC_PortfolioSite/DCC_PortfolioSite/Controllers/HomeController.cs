@@ -124,7 +124,7 @@ namespace DCC_PortfolioSite.Controllers
                
 
                 var connectionString = @"DefaultEndpointsProtocol=https;AccountName=dccportfolio;AccountKey=/MxXUfGzY8W+e0GTYUTQtA4EnlfgaROeUhPipxRFew7ckKk5sXiHDmDZmIOd4AkZ6luZS994UXYaPeRKboHOaA==";
-                var connectionString2 = ConfigurationManager.ConnectionStrings[3].ConnectionString;
+                var connectionString2 = ConfigurationManager.ConnectionStrings[2].ConnectionString;
                 var account = CloudStorageAccount.Parse(connectionString2);
 
                 //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
