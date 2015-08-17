@@ -57,24 +57,6 @@ namespace DCC_PortfolioSite.Controllers
                 model.UserLastName = dbContactProfileModel.LastName;
                 model.Zip = dbContactProfileModel.PostalCode;
 
-
-
-                // Debug -- Force everything to show            
-                model.ShowAddress = true;
-                model.ShowAlternateEmail = true;
-                model.ShowAlternatePhone = true;
-                model.ShowAvailableForWorkMessage = true;
-                model.ShowCurrentlyWorkingOnMessage = true;
-                model.ShowGitHubProfile = true;
-                model.ShowHireByMessage = true;
-                model.ShowLinkInProfile = true;
-                model.ShowPersonalWebsite = true;
-                model.ShowPrimaryEmail = true;
-                model.ShowPrimaryPhone = true;
-                model.ShowProfilePhoto = true;
-                model.ShowResume = true;
-
-
                 // Generate Project List
                 List<ProjectSpotlight> dbProjectList = db.ProjectSpotlights.Where(p => p.ProfileID == id).ToList();
                 model.ProjectSpotLightObjectList = new List<ProjectSpotlight>();
