@@ -124,7 +124,8 @@ namespace DCC_PortfolioSite.Controllers
                
 
                 var connectionString = @"DefaultEndpointsProtocol=https;AccountName=dccportfolio;AccountKey=/MxXUfGzY8W+e0GTYUTQtA4EnlfgaROeUhPipxRFew7ckKk5sXiHDmDZmIOd4AkZ6luZS994UXYaPeRKboHOaA==";
-                var account = CloudStorageAccount.Parse(connectionString);
+                var connectionString2 = ConfigurationManager.ConnectionStrings[3].ConnectionString;
+                var account = CloudStorageAccount.Parse(connectionString2);
 
                 //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
                 CloudBlobClient blobClient = account.CreateCloudBlobClient();
@@ -174,6 +175,15 @@ namespace DCC_PortfolioSite.Controllers
 
             return View();
         }
+
+        public ActionResult Error()
+        {
+            ViewBag.Message = "Error";
+
+            return View();
+        }
+
+
 
         public ActionResult Search(string tb_SearchBox)
         {

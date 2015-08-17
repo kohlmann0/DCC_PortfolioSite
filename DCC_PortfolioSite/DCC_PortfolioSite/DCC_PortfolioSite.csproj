@@ -244,6 +244,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectSpotlight_auto_Controller.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\UserListController.cs" />
     <Compile Include="Controllers\UserManager.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Controllers\UserProfile_auto_Controller.cs" />
@@ -406,6 +407,9 @@
     <Content Include="Views\Admin\EditProject.cshtml" />
     <Content Include="Views\Admin\_ProjectPreviewPartialView.cshtml" />
     <Content Include="Views\UserRole\Index.cshtml" />
+    <Content Include="Views\UserList\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutPopup.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

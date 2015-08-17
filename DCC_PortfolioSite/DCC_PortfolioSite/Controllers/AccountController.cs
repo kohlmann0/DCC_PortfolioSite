@@ -213,12 +213,7 @@ namespace DCC_PortfolioSite.Controllers
                     }
 
 
-                       
-
-
-                    
-
-
+                    ModelState.Clear();
                     ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
                     return View();
                 }

@@ -7,16 +7,13 @@ namespace DCC_PortfolioSite.Models
 {
     public class UserRoleViewModel
     {
-        public class GroupedUserRoleViewModel
-        {
-            public List<UserRoleModel> Users { get; set; }
-            public List<UserRoleModel> Admins { get; set; }
-        }
-
-        public class UserRoleModel
-        {
+        
+            public List<ApplicationUser> Users { get; set; }
+            public List<Microsoft.AspNet.Identity.EntityFramework.IdentityRole> Roles { get; set; }
+            
+            
             public string Username { get; set; }
-            public string Roles { get; set; }
-        }
+            public string Role { get; set; }
+        
     }
 }

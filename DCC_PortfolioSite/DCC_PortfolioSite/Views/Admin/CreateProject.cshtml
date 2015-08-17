@@ -1,23 +1,14 @@
 ﻿@model DCC_PortfolioSite.Models.ProjectSpotlight
 
 @{
-    Layout = null;
+    ViewBag.Title = "Create Project";
+    Layout = "~/Views/Shared/_LayoutPopup.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" type="text/css" href="~/Content/Site.css" />
-    <link rel="stylesheet" type="text/css" href="~/Content/Admin.css" />
-
-    <title>CreateProject</title>
-
-</head>
-<body class="dark_background" style="background:url()">
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
+<img src="~/Content/devColor.png" class="img-rounded" height="75" alt="devCodeCamp" />
+<span class="pageTitle"><strong>@ViewBag.Title</strong></span>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
 
     <div class="row light_background">
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 corner_radius">
@@ -94,5 +85,4 @@
     <br />
     @*@Html.Partial("_ProjectPreviewPartialView")
     <script type="text/javascript" src="~/Scripts/ProjectPreviewPartialControl.js"></script>*@
-</body>
-</html>
+

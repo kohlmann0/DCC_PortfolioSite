@@ -1,9 +1,76 @@
 ﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityUser>
 
-
-
-
 @{
+    ViewBag.Title = "Manage User Roles";
+}
+
+<img src="~/Content/devColor.png" class="img-rounded" height="50" alt="devCodeCamp" />
+<span class="pageTitle">@ViewBag.Title</span>
+
+
+<h3>Add Role to User</h3>
+
+@using (Html.BeginForm("RoleAddToUser", "UserRole"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <p>
+        Username : @Html.DropDownList("UserName", (IEnumerable <SelectListItem>) ViewBag.Users, "Select ...")
+        Role Name: @Html.DropDownList("RoleName", (IEnumerable <SelectListItem>) ViewBag.Roles, "Select ...")
+
+    </p>
+
+    <input type="submit" value="Save" />
+}
+<hr />
+<h3>Get Roles for a User</h3>
+@using (Html.BeginForm("GetRoles", "UserRole"))
+{
+    @Html.AntiForgeryToken()
+    <p>
+        Username : @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select ...")
+        <input type="submit" value="Get Roles for this User" />
+    </p>
+}
+
+@if (ViewBag.RolesForThisUser != null)
+{
+    <div>
+        <h3>Roles for this user </h3>
+        <ol>
+            @foreach (string s in ViewBag.RolesForThisUser)
+            {
+                <li>@s</li>
+            }
+        </ol>
+    </div>
+}
+
+<hr />
+<h3>Delete Role from User</h3>
+
+@using (Html.BeginForm("DeleteRoleForUser", "UserRole"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <p>
+        Username : @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select ...")
+        Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
+
+    </p>
+
+    <input type="submit" value="Delete this user from Role" />
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Manage")
+</div>
+
+
+
+@*@{
     ViewBag.Title = "User List";
 }
 
@@ -22,13 +89,12 @@
         <tr>
             <td>
                 @Html.DisplayFor(model => item.UserName)
-                @*@item.Name*@
+                @item.Name
             </td>
         </tr>
     }
 </table>
 
 <div>
-    @Html.ActionLink("Back to List", "Index", "Manage")
-</div>
-
+    @Html.ActionLink("Back to List", "Index", "Role")
+</div>*@

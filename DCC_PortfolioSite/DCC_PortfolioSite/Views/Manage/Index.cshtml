@@ -35,18 +35,26 @@
         </dd>
         @if (User.IsInRole("Administrator"))
         {
-            <dt>Manage Role</dt>
+            <dt>Role Creation/Deletion</dt>
             <dd>
-                [ @Html.ActionLink("Role", "Index", "Role") ]
+                [ @Html.ActionLink("Create/Delete Roles", "Index", "Role") ]
             </dd>
         }
         @if (User.IsInRole("Administrator"))
         {
-            <dt>User List</dt>
+            <dt>Manage User Roles</dt>
             <dd>
-                [ @Html.ActionLink("User List", "Index", "UserRole") ]
+                [ @Html.ActionLink("Manage User Roles", "Index", "UserRole") ]
             </dd>
         }
+         @if (User.IsInRole("Administrator"))
+        {
+            <dt>User List</dt>
+            <dd>
+                [ @Html.ActionLink("User List", "Index", "UserList") ]
+            </dd>
+        }
+        
 
 
         @*

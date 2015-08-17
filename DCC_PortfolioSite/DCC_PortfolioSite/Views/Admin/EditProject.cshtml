@@ -1,17 +1,12 @@
 ﻿@model DCC_PortfolioSite.Models.ProjectSpotlight
 
 @{
-    Layout = null;
+    ViewBag.Title = "Edit Project";
+    Layout = "~/Views/Shared/_LayoutPopup.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>EditProject</title>
-</head>
-<body>
+<img src="~/Content/devColor.png" class="img-rounded" height="75" alt="devCodeCamp" />
+<span class="pageTitle"><strong>@ViewBag.Title</strong></span>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     
@@ -107,5 +102,3 @@
     <br />
     @Html.Partial("_ProjectPreviewPartialView")
     @Scripts.Render("~/Scripts/editProjectWindow.js")
-</body>
-</html>

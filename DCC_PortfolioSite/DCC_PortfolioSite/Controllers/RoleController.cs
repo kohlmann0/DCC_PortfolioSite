@@ -73,17 +73,6 @@ namespace DCC_PortfolioSite.Controllers
                            select r).FirstOrDefault();
             context.Roles.Remove(newRole);
             context.SaveChanges();
-
-
-            //foreach (IdentityRole item in Roles)
-            //{
-            //    if (item.Id == Role.Id)
-            //    {
-            //        context.Roles.Remove(item);
-            //    }
-            //}
-            
-            context.SaveChanges();
             return RedirectToAction("Index");
         }
 
