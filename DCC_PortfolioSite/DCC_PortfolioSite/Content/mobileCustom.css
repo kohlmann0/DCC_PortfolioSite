@@ -42,6 +42,10 @@
     }
 }
 
+#photo404 {
+    width: 100%;
+}
+
 /* for iPad */
 @media screen
     and (min-width: 768px)
