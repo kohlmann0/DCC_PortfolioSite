@@ -1,23 +1,22 @@
-﻿@model DCC_PortfolioSite.Models.UserProfileViewModels
+﻿@model DCC_PortfolioSite.Models.ProjectSpotlight
 
 <div>
     <div class="row flip page_text_color">
         @*foreach ()*@
-        @{
+        
             <div class="card">
-                @if (Model.ProjectSpotLightObjectList.Count() > 0)
-                { 
+               
                 <!--Title Row-->
                 <div class="row">
                     <div class="col-xs-10 col-sm-10 col-sm-offset-1">
-                        <h4 align="center">@Html.DisplayFor(model => model.ProjectSpotLightObjectList[0].ProjectName)</h4>
+                        <h4 align="center">@Html.DisplayFor(model => model.ProjectName)</h4>
                         <hr />
                         <table style="width:100%" cellpadding="2">
                             <tr>
-                                <td align="right">@Html.DisplayNameFor(model => model.ProjectSpotLightObjectList[0].Technologies): </td>
+                                <td align="right">@Html.DisplayNameFor(model => model.Technologies): </td>
                                 <td>
                                     @{
-                                        string[] technologyList = Model.ProjectSpotLightObjectList[0].Technologies.Split();
+                                        string[] technologyList = Model.Technologies.Split();
                                         foreach (string technology in technologyList)
                                         {
                                             <span class="badge">@technology.Trim(',')</span>
@@ -26,11 +25,11 @@
                                 </td>                        
                             </tr>
                             <tr>
-                                <td align ="right">@Html.DisplayNameFor(model => model.ProjectSpotLightObjectList[0].TeamMembers): </td>
+                                <td align ="right">@Html.DisplayNameFor(model => model.TeamMembers): </td>
                                 <td>
-                                    @if (Model.ProjectSpotLightObjectList[0].TeamMembers != null)
+                                    @if (Model.TeamMembers != null)
                                     {
-                                        foreach (var teamMember in Model.ProjectSpotLightObjectList[0].TeamMembers)
+                                        foreach (var teamMember in Model.TeamMembers)
                                         {
                                             <span>@teamMember.ProfileID</span>
                                             <br />
@@ -39,8 +38,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td align="right">@Html.DisplayNameFor(model => model.ProjectSpotLightObjectList[0].DevelopmentTime): </td>
-                                <td>@Html.DisplayFor(model => model.ProjectSpotLightObjectList[0].DevelopmentTime) hours</td>
+                                <td align="right">@Html.DisplayNameFor(model => model.DevelopmentTime): </td>
+                                <td>@Html.DisplayFor(model => model.DevelopmentTime) hours</td>
                             </tr>
                         </table>
                         <hr />
@@ -50,17 +49,17 @@
                 <!--Description Row-->
                 <div class="row">
                     <div class="col-xs-10 col-sm-10 col-sm-offset-1">
-                        @if (!String.IsNullOrEmpty(@Model.ProjectSpotLightObjectList[0].Image_1))
+                        @if (!String.IsNullOrEmpty(@Model.Image_1))
                         {
-                            <img class="media-object thumbnail img_upper_left" src=@Model.ProjectSpotLightObjectList[0].Image_1 height="200" width="200" align="left" />
+                            <img class="media-object thumbnail img_upper_left" src=@Model.Image_1 height="200" width="200" align="left" />
                         }
-                        @if (!String.IsNullOrEmpty(@Model.ProjectSpotLightObjectList[0].Image_2))
+                        @if (!String.IsNullOrEmpty(@Model.Image_2))
                         {
-                            <img class="media-object thumbnail img_lower_right" src=@Model.ProjectSpotLightObjectList[0].Image_2 height="200" width="200" align="right" />
+                            <img class="media-object thumbnail img_lower_right" src=@Model.Image_2 height="200" width="200" align="right" />
                         }                        
-                        @if (!String.IsNullOrEmpty(@Model.ProjectSpotLightObjectList[0].ProjectDescription))
+                        @if (!String.IsNullOrEmpty(@Model.ProjectDescription))
                         {
-                            @Html.DisplayFor(model => model.ProjectSpotLightObjectList[0].ProjectDescription)
+                            @Html.DisplayFor(model => model.ProjectDescription)
                         }
                     </div>
                 </div>
@@ -68,16 +67,13 @@
                 <!--GitHub Link Row-->
                 <div class="row">
                     <div class="col-xs-10 col-sm-10 col-sm-offset-1">
-                        <h4>@Html.DisplayFor(model => model.ProjectSpotLightObjectList[0].RepoLink)</h4>
+                        <h4>@Html.DisplayFor(model => model.RepoLink)</h4>
                     </div>
                 </div>
-                }
-                else
-                {
-                    <br /><br /><center><strong><picture>I'm sorry, @Model.FullName has not added any projects to his profile yet.</picture></strong></center>
-                }
+                
+               
             </div>            
-        }
+        
     </div>
 </div>
 

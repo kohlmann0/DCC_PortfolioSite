@@ -1,4 +1,6 @@
-﻿@{
+﻿@model DCC_PortfolioSite.Models.UserProfileViewModels
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -9,9 +11,13 @@
         <div id="ProfileTile" class="col-xs-12 col-sm-10">
             @Html.Partial("_ProfilePartialView")
         </div>
+
+        @foreach(var project in Model.ProjectSpotLightObjectList)
+        { 
         <div id="ProjectTile" class="col-xs-12 col-sm-10">
-            @Html.Partial("_ProjectPartialView")
+            @Html.Partial("_ProjectPartialView",project)
         </div>
+        }
         <div id="ResumeTile" class="col-xs-12 col-sm-10">
             @Html.Partial("_ResumePartialView")
         </div>
