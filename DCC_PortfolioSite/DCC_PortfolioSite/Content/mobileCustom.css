@@ -1,6 +1,11 @@
-﻿@media screen and (max-width: 1024px) { 
+﻿/* all starting at iPad */
+@media screen and (max-width: 1024px) { 
 
     #splashTitle {
+        display: none;
+    }
+
+    #aboutTitle {
         display: none;
     }
 
@@ -26,17 +31,33 @@
     }
 }
 
+/* for phone */
 @media screen and (max-width: 480px) {
     .navbarTitle {
         font-size: .9em;
     }
+
+    .devCodeFont {
+        font-family: 'Orbitron', sans-serif;
+    }
 }
 
+/* for iPad */
 @media screen
     and (min-width: 768px)
     and (max-width: 1024px) {
 
     #splashTitle {
         display: inline;
+    }
+
+    .pageTitle {
+        display: inline;
+        font-size: 2.5em;
+    }
+
+    .splashImage {
+        margin: 2%;
+        height: 125px;
     }
 }
