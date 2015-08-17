@@ -92,7 +92,8 @@ namespace DCC_PortfolioSite.Models
         public string PersonalWebsite { get; set; }
 
         [DisplayName("Available for Work")]
-        public bool? AvailableForWork { get; set; }
+        [StringLength(2000)]
+        public string AvailableForWork { get; set; }
 
         [DisplayName("Hired By")]
         [StringLength(255)]

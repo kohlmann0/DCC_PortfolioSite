@@ -4,16 +4,19 @@
 {
     @Html.HiddenFor(model => model.ContactProfile.ProfileId);
     <div>
-        <hr />
+
+        <hr style="border-color: #AAA; border-style: dashed" />
         <table>
             <tr>
                 <td class="inputLabel">Show on Profile</td>
-                <td class="inputLabel"> </td>
-                <td class="editData"> </td>
+                <td class="inputLabel">
+                    <input type="submit" class="btn btn-default" value="SaveProfile" />
+                </td>
+                <td class="editData"></td>
             </tr>
             <tr>
                 <td class="inputLabel">
-                <td class ="inputLabel">@Html.DisplayNameFor(model => model.ContactProfile.FirstName)</td>
+                <td class="inputLabel">@Html.DisplayNameFor(model => model.ContactProfile.FirstName)</td>
                 <td class="editData">@Html.TextBoxFor(model => model.ContactProfile.FirstName)</td>
             </tr>
             <tr>
@@ -109,12 +112,14 @@
             <tr>
                 <td class="inputLabel">@Html.EditorFor(model => model.ContactProfile.ShowProfilePhoto)</td>
                 <td class="inputLabel">@Html.DisplayNameFor(model => model.ContactProfile.Photo)</td>
-                <td class="editData">@Html.TextBoxFor(model => model.ContactProfile.Photo)<br />
-                (select file to upload below)</td>
-            </tr>
-        </table>
-    </div>
-
+                <td class="editData">
+                    @Html.TextBoxFor(model => model.ContactProfile.Photo)<br />
+                (select file to upload below)
+            </td>
+        </tr>
+    </table>
+</div>
+    <br />
     <div>
         <input type="submit" class="btn btn-default" value="SaveProfile" />
     </div>
