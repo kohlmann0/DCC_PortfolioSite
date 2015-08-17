@@ -73,7 +73,7 @@ namespace DCC_PortfolioSite.Models
         [DisplayName("Postal Code")]
         public int? PostalCode { get; set; }
 
-        [Required]
+        
         [DisplayName("About")]
         [StringLength(2000)]
         public string About { get; set; }
