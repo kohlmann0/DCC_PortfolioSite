@@ -99,7 +99,7 @@ namespace DCC_PortfolioSite.Models
         public string HiredBy { get; set; }
 
         [DisplayName("Currently Working On")]
-        [StringLength(255)]
+        [StringLength(2000)]
         public string CurrentWork { get; set; }
 
         [DisplayName("Available for Work")]
