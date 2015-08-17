@@ -3,6 +3,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
@@ -86,7 +87,8 @@ namespace DCC_PortfolioSite.Controllers
                     image.FileName, image.ContentType, image.ContentLength);
                 // TODO: actually save the image to Azure blob storage
 
-                var connectionString = @"DefaultEndpointsProtocol=https;AccountName=dccportfolio;AccountKey=/MxXUfGzY8W+e0GTYUTQtA4EnlfgaROeUhPipxRFew7ckKk5sXiHDmDZmIOd4AkZ6luZS994UXYaPeRKboHOaA==";
+                
+                var connectionString = ConfigurationManager.ConnectionStrings[3].ConnectionString;
                 var account = CloudStorageAccount.Parse(connectionString);
 
                 //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
@@ -109,17 +111,10 @@ namespace DCC_PortfolioSite.Controllers
                 blob.UploadFromStream(image.InputStream);
                 blob.Uri.ToString();
 
-                string connectionStringDB = "Server=tcp:wx9a1lruht.database.windows.net,1433;Database=DCCPortfolioSite_db;User ID=devcodecamp;Password=heliumdev1!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
-                using (SqlConnection connection = new SqlConnection(connectionStringDB))
-                {
-                    connection.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE ContactProfile SET Photo= @Photo WHERE PrimaryEmail = @fNameUser");
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Connection = connection;
-                    cmd.Parameters.AddWithValue("@Photo", blob.Uri.ToString());
-                    cmd.Parameters.AddWithValue("@fNameUser", User.Identity.Name);
-                    cmd.ExecuteNonQuery();
-                }
+                ContactProfile refreshModel = db.ContactProfiles.FirstOrDefault(r => r.PrimaryEmail == User.Identity.Name);
+                refreshModel.Photo = blob.Uri.ToString();
+                db.Entry(refreshModel).State = EntityState.Modified;
+                db.SaveChanges();
             }
             return RedirectToAction("Edit", "Admin");
         }
@@ -136,7 +131,8 @@ namespace DCC_PortfolioSite.Controllers
             }
             else
             {
-                var connectionString = @"DefaultEndpointsProtocol=https;AccountName=dccportfolio;AccountKey=/MxXUfGzY8W+e0GTYUTQtA4EnlfgaROeUhPipxRFew7ckKk5sXiHDmDZmIOd4AkZ6luZS994UXYaPeRKboHOaA==";
+                
+                var connectionString = ConfigurationManager.ConnectionStrings[3].ConnectionString;
                 var account = CloudStorageAccount.Parse(connectionString);
 
                 //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
@@ -159,21 +155,16 @@ namespace DCC_PortfolioSite.Controllers
                 blob.UploadFromStream(image.InputStream);
                 blob.Uri.ToString();
 
-                string connectionStringDB = "Server=tcp:wx9a1lruht.database.windows.net,1433;Database=DCCPortfolioSite_db;User ID=devcodecamp;Password=heliumdev1!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
-                using (SqlConnection connection = new SqlConnection(connectionStringDB))
-                {
-                    connection.Open();
-                    ContactProfile profileId = (from contact in db.ContactProfiles
-                                                where contact.PrimaryEmail == User.Identity.Name
-                                                select contact).FirstOrDefault();
-                    SqlCommand cmd = new SqlCommand("UPDATE UserResume SET HtmlUpload = @Resume WHERE ProfileID = @ResumeName");
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Connection = connection;
-                    cmd.Parameters.AddWithValue("@Resume", blob.Uri.ToString());
-                    cmd.Parameters.AddWithValue("@ResumeName", profileId.ProfileId);
+                ContactProfile profileId = (from contact in db.ContactProfiles
+                                            where contact.PrimaryEmail == User.Identity.Name
+                                            select contact).FirstOrDefault();
+                UserResume refreshModel = db.UserResumes.FirstOrDefault(r => r.ProfileID == profileId.ProfileId);
+                refreshModel.HtmlUpload = blob.Uri.ToString();
+                db.Entry(refreshModel).State = EntityState.Modified;
+                db.SaveChanges();
 
-                    cmd.ExecuteNonQuery();
-                }
+
+
             }
             return RedirectToAction("Edit", "Admin");
         }
@@ -266,7 +257,7 @@ namespace DCC_PortfolioSite.Controllers
                     image.FileName, image.ContentType, image.ContentLength);
                 // TODO: actually save the image to Azure blob storage
 
-                var connectionString = @"DefaultEndpointsProtocol=https;AccountName=dccportfolio;AccountKey=/MxXUfGzY8W+e0GTYUTQtA4EnlfgaROeUhPipxRFew7ckKk5sXiHDmDZmIOd4AkZ6luZS994UXYaPeRKboHOaA==";
+                var connectionString = ConfigurationManager.ConnectionStrings[3].ConnectionString;
                 var account = CloudStorageAccount.Parse(connectionString);
 
                 //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
@@ -289,23 +280,17 @@ namespace DCC_PortfolioSite.Controllers
                 blob.UploadFromStream(image.InputStream);
                 blob.Uri.ToString();
 
-                string connectionStringDB = "Server=tcp:wx9a1lruht.database.windows.net,1433;Database=DCCPortfolioSite_db;User ID=devcodecamp;Password=heliumdev1!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
-                using (SqlConnection connection = new SqlConnection(connectionStringDB))
-                {
-                    connection.Open();
-                    ContactProfile profileId = (from contact in db.ContactProfiles
-                                                where contact.PrimaryEmail == User.Identity.Name
-                                                select contact).FirstOrDefault();
-                    SqlCommand cmd = new SqlCommand("UPDATE ProjectSpotlight SET Image_1= @Photo WHERE ProjectSpotlightID = @fNameUser");
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Connection = connection;
-                    cmd.Parameters.AddWithValue("@Photo", blob.Uri.ToString());
-                    cmd.Parameters.AddWithValue("@fNameUser", ProjectSpotlightID);
-                    cmd.ExecuteNonQuery();
-                }
+              
+                ContactProfile profileId = (from contact in db.ContactProfiles
+                                            where contact.PrimaryEmail == User.Identity.Name
+                                            select contact).FirstOrDefault();
+                ProjectSpotlight refreshModel = db.ProjectSpotlights.FirstOrDefault(r => r.ProjectSpotlightID == ProjectSpotlightID);
+                refreshModel.Image_1 = blob.Uri.ToString();
+                db.Entry(refreshModel).State = EntityState.Modified;
+                db.SaveChanges();
             }
-            ProjectSpotlight refreshModel = db.ProjectSpotlights.FirstOrDefault(r => r.ProjectSpotlightID == ProjectSpotlightID);
-            return View("EditProject", refreshModel);
+            ProjectSpotlight finalRefreshModel = db.ProjectSpotlights.FirstOrDefault(r => r.ProjectSpotlightID == ProjectSpotlightID);
+            return View("EditProject", finalRefreshModel);
         }
 
         [HttpPost]
@@ -323,7 +308,7 @@ namespace DCC_PortfolioSite.Controllers
                     image.FileName, image.ContentType, image.ContentLength);
                 // TODO: actually save the image to Azure blob storage
 
-                var connectionString = @"DefaultEndpointsProtocol=https;AccountName=dccportfolio;AccountKey=/MxXUfGzY8W+e0GTYUTQtA4EnlfgaROeUhPipxRFew7ckKk5sXiHDmDZmIOd4AkZ6luZS994UXYaPeRKboHOaA==";
+                var connectionString = ConfigurationManager.ConnectionStrings[3].ConnectionString;
                 var account = CloudStorageAccount.Parse(connectionString);
 
                 //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
@@ -346,24 +331,19 @@ namespace DCC_PortfolioSite.Controllers
                 blob.UploadFromStream(image.InputStream);
                 blob.Uri.ToString();
 
-                string connectionStringDB = "Server=tcp:wx9a1lruht.database.windows.net,1433;Database=DCCPortfolioSite_db;User ID=devcodecamp;Password=heliumdev1!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
-                using (SqlConnection connection = new SqlConnection(connectionStringDB))
-                {
-                    connection.Open();
-                    ContactProfile profileId = (from contact in db.ContactProfiles
-                                                where contact.PrimaryEmail == User.Identity.Name
-                                                select contact).FirstOrDefault();
-                    SqlCommand cmd = new SqlCommand("UPDATE ProjectSpotlight SET Image_2= @Photo WHERE ProjectSpotlightID = @fNameUser");
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Connection = connection;
-                    cmd.Parameters.AddWithValue("@Photo", blob.Uri.ToString());
-                    cmd.Parameters.AddWithValue("@fNameUser", ProjectSpotlightID);
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            ProjectSpotlight refreshModel = db.ProjectSpotlights.FirstOrDefault(r => r.ProjectSpotlightID == ProjectSpotlightID);
+                ContactProfile profileId = (from contact in db.ContactProfiles
+                                            where contact.PrimaryEmail == User.Identity.Name
+                                            select contact).FirstOrDefault();
+                ProjectSpotlight refreshModel = db.ProjectSpotlights.FirstOrDefault(r => r.ProjectSpotlightID == ProjectSpotlightID);
+                refreshModel.Image_2 = blob.Uri.ToString();
+                db.Entry(refreshModel).State = EntityState.Modified;
+                db.SaveChanges();
 
-            return View("EditProject", refreshModel);
+
+            }
+            ProjectSpotlight finalRefreshModel = db.ProjectSpotlights.FirstOrDefault(r => r.ProjectSpotlightID == ProjectSpotlightID);
+
+            return View("EditProject", finalRefreshModel);
         }
     }
 }
