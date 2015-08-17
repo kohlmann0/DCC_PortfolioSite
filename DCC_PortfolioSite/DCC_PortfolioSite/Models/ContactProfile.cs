@@ -37,6 +37,7 @@ namespace DCC_PortfolioSite.Models
 
         [DisplayName("Birth Date")]
         [Column(TypeName = "date")]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime? BirthDate { get; set; }
 
         [DisplayName("Primary Phone")]
