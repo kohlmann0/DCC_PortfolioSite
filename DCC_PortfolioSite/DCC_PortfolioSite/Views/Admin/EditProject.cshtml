@@ -78,7 +78,7 @@
                     @*<div>Select Photo to Upload</div>*@
                     <label for="image1">Select File for Image 1</label>
 
-                    <input name="image1" type="file">
+                    <input name="image1" type="file" accept=".gif,.jpg,.jpeg,.png">
                     @Html.HiddenFor(model => model.ProjectSpotlightID, new { htmlAttributes = new { @class = "form-control" } })
                     <input type="submit" value="Upload Image 1" />
                 }
@@ -89,7 +89,7 @@
       FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     @*<div>Select Photo to Upload</div>*@
-                    <label for="image2">Select File for Image 2</label><input name="image2" type="file">
+                    <label for="image2">Select File for Image 2</label><input name="image2" type="file" accept=".gif,.jpg,.jpeg,.png">
                     @Html.HiddenFor(model => model.ProjectSpotlightID, new { htmlAttributes = new { @class = "form-control" } })
                     <input type="submit" value="Upload Image 2" />
                 }
