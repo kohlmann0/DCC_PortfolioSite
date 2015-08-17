@@ -1,18 +1,18 @@
 ﻿@model DCC_PortfolioSite.Models.UserProfileViewModels
 
 <div class="page_text_color text-center">
-    @if (@Model.ResumeHtmlUpload != null & @Model.ShowResume == true)
+    @if (@Model.ShowResume == true & @Model.ResumeHtmlUpload != null & !String.IsNullOrEmpty(@Model.ResumeHtmlUpload.HtmlUpload) & @Model.ResumeHtmlUpload.HtmlUpload != " ")
     {
-    <h4>Resume of @Model.FullName</h4>
-    <hr />
-    <div class='responsiveIframe page_text_color'>
-        <iframe class="container-fluid" src=@Model.ResumeHtmlUpload.HtmlUpload></iframe>
-    </div>
-    <br />
+        <h4>Resume of @Model.FullName</h4>
+        <hr />
+        <div class='responsiveIframe page_text_color'>
+            <iframe class="container-fluid" src=@Model.ResumeHtmlUpload.HtmlUpload></iframe>
+        </div>
+        <br />
     }
     else
     {
-        <br />
+        <br /><br />
         <p>I'm sorry, @Model.FullName has chosen not to display a resume at this time. Please check back later.</p>
     }
 </div>

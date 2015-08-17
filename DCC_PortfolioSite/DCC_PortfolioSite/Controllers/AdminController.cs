@@ -34,24 +34,6 @@ namespace DCC_PortfolioSite.Controllers
             }
         }
 
-
-        // SAVE PROJECT
-        [HttpPost]
-        [Authorize]
-        public ActionResult SaveProject(AdminViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(model.ProjectSpotlight).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index", "Admin");
-            }
-            else
-            {
-                return View(model);
-            }
-        }
-
         // GET: Admin
         [Authorize]
         public ActionResult Index()
@@ -87,14 +69,6 @@ namespace DCC_PortfolioSite.Controllers
             adminViewModel.ProjectSpotlightList = projects;
 
             return View("Index_Edit", adminViewModel);
-        }
-
-        // GET: Resume
-        [Authorize]
-        public ActionResult Resume()
-        {
-            UserResume results = db.UserResumes.FirstOrDefault(r => r.ProfileID == 2);
-            return View("Resume", results);
         }
 
         [HttpPost]

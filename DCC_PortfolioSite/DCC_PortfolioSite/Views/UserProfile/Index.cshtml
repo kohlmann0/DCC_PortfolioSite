@@ -12,15 +12,23 @@
             @Html.Partial("_ProfilePartialView")
         </div>
 
-        @foreach(var project in Model.ProjectSpotLightObjectList)
-        { 
-        <div id="ProjectTile" class="col-xs-12 col-sm-10">
-            @Html.Partial("_ProjectPartialView",project)
-        </div>
+        @if (Model.ProjectSpotLightObjectList.Count() > 0)
+        {
+            foreach (var project in Model.ProjectSpotLightObjectList)
+            {
+                <div id="ProjectTile" class="col-xs-12 col-sm-10">
+                    @Html.Partial("_ProjectPartialView", project)
+                </div>
+            }
+        }
+        else
+        {
+            <div id="ProjectTile" class="col-xs-12 col-sm-10">
+                <br /><br /><center><p class="page_text_color">I'm sorry, @Model.FullName has not added any projects to his profile yet. Please check back later.</p></center>
+            </div>
         }
         <div id="ResumeTile" class="col-xs-12 col-sm-10">
             @Html.Partial("_ResumePartialView")
         </div>
     </div>
 </div>
-
