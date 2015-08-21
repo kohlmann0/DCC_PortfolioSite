@@ -1,4 +1,14 @@
-﻿/* all starting at iPad */
+﻿/* fix resize issue from 1500 to 1024 */
+@media screen
+    and (min-width: 1024px)
+    and (max-width: 1550px) {
+
+    #splashTitle {
+        font-size: 5vw;
+    }
+}
+
+/* all starting at iPad */
 @media screen and (max-width: 1024px) { 
 
     #splashTitle {
