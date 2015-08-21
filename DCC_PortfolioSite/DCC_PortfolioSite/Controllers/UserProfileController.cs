@@ -89,12 +89,25 @@ namespace DCC_PortfolioSite.Controllers
             return null;
         }
 
+        public ActionResult GetProjectImg1(int ProjectId)
+        {
+            ProjectSpotlight project = db.ProjectSpotlights.Single(p => p.ProjectSpotlightID == ProjectId);
+            if (project != null & project.SpotlightImg_1 != null)
+            {
+                return new FileContentResult(project.SpotlightImg_1, "image/png");
+            }
+            return null;
+        }
 
-
- 
-
-
-
+        public ActionResult GetProjectImg2(int ProjectId)
+        {
+            ProjectSpotlight project = db.ProjectSpotlights.Single(p => p.ProjectSpotlightID == ProjectId);
+            if (project != null & project.SpotlightImg_2 != null)
+            {
+                return new FileContentResult(project.SpotlightImg_2, "image/png");
+            }
+            return null;
+        }
 
     }
 }

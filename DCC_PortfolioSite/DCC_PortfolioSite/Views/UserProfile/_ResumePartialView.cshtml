@@ -1,10 +1,10 @@
 ﻿@model DCC_PortfolioSite.Models.UserProfileViewModels
 
-<div class="page_text_color text-center">
+<div class="page_text_color page_text_size text-center">
     @if (Model.ShowResume == true)
     {
         <h4>Resume of @Model.FullName</h4>
-        <hr />
+    <hr style="border-color: #AAA; border-style: dashed" />
         <div class='responsiveIframe page_text_color'>
             <iframe class="container-fluid" src=@Url.Action("GetImg", "UserProfile", new { ResumeId = Model.ResumeHtmlUpload.UserResumeID })></iframe>
         </div>

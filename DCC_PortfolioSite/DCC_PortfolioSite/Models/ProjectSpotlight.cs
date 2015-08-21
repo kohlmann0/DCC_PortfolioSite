@@ -38,6 +38,11 @@ namespace DCC_PortfolioSite.Models
         
         public string Image_2 { get; set; }
 
+
+        public byte[] SpotlightImg_1 { get; set; }
+
+        public byte[] SpotlightImg_2 { get; set; }
+
         public virtual ContactProfile ContactProfile { get; set; }
 
         public virtual ICollection<TeamMember> TeamMembers { get; set; }
