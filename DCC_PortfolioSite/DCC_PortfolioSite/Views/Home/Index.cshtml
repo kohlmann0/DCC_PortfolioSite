@@ -35,12 +35,13 @@
                 {
                     <a href="~/UserProfile/Index/@item.ProfileId">
                         <center>
-                            <div class="searchCarouselTile" style="background-image: url('@item.Photo')">
+                            <div class="searchCarouselTile" style="background-image: url('@Url.Action("GetImg", "Home", new { ProfileId = item.ProfileId })')">
                                 @{
-                    string FullName = item.FirstName + " " + item.LastName;
-                    <span class="emptyTileAlignToBottom"></span>
+                                    string FullName = item.FirstName + " " + item.LastName;
+                                    <span class="emptyTileAlignToBottom"></span>
                                     <span class="label label-default" style="font-size:small">@FullName</span>
                                 }
+                            </div>
                         </center>
                     </a>
                 }

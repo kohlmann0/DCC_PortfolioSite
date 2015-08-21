@@ -97,5 +97,16 @@ namespace DCC_PortfolioSite.Controllers
             
             return View("Index", results);
         }
+
+
+        public ActionResult GetImg(int ProfileId)
+        {
+            ContactProfile profile = db.ContactProfiles.Single(p => p.ProfileId == ProfileId);
+            if (profile != null & profile.Img != null)
+            {
+                return new FileContentResult(profile.Img, "image/png");
+            }
+            return null;
+        }
     }
 }

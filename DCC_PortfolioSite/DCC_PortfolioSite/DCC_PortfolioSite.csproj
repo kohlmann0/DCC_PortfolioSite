@@ -394,7 +394,6 @@
     <Content Include="Views\Admin\_ProfileInfoPartialView.cshtml" />
     <Content Include="Views\Admin\_ResumeInfoPartialView.cshtml" />
     <Content Include="Views\Admin\_ProjectInfoPartialView.cshtml" />
-    <Content Include="Views\Home\SearchResults.cshtml" />
     <Content Include="Views\Admin\Resume.cshtml" />
     <Content Include="Views\Admin\_AccountInfoPartialView_Edit.cshtml" />
     <Content Include="Views\Admin\_ProfileInfoPartialView_Edit.cshtml" />

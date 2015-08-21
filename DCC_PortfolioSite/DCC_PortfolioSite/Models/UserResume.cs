@@ -19,5 +19,7 @@ namespace DCC_PortfolioSite.Models
         public string HtmlUpload { get; set; }
 
         public virtual ContactProfile ContactProfile { get; set; }
+
+        public byte[] ResumeImg { get; set; }
     }
 }

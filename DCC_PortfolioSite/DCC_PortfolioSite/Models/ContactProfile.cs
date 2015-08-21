@@ -131,6 +131,8 @@ namespace DCC_PortfolioSite.Models
 
         public bool? ShowProfilePhoto { get; set; }
 
+        public byte[] Img { get; set; }
+
         public virtual ICollection<CollaborateMember> CollaborateMembers { get; set; }
 
         public virtual ICollection<CollaboratePost> CollaboratePosts { get; set; }

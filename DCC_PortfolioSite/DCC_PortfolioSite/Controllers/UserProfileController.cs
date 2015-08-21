@@ -77,9 +77,17 @@ namespace DCC_PortfolioSite.Controllers
             }
         }
 
-        
 
-       
+
+        public ActionResult GetImg(int ResumeId)
+        {
+            UserResume resume = db.UserResumes.Single(r => r.UserResumeID == ResumeId);
+            if (resume != null & resume.ResumeImg != null)
+            {
+                return new FileContentResult(resume.ResumeImg, "image/png");
+            }
+            return null;
+        }
 
 
 
