@@ -4,7 +4,7 @@
     @if (Model.ShowResume == true)
     {
         <h4>Resume of @Model.FullName</h4>
-    <hr style="border-color: #AAA; border-style: dashed" />
+        <hr style="border-color: #AAA; border-style: dashed" />
         <div class='responsiveIframe page_text_color'>
             <iframe class="container-fluid" src=@Url.Action("GetImg", "UserProfile", new { ResumeId = Model.ResumeHtmlUpload.UserResumeID })></iframe>
         </div>
