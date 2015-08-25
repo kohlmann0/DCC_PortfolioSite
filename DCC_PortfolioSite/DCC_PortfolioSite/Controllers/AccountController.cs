@@ -12,6 +12,7 @@ using DCC_PortfolioSite.Models;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using System.Data.Entity;
 
 namespace DCC_PortfolioSite.Controllers
 {
@@ -175,63 +176,31 @@ namespace DCC_PortfolioSite.Controllers
                     await this.UserManager.AddToRoleAsync(user.Id, model.Name);
 
 
-                    string connectionStringUser = ConfigurationManager.ConnectionStrings[1].ConnectionString;
-                    using (SqlConnection connection = new SqlConnection(connectionStringUser))
-                    {
-                        connection.Open();
-
-
-
-                        SqlCommand cmd = new SqlCommand("INSERT INTO ContactProfile(FirstName,LastName,PrimaryEmail) Values (@fName,@lName,@primaryEmail)");
-                        cmd.CommandType = CommandType.Text;
-                        cmd.Connection = connection;
-                        cmd.Parameters.AddWithValue("@fName", user.FirstName);
-                        cmd.Parameters.AddWithValue("@lName", user.LastName);
-                        cmd.Parameters.AddWithValue("@primaryEmail", user.Email);
-                        cmd.ExecuteNonQuery();
-
-                    }
-
-                
-
-
                     AlumniDBModel db = new AlumniDBModel();
 
-                    //ContactProfile newContact = new ContactProfile();
-                    //newContact.FirstName = user.FirstName;
-                    //newContact.LastName = user.LastName;
-                    //newContact.PrimaryEmail = user.Email;
-                    //db.ContactProfiles.Add(newContact);
-                    //db.SaveChanges();
+                    ContactProfile newContact = new ContactProfile();
+                    newContact.FirstName = user.FirstName;
+                    newContact.LastName = user.LastName;
+                    newContact.PrimaryEmail = user.Email;
+                    db.ContactProfiles.Add(newContact);
+
+                    db.Entry(newContact).State = EntityState.Added;
+                    db.SaveChanges();
 
                     ContactProfile profileId = (from contact in db.ContactProfiles
                                      where contact.PrimaryEmail == user.Email
                                      select contact).FirstOrDefault();
 
-                    string connectionStringResume = ConfigurationManager.ConnectionStrings[1].ConnectionString;
+                   
 
-                    using (SqlConnection connection = new SqlConnection(connectionStringResume))
-                    {
-                        connection.Open();
+                    UserResume newResume = new UserResume();
+                    newResume.ProfileID = profileId.ProfileId;
+                    newResume.HtmlUpload = " ";
+                    db.UserResumes.Add(newResume);
 
+                    db.Entry(newResume).State = EntityState.Added;
 
-
-                        SqlCommand cmd = new SqlCommand("INSERT INTO UserResume(ProfileID,HtmlUpload) Values (@fName,@html)");
-                        cmd.CommandType = CommandType.Text;
-                        cmd.Connection = connection;
-                        cmd.Parameters.AddWithValue("@fName", profileId.ProfileId);
-                        cmd.Parameters.AddWithValue("@html", ' ');
-
-                        cmd.ExecuteNonQuery();
-
-                    }
-
-                    //UserResume newResume = new UserResume();
-                    //newResume.ProfileID = profileId.ProfileId;
-                    //newResume.HtmlUpload = " ";
-
-                    //db.UserResumes.Add(newResume);
-                    //db.SaveChanges();
+                    db.SaveChanges();
 
                     ModelState.Clear();
                     ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");

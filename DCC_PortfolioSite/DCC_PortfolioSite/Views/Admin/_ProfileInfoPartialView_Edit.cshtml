@@ -112,10 +112,12 @@
             <tr>
                 <td class="inputLabel">@Html.EditorFor(model => model.ContactProfile.ShowProfilePhoto)</td>
                 <td class="inputLabel">@Html.DisplayNameFor(model => model.ContactProfile.Photo)</td>
-                <td class="editData">
-                    @Html.TextBoxFor(model => model.ContactProfile.Photo)<br />
+                <td class="inputData">
+                    @if (Model.ContactProfile.Img != null)
+                    { <img src=@Url.Action("GetImg", "Home", new { ProfileId = Model.ContactProfile.ProfileId }) alt="Image" height='50' width='50' />}
+                <br />
                 (select file to upload below)
-            </td>
+                </td>
         </tr>
     </table>
 </div>

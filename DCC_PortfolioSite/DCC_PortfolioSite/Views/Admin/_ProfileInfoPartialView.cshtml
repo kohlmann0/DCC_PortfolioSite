@@ -57,7 +57,10 @@
         </tr>
         <tr>
             <td class="inputLabel">@Html.DisplayNameFor(model => model.ContactProfile.Photo)</td>
-            <td class="inputData">@Html.TextBoxFor(model => model.ContactProfile.Photo, new { @readonly = "readonly" })</td>
+            <td class="inputData">
+                @if (Model.ContactProfile.Img != null)
+                { <img src=@Url.Action("GetImg", "Home", new { ProfileId = Model.ContactProfile.ProfileId }) alt="Image" height='50' width='50' />}
+            </td>
         </tr>
         <tr>
             <td class="inputLabel">@Html.DisplayNameFor(model => model.ContactProfile.LinkedIn)</td>

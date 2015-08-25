@@ -2,6 +2,7 @@ namespace DCC_PortfolioSite.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -38,9 +39,10 @@ namespace DCC_PortfolioSite.Models
         
         public string Image_2 { get; set; }
 
-
+        [DisplayName("Project Image 1")]
         public byte[] SpotlightImg_1 { get; set; }
 
+         [DisplayName("Project Image 2")]
         public byte[] SpotlightImg_2 { get; set; }
 
         public virtual ContactProfile ContactProfile { get; set; }

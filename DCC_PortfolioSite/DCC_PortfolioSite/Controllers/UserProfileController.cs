@@ -77,12 +77,21 @@ namespace DCC_PortfolioSite.Controllers
             }
         }
 
+        public ActionResult GetProfileImg(string ProfileEmail)
+        {
+            ContactProfile contact = db.ContactProfiles.Single(r => r.PrimaryEmail == ProfileEmail);
+            if (contact != null && contact.Img != null)
+            {
+                return new FileContentResult(contact.Img, "image/png");
+            }
+            return null;
+        }
 
 
-        public ActionResult GetImg(int ResumeId)
+        public ActionResult GetResumeImg(int ResumeId)
         {
             UserResume resume = db.UserResumes.Single(r => r.UserResumeID == ResumeId);
-            if (resume != null & resume.ResumeImg != null)
+            if (resume != null && resume.ResumeImg != null)
             {
                 return new FileContentResult(resume.ResumeImg, "image/png");
             }
@@ -92,7 +101,7 @@ namespace DCC_PortfolioSite.Controllers
         public ActionResult GetProjectImg1(int ProjectId)
         {
             ProjectSpotlight project = db.ProjectSpotlights.Single(p => p.ProjectSpotlightID == ProjectId);
-            if (project != null & project.SpotlightImg_1 != null)
+            if (project != null && project.SpotlightImg_1 != null)
             {
                 return new FileContentResult(project.SpotlightImg_1, "image/png");
             }
@@ -102,7 +111,7 @@ namespace DCC_PortfolioSite.Controllers
         public ActionResult GetProjectImg2(int ProjectId)
         {
             ProjectSpotlight project = db.ProjectSpotlights.Single(p => p.ProjectSpotlightID == ProjectId);
-            if (project != null & project.SpotlightImg_2 != null)
+            if (project != null && project.SpotlightImg_2 != null)
             {
                 return new FileContentResult(project.SpotlightImg_2, "image/png");
             }

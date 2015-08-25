@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -83,36 +84,22 @@ namespace DCC_PortfolioSite.Controllers
             }
             else
             {
+                Stream photoStream = image.InputStream;
                 ViewBag.UploadMessage = String.Format("Got image {0} of type {1} and size {2}",
                     image.FileName, image.ContentType, image.ContentLength);
-                // TODO: actually save the image to Azure blob storage
-
-                
-                var connectionString = ConfigurationManager.ConnectionStrings[3].ConnectionString;
-                var account = CloudStorageAccount.Parse(connectionString);
-
-                //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
-                CloudBlobClient blobClient = account.CreateCloudBlobClient();
-
-                // Retrieve a reference to a container.
-                CloudBlobContainer container = blobClient.GetContainerReference("pictures");
-
-                // Create the container if it doesn't already exist.
-                container.CreateIfNotExists();
-                container.SetPermissions(new BlobContainerPermissions
-                {
-                    PublicAccess = BlobContainerPublicAccessType.Blob
-                });
-
-                string uniqueBlobName = string.Format("productimages/image_{0}{1}",
-                Guid.NewGuid().ToString(), Path.GetExtension(image.FileName));
-                CloudBlockBlob blob = container.GetBlockBlobReference(uniqueBlobName);
-                blob.Properties.ContentType = image.ContentType;
-                blob.UploadFromStream(image.InputStream);
-                blob.Uri.ToString();
+               
 
                 ContactProfile refreshModel = db.ContactProfiles.FirstOrDefault(r => r.PrimaryEmail == User.Identity.Name);
-                refreshModel.Photo = blob.Uri.ToString();
+
+                byte[] photoBytes;
+
+                using (BinaryReader binaryData = new BinaryReader(photoStream))
+                {
+                    photoBytes = binaryData.ReadBytes((int)photoStream.Length);//must convert long to int
+                }
+
+                refreshModel.Img = photoBytes;
+               
                 db.Entry(refreshModel).State = EntityState.Modified;
                 db.SaveChanges();
             }
@@ -125,51 +112,34 @@ namespace DCC_PortfolioSite.Controllers
         {
             AlumniDBModel db = new AlumniDBModel();
             var image = Request.Files["resume"];
+
             if (image == null)
             {
                 ViewBag.UploadMessage = "Failed to upload image";
             }
             else
             {
-                
-                var connectionString = ConfigurationManager.ConnectionStrings[3].ConnectionString;
-                var account = CloudStorageAccount.Parse(connectionString);
-
-                //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
-                CloudBlobClient blobClient = account.CreateCloudBlobClient();
-
-                //Retrieve a reference to a container.
-                CloudBlobContainer container = blobClient.GetContainerReference("pictures");
-
-                //Create the container if it doesn't already exist.
-                container.CreateIfNotExists();
-                container.SetPermissions(new BlobContainerPermissions
-                {
-                    PublicAccess = BlobContainerPublicAccessType.Blob
-                });
-
-                string uniqueBlobName = string.Format("productimages/image_{0}{1}",
-                Guid.NewGuid().ToString(), Path.GetExtension(image.FileName));
-                CloudBlockBlob blob = container.GetBlockBlobReference(uniqueBlobName);
-                blob.Properties.ContentType = image.ContentType;
-                blob.UploadFromStream(image.InputStream);
-                blob.Uri.ToString();
+                Stream resumeStream = image.InputStream;
 
                 ContactProfile profileId = (from contact in db.ContactProfiles
                                             where contact.PrimaryEmail == User.Identity.Name
                                             select contact).FirstOrDefault();
                 UserResume refreshModel = db.UserResumes.FirstOrDefault(r => r.ProfileID == profileId.ProfileId);
-                refreshModel.HtmlUpload = blob.Uri.ToString();
+                
+                byte[] resumeBytes;
+
+                using (BinaryReader binaryData = new BinaryReader(resumeStream))
+                {
+                    resumeBytes = binaryData.ReadBytes((int)resumeStream.Length);//must convert long to int
+                }
+
+                refreshModel.ResumeImg = resumeBytes;
                 db.Entry(refreshModel).State = EntityState.Modified;
-                db.SaveChanges();
-
-
+                db.SaveChanges();   
 
             }
             return RedirectToAction("Edit", "Admin");
         }
-
-
 
 
 
@@ -253,39 +223,24 @@ namespace DCC_PortfolioSite.Controllers
             }
             else
             {
+
+                Stream photoStream = image.InputStream;
                 ViewBag.UploadMessage = String.Format("Got image {0} of type {1} and size {2}",
                     image.FileName, image.ContentType, image.ContentLength);
-                // TODO: actually save the image to Azure blob storage
 
-                var connectionString = ConfigurationManager.ConnectionStrings[3].ConnectionString;
-                var account = CloudStorageAccount.Parse(connectionString);
-
-                //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
-                CloudBlobClient blobClient = account.CreateCloudBlobClient();
-
-                // Retrieve a reference to a container.
-                CloudBlobContainer container = blobClient.GetContainerReference("pictures");
-
-                // Create the container if it doesn't already exist.
-                container.CreateIfNotExists();
-                container.SetPermissions(new BlobContainerPermissions
-                {
-                    PublicAccess = BlobContainerPublicAccessType.Blob
-                });
-
-                string uniqueBlobName = string.Format("productimages/image_{0}{1}",
-                Guid.NewGuid().ToString(), Path.GetExtension(image.FileName));
-                CloudBlockBlob blob = container.GetBlockBlobReference(uniqueBlobName);
-                blob.Properties.ContentType = image.ContentType;
-                blob.UploadFromStream(image.InputStream);
-                blob.Uri.ToString();
-
-              
                 ContactProfile profileId = (from contact in db.ContactProfiles
                                             where contact.PrimaryEmail == User.Identity.Name
                                             select contact).FirstOrDefault();
                 ProjectSpotlight refreshModel = db.ProjectSpotlights.FirstOrDefault(r => r.ProjectSpotlightID == ProjectSpotlightID);
-                refreshModel.Image_1 = blob.Uri.ToString();
+                byte[] photoBytes;
+
+                using (BinaryReader binaryData = new BinaryReader(photoStream))
+                {
+                    photoBytes = binaryData.ReadBytes((int)photoStream.Length);//must convert long to int
+                }
+
+                refreshModel.SpotlightImg_1 = photoBytes;
+               
                 db.Entry(refreshModel).State = EntityState.Modified;
                 db.SaveChanges();
             }
@@ -306,36 +261,22 @@ namespace DCC_PortfolioSite.Controllers
             {
                 ViewBag.UploadMessage = String.Format("Got image {0} of type {1} and size {2}",
                     image.FileName, image.ContentType, image.ContentLength);
-                // TODO: actually save the image to Azure blob storage
 
-                var connectionString = ConfigurationManager.ConnectionStrings[3].ConnectionString;
-                var account = CloudStorageAccount.Parse(connectionString);
-
-                //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
-                CloudBlobClient blobClient = account.CreateCloudBlobClient();
-
-                // Retrieve a reference to a container.
-                CloudBlobContainer container = blobClient.GetContainerReference("pictures");
-
-                // Create the container if it doesn't already exist.
-                container.CreateIfNotExists();
-                container.SetPermissions(new BlobContainerPermissions
-                {
-                    PublicAccess = BlobContainerPublicAccessType.Blob
-                });
-
-                string uniqueBlobName = string.Format("productimages/image_{0}{1}",
-                Guid.NewGuid().ToString(), Path.GetExtension(image.FileName));
-                CloudBlockBlob blob = container.GetBlockBlobReference(uniqueBlobName);
-                blob.Properties.ContentType = image.ContentType;
-                blob.UploadFromStream(image.InputStream);
-                blob.Uri.ToString();
+                Stream photoStream = image.InputStream;
 
                 ContactProfile profileId = (from contact in db.ContactProfiles
                                             where contact.PrimaryEmail == User.Identity.Name
                                             select contact).FirstOrDefault();
                 ProjectSpotlight refreshModel = db.ProjectSpotlights.FirstOrDefault(r => r.ProjectSpotlightID == ProjectSpotlightID);
-                refreshModel.Image_2 = blob.Uri.ToString();
+                byte[] photoBytes;
+
+                using (BinaryReader binaryData = new BinaryReader(photoStream))
+                {
+                    photoBytes = binaryData.ReadBytes((int)photoStream.Length);//must convert long to int
+                }
+
+                refreshModel.SpotlightImg_2 = photoBytes;
+               
                 db.Entry(refreshModel).State = EntityState.Modified;
                 db.SaveChanges();
 

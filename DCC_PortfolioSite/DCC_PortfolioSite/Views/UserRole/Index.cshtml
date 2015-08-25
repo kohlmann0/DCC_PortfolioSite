@@ -16,8 +16,8 @@
     @Html.ValidationSummary(true)
 
     <p>
-        Username : @Html.DropDownList("UserName", (IEnumerable <SelectListItem>) ViewBag.Users, "Select ...")
-        Role Name: @Html.DropDownList("RoleName", (IEnumerable <SelectListItem>) ViewBag.Roles, "Select ...")
+        Username : @Html.DropDownList("UserName", (IEnumerable <SelectListItem>) ViewBag.Users)
+        Role Name: @Html.DropDownList("RoleName", (IEnumerable <SelectListItem>) ViewBag.Roles)
 
     </p>
 
@@ -29,7 +29,7 @@
 {
     @Html.AntiForgeryToken()
     <p>
-        Username : @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select ...")
+        Username : @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users)
         <input type="submit" value="Get Roles for this User" />
     </p>
 }
@@ -56,8 +56,8 @@
     @Html.ValidationSummary(true)
 
     <p>
-        Username : @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select ...")
-        Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
+        Username : @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users)
+        Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles)
 
     </p>
 
@@ -67,34 +67,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index", "Manage")
 </div>
-
-
-
-@*@{
-    ViewBag.Title = "User List";
-}
-
-<img src="~/Content/devColor.png" class="img-rounded" height="50" alt="devCodeCamp" />
-<span class="pageTitle">@ViewBag.Title</span>
-
-<table id="tbrole">
-    <tr>
-        <th>
-            User Name
-        </th>
-        <td></td>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(model => item.UserName)
-                @item.Name
-            </td>
-        </tr>
-    }
-</table>
-
-<div>
-    @Html.ActionLink("Back to List", "Index", "Role")
-</div>*@

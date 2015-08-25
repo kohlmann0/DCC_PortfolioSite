@@ -34,28 +34,6 @@ namespace DCC_PortfolioSite.Controllers
         {
             ViewBag.Message = "Welcome to the devCodeCamp Alumni Network.";
 
-
-
-            var connectionString = @"DefaultEndpointsProtocol=https;AccountName=dccportfolio;AccountKey=/MxXUfGzY8W+e0GTYUTQtA4EnlfgaROeUhPipxRFew7ckKk5sXiHDmDZmIOd4AkZ6luZS994UXYaPeRKboHOaA==";
-            var account = CloudStorageAccount.Parse(connectionString);
-            
-            //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
-            CloudBlobClient blobClient = account.CreateCloudBlobClient();
-
-            // Retrieve a reference to a container.
-            CloudBlobContainer container = blobClient.GetContainerReference("pictures");
-
-            // Create the container if it doesn't already exist.
-            container.CreateIfNotExists();
-            container.SetPermissions(new BlobContainerPermissions
-            {
-                PublicAccess = BlobContainerPublicAccessType.Blob
-            });
-
-            CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
-
-            //blockBlob.UploadFromFile(imageUploader.PostedFile.FileName, FileMode.Open);
-
             return View();
         }
 

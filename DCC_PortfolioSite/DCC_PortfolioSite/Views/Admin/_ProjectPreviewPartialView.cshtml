@@ -45,9 +45,9 @@
     <!--Description Row-->
     <div class="row">
         <div class="col-xs-10 col-sm-10 col-sm-offset-1">
-            @if (!String.IsNullOrEmpty(@Model.Image_1))
+            @if (@Model.SpotlightImg_1 != null)
             {
-                <img class="media-object thumbnail img_upper_left" src=@Model.Image_1 height="200" width="200" align="left" />
+                <img class="media-object thumbnail img_upper_left" src=@Url.Action("GetProjectImg1", "UserProfile", new { ProjectId = Model.ProjectSpotlightID }) height=" 200" width="200" align="left" />
             }
 
             @if (!String.IsNullOrEmpty(@Model.ProjectDescription))
@@ -55,9 +55,9 @@
                 @Html.DisplayFor(model => model.ProjectDescription)
             }
 
-            @if (!String.IsNullOrEmpty(@Model.Image_2))
+            @if (@Model.SpotlightImg_2 != null)
             {
-                <img class="media-object thumbnail img_lower_right" src=@Model.Image_2 height="200" width="200" align="right" />
+                <img class="media-object thumbnail img_lower_right" src=@Url.Action("GetProjectImg2", "UserProfile", new { ProjectId = Model.ProjectSpotlightID }) height="200" width="200" align="right" />
             }
         </div>
     </div>

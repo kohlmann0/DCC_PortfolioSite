@@ -5,7 +5,10 @@
     <table>
         <tr>
             <td class="inputLabel">Existing @Html.DisplayNameFor(model => model.UserResume.HtmlUpload)</td>
-            <td class="editData">@Html.TextBoxFor(model => model.UserResume.HtmlUpload)</td>
+            <td class="inputData">
+                @if (Model.UserResume.ResumeImg != null)
+                { <img src=@Url.Action("GetResumeImg", "UserProfile", new { ResumeId = Model.UserResume.UserResumeID }) alt="Image" height='50' width='50' />}
+            </td>
         </tr>
     </table>
 </div>
