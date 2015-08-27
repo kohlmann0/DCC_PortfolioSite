@@ -68,6 +68,7 @@ namespace DCC_PortfolioSite.Controllers
             var projects = (from p in db.ProjectSpotlights
                             where p.ContactProfile.PrimaryEmail == UserID
                             select p).ToList();
+           
             adminViewModel.ProjectSpotlightList = projects;
 
             return View("Index_Edit", adminViewModel);
@@ -149,6 +150,7 @@ namespace DCC_PortfolioSite.Controllers
         {
             ProjectSpotlight model = new ProjectSpotlight();
             model.ProfileID = ContactID;
+            
             return View(model);
         }
         // POST: Save Data

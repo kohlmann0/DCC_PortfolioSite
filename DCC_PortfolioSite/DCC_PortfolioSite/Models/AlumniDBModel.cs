@@ -138,10 +138,10 @@ namespace DCC_PortfolioSite.Models
                 .WithRequired(e => e.ContactProfile)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ContactProfile>()
-                .HasMany(e => e.UserResumes)
-                .WithRequired(e => e.ContactProfile)
-                .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<ContactProfile>()
+            //    .HasMany(e => e.UserResumes)
+            //    .WithRequired(e => e.ContactProfile)
+            //    .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ProjectSpotlight>()
                 .Property(e => e.ProjectName)

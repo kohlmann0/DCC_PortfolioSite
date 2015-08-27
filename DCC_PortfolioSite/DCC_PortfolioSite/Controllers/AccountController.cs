@@ -185,15 +185,17 @@ namespace DCC_PortfolioSite.Controllers
                     db.ContactProfiles.Add(newContact);
 
                     db.Entry(newContact).State = EntityState.Added;
+
                     db.SaveChanges();
 
                     ContactProfile profileId = (from contact in db.ContactProfiles
                                      where contact.PrimaryEmail == user.Email
                                      select contact).FirstOrDefault();
 
-                   
 
+                    
                     UserResume newResume = new UserResume();
+                    
                     newResume.ProfileID = profileId.ProfileId;
                     newResume.HtmlUpload = " ";
                     db.UserResumes.Add(newResume);

@@ -23,14 +23,18 @@ namespace DCC_PortfolioSite.Models
         [StringLength(255)]
         public string ProjectName { get; set; }
 
+        [Required]
         [StringLength(255)]
         public string Technologies { get; set; }
 
+        [Required]
         [StringLength(255)]
         public string DevelopmentTime { get; set; }
 
+        [Required]
         public string ProjectDescription { get; set; }
 
+        [Required]
         public string RepoLink { get; set; }
 
         

@@ -10,6 +10,7 @@ namespace DCC_PortfolioSite.Models
     [Table("UserResume")]
     public partial class UserResume
     {
+        [Key]
         public int UserResumeID { get; set; }
 
         public int ProfileID { get; set; }

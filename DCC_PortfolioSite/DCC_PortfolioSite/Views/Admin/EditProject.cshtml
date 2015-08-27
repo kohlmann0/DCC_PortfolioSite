@@ -84,20 +84,8 @@
                 }
             </div>
             <br />
-            <div>
-                @using (Html.BeginForm("ImageUploadPhotoEdit2", "Admin",
-      FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
-                    @*<div>Select Photo to Upload</div>*@
-                    <label for="image2">Select File for Image 2</label><input name="image2" type="file" accept=".gif,.jpg,.jpeg,.png">
-                    @Html.HiddenFor(model => model.ProjectSpotlightID, new { htmlAttributes = new { @class = "form-control" } })
-                    <input type="submit" value="Upload Image 2" />
-                }
-            </div>
 
-
-
-        </div>
+        
     </div>
     <hr />
     <br />

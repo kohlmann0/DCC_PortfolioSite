@@ -115,6 +115,7 @@
                 <td class="inputData">
                     @if (Model.ContactProfile.Img != null)
                     { <img src=@Url.Action("GetImg", "Home", new { ProfileId = Model.ContactProfile.ProfileId }) alt="Image" height='50' width='50' />}
+                    @Html.HiddenFor(model => model.ContactProfile.Img, new { htmlAttributes = new { @class = "form-control" } })                                                                                                                             
                 <br />
                 (select file to upload below)
                 </td>

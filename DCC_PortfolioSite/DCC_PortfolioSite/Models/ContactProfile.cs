@@ -17,7 +17,7 @@ namespace DCC_PortfolioSite.Models
             CollaborateProjects = new HashSet<CollaborateProject>();
             ProjectSpotlights = new HashSet<ProjectSpotlight>();
             TeamMembers = new HashSet<TeamMember>();
-            UserResumes = new HashSet<UserResume>();
+            //UserResumes = new HashSet<UserResume>();
         }
 
         [Key]
@@ -145,6 +145,6 @@ namespace DCC_PortfolioSite.Models
 
         public virtual ICollection<TeamMember> TeamMembers { get; set; }
 
-        public virtual ICollection<UserResume> UserResumes { get; set; }
+        //public virtual ICollection<UserResume> UserResumes { get; set; }
     }
 }

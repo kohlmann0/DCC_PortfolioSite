@@ -80,7 +80,7 @@ namespace DCC_PortfolioSite.Controllers
         public ActionResult GetImg(int ProfileId)
         {
             ContactProfile profile = db.ContactProfiles.Single(p => p.ProfileId == ProfileId);
-            if (profile != null & profile.Img != null)
+            if (profile != null && profile.Img != null)
             {
                 return new FileContentResult(profile.Img, "image/png");
             }

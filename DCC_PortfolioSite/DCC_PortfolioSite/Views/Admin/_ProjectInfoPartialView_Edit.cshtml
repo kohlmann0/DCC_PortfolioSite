@@ -44,15 +44,16 @@
                 <td class="inputData">
                     @if (project.SpotlightImg_1 != null)
                     { <img src=@Url.Action("GetProjectImg1", "UserProfile", new { ProjectId = project.ProjectSpotlightID }) alt="Image" height='50' width='50' />}
+                     @Html.HiddenFor(model => project.SpotlightImg_1, new { htmlAttributes = new { @class = "form-control" } })  
                 </td>
             </tr>
-            <tr>
+            @*<tr>
                 <td class="inputLabel">@Html.DisplayNameFor(model => project.SpotlightImg_2)</td>
                 <td class="inputData">
                     @if (project.SpotlightImg_2 != null)
                     { <img src=@Url.Action("GetProjectImg2", "UserProfile", new { ProjectId = project.ProjectSpotlightID })  alt="Image" height='50' width='50' />}
                 </td>
-             </tr>
+             </tr>*@
         </table>
     </div>
 }
