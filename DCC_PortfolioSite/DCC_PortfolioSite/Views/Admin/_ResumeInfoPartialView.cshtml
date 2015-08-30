@@ -8,7 +8,8 @@
             
             <td class="inputData">
                 @if (Model.UserResume.ResumeImg != null)
-                { <img src=@Url.Action("GetResumeImg", "UserProfile", new { ResumeId = Model.UserResume.UserResumeID }) alt="Image" height='50' width='50' />}</td>
+                {<iframe class="container-fluid" src=@Url.Action("GetResumeImg", "UserProfile", new { ResumeId = Model.UserResume.UserResumeID }) alt="Image" height='200' width='200'></iframe> }</td>
+               
         </tr>
     </table>
 </div>

@@ -34,7 +34,7 @@ namespace DCC_PortfolioSite.Models
         [Required]
         public string ProjectDescription { get; set; }
 
-        [Required]
+        
         public string RepoLink { get; set; }
 
         

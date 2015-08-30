@@ -76,7 +76,8 @@ namespace DCC_PortfolioSite.Controllers
             return View("Index", results);
         }
 
-
+        //allows images to be uploaded (png, png, gif's. PDF's will not work for storing profile images
+        //used for the profile img
         public ActionResult GetImg(int ProfileId)
         {
             ContactProfile profile = db.ContactProfiles.Single(p => p.ProfileId == ProfileId);

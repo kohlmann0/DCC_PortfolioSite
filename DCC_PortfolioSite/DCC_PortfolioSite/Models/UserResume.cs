@@ -10,12 +10,18 @@ namespace DCC_PortfolioSite.Models
     [Table("UserResume")]
     public partial class UserResume
     {
+
+        public UserResume()
+        {
+
+        }
+        
         [Key]
         public int UserResumeID { get; set; }
 
         public int ProfileID { get; set; }
 
-        [Required]
+        
         [DisplayName("Resume")]
         public string HtmlUpload { get; set; }
 

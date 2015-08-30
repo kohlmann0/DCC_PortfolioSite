@@ -77,6 +77,7 @@ namespace DCC_PortfolioSite.Controllers
             }
         }
 
+        //allows images to be uploaded (png, png, gif's. PDF's will not work for storing profile images
         public ActionResult GetProfileImg(string ProfileEmail)
         {
             ContactProfile contact = db.ContactProfiles.Single(r => r.PrimaryEmail == ProfileEmail);
@@ -87,17 +88,19 @@ namespace DCC_PortfolioSite.Controllers
             return null;
         }
 
-
+        //allows pdf's to be uploaded (images will not show for resume's based on application/pdf for the MIME type)
         public ActionResult GetResumeImg(int ResumeId)
         {
             UserResume resume = db.UserResumes.Single(r => r.UserResumeID == ResumeId);
+            
             if (resume != null && resume.ResumeImg != null)
             {
-                return new FileContentResult(resume.ResumeImg, "image/png");
+                return new FileContentResult(resume.ResumeImg, "application/pdf");
             }
             return null;
         }
 
+        //allows images to be uploaded (png, png, gif's. PDF's will not work for storing profile images
         public ActionResult GetProjectImg1(int ProjectId)
         {
             ProjectSpotlight project = db.ProjectSpotlights.Single(p => p.ProjectSpotlightID == ProjectId);
@@ -108,6 +111,8 @@ namespace DCC_PortfolioSite.Controllers
             return null;
         }
 
+        //allows images to be uploaded (png, png, gif's. PDF's will not work for storing profile images
+        //we had this in our original but took this out at the end. Can be added back in if needed.
         public ActionResult GetProjectImg2(int ProjectId)
         {
             ProjectSpotlight project = db.ProjectSpotlights.Single(p => p.ProjectSpotlightID == ProjectId);

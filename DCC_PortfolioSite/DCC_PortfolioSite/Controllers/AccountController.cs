@@ -192,17 +192,52 @@ namespace DCC_PortfolioSite.Controllers
                                      where contact.PrimaryEmail == user.Email
                                      select contact).FirstOrDefault();
 
+                    //string connectionStringResume = ConfigurationManager.ConnectionStrings[2].ConnectionString;
 
-                    
+                    //using (SqlConnection connection = new SqlConnection(connectionStringResume))
+                    //{
+                    //    connection.Open();
+
+
+
+                    //    UserResume newResume = new UserResume();
+                    //    newResume.ProfileID = profileId.ProfileId;
+                    //    newResume.HtmlUpload = " ";
+                    //    db.UserResumes.Add(newResume);
+
+                    //    SqlCommand cmd = new SqlCommand("INSERT INTO UserResume(ProfileID,HtmlUpload) Values (@fName,@html)");
+                    //    cmd.CommandType = CommandType.Text;
+                    //    cmd.Connection = connection;
+                    //    cmd.Parameters.AddWithValue("@fName", profileId.ProfileId);
+                    //    cmd.Parameters.AddWithValue("@html", ' ');
+
+                    //    cmd.ExecuteNonQuery();
+
+                    //}
+
                     UserResume newResume = new UserResume();
-                    
                     newResume.ProfileID = profileId.ProfileId;
                     newResume.HtmlUpload = " ";
+                    
+
                     db.UserResumes.Add(newResume);
-
-                    db.Entry(newResume).State = EntityState.Added;
-
+                    
                     db.SaveChanges();
+
+
+                    
+
+
+                    
+                    //UserResume newResume = new UserResume();
+                    //newResume.ContactProfile = profileId;
+                    //newResume.ProfileID = profileId.ProfileId;
+                    //newResume.HtmlUpload = " ";
+                    //db.UserResumes.Add(newResume);
+
+                    
+
+                    //db.SaveChanges();
 
                     ModelState.Clear();
                     ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
